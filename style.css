@@ -1,0 +1,38 @@
+body {
+    background-color: #f8e3ea;
+}
+
+.container {
+    background-color: #ffff;
+    margin: 5em;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.text {
+    font-size: 1.5em;
+    font-family: "sans-serif";
+    color: #000000;
+    padding: 2em;
+    overflow: visible;
+}
+
+
+
+
+.ProfilePicture {
+    width: 25%;
+    height: 25%;
+    margin: -20px 0px -20px 0px;
+    box-shadow: 0px 0px 30px 0px #000000;
+
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+}
+.nav{
+    background-color: #3f48cc;
+}
