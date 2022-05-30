@@ -7,12 +7,9 @@ body {
     background-color: #000000;
 }
 
-.container {
-    max-width: 100em;
-    max-height: 55em;
+.maincontainer {
     width: auto;
     background-color: #ffff;
-    margin: 5em;
     display: flex;
     justify-content: flex-end;
 
@@ -26,9 +23,9 @@ body {
     overflow: auto;   
 }
 
-.text::-webkit-scrollbar{
+/* .text::-webkit-scrollbar{
     display: none;
- }  
+ }   */
 
 
 
@@ -36,7 +33,7 @@ body {
     max-width: 20em;
     max-height: 20em;
     width: auto;
-    margin: 30px 0px 40px 20px;
+    margin: 80px 0px 40px 20px;
     border-radius: 100%;
 
 
@@ -55,6 +52,7 @@ body {
     top:0px;
     right: 0px;
     left: 0px;
+    padding-bottom: -17px;
     
 }
 .navbar a, .navbar p {
