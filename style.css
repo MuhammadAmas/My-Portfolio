@@ -1,8 +1,12 @@
 body {
     background-color: #f8e3ea;
+    text-decoration: none;
 }
 
 .container {
+    max-width: 100em;
+    max-height: 55em;
+    width: auto;
     background-color: #ffff;
     margin: 5em;
     display: flex;
@@ -15,17 +19,22 @@ body {
     font-family: "sans-serif";
     color: #000000;
     padding: 2em;
-    overflow: visible;
+    overflow: auto;   
 }
 
+.text::-webkit-scrollbar{
+    display: none;
+ }  
 
 
 
 .ProfilePicture {
-    width: 25%;
-    height: 25%;
-    margin: -20px 0px -20px 0px;
-    box-shadow: 0px 0px 30px 0px #000000;
+    max-width: 20em;
+    max-height: 20em;
+    width: auto;
+    margin: 30px 0px 40px 20px;
+    border-radius: 100%;
+
 
 }
 
@@ -35,4 +44,5 @@ body {
 }
 .nav{
     background-color: #3f48cc;
+    color: #fff;
 }
