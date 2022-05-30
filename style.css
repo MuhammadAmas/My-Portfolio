@@ -16,10 +16,13 @@ body {
 }
 
 .text {
+    margin-top: 2.67em;
     font-size: 1.5em;
     font-family: "sans-serif";
     color: #000000;
     overflow: auto;   
+    
+    
 }
 
 /* .text::-webkit-scrollbar{
@@ -28,12 +31,12 @@ body {
 
 
 
-.ProfilePicture {
+/* .ProfilePicture {
     max-width: 20em;
     max-height: 20em;
     width: auto;
     margin: 80px 0px 40px 20px;
-    border-radius: 100%;
+    border-radius: 100%; */
 
 
 }
