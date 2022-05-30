@@ -1,6 +1,10 @@
+html{
+    scroll-behavior: smooth;
+}
 body {
-    background-color: #f8e3ea;
-    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: #000000;
 }
 
 .container {
@@ -42,7 +46,9 @@ body {
     display: flex;
     flex-direction: column;
 }
-.nav{
-    background-color: #3f48cc;
+
+.nav a{
+    text-decoration: none;
     color: #fff;
+    
 }
