@@ -16,7 +16,7 @@ body {
 }
 
 .text {
-    margin-top: 2.67em 5px 0px 5px;
+    margin: 2.67em 5px 0px 10px;
     font-size: 1.5em;
     font-family: "sans-serif";
     color: #000000;
@@ -25,9 +25,9 @@ body {
     
 }
 
-/* .text::-webkit-scrollbar{
+.text::-webkit-scrollbar{
     display: none;
- }   */
+ }  
 
 
 
