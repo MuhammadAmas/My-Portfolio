@@ -21,6 +21,11 @@ body {
     
     
 }
+h1{
+    display: flex;
+    justify-content: center;    
+
+}
 
 .text::-webkit-scrollbar{
     display: none;
