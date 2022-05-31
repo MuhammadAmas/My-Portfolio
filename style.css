@@ -55,9 +55,7 @@ h1 {
     right: 0px;
     left: 0px;
 }
-
-.navbar a,
-.navbar p {
+.navbar p{
     font-size: 24px;
     text-decoration: none;
     color: #fff;
