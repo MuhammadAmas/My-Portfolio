@@ -4,6 +4,7 @@ body {
     background-color: #000000;
     scrollbar-width: none;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -21,14 +22,17 @@ html {
     padding: 8em 0em 8em 0em;
     opacity: 0.8;
 }
+
 .title h1 {
     font-size: 3em;
     font-weight: bold;
-    font-family: "Blaka Hollow";
+    font-family: "Sofia", sans-serif;
+    /* font-family: "Blaka Hollow"; */
     text-align: center;
     display: flex;
     justify-content: center;
 }
+
 /* font-family: 'Roboto', sans-serif; */
 
 
@@ -58,7 +62,8 @@ html {
     right: 0px;
     left: 0px;
 }
-.navbar p{
+
+.navbar p {
     font-size: 24px;
     text-decoration: none;
     color: #fff;
@@ -69,10 +74,11 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    
+
 }
 
-footer i,a{
+footer i,
+a {
     text-decoration: none;
     color: #fff;
     margin: 3em;
