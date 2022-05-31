@@ -18,9 +18,19 @@ html {
     color: #ffffff;
     background-color: rgb(16, 15, 15);
     margin-top: 5em;
-    padding: 5em 0em 5em 0em;
+    padding: 8em 0em 8em 0em;
     opacity: 0.8;
 }
+.title h1 {
+    font-size: 3em;
+    font-weight: bold;
+    font-family: "Blaka Hollow";
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+/* font-family: 'Roboto', sans-serif; */
+
 
 .text {
     margin: 2.67em 5px 0px 10px;
@@ -30,12 +40,6 @@ html {
 
 }
 
-h1 {
-    display: flex;
-    justify-content: center;
-    font-size: 2.5em;
-
-}
 
 
 .details {
