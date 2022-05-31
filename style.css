@@ -74,6 +74,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 5em;
 
 }
 
@@ -81,5 +82,5 @@ footer i,
 a {
     text-decoration: none;
     color: #fff;
-    margin: 3em;
+
 }
