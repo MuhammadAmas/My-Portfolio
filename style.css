@@ -27,14 +27,10 @@ html {
     font-size: 3em;
     font-weight: bold;
     font-family: "Sofia", sans-serif;
-    /* font-family: "Blaka Hollow"; */
     text-align: center;
     display: flex;
     justify-content: center;
 }
-
-/* font-family: 'Roboto', sans-serif; */
-
 
 .text {
     margin: 2.67em 5px 0px 10px;
@@ -53,6 +49,7 @@ html {
 }
 
 .navbar {
+    font-weight: bold;
     background-color: #000000;
     position: fixed;
     display: flex;
@@ -67,6 +64,11 @@ html {
     font-size: 24px;
     text-decoration: none;
     color: #fff;
+
+}
+
+.navbar a {
+    color: rgb(195, 193, 193);
 
 }
 
