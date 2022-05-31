@@ -14,7 +14,7 @@ html {
     color: #ffff;
 }
 
-.title {
+.title{
     max-width: 100%;
     color: #ffffff;
     background-color: rgb(16, 15, 15);
@@ -31,6 +31,20 @@ html {
     display: flex;
     justify-content: center;
 }
+
+.btn, .btn a{
+    font-size: 1.2em;
+    border-radius: 2em;
+    margin: 0.4em;
+    padding: 0.2em;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0); 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
 
 .text {
     margin: 2.67em 5px 0px 10px;
