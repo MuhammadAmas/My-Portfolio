@@ -1,10 +1,10 @@
 const btnMode = document.querySelector(".btn-mode");
 const rootSelector = document.querySelector(":root");
 
-const dark = "hsl(0, 0%, 100%)";
-const light = "hsl(0, 0%, 0%)";
-const semiDark = "hsl(0, 0%, 100%)";
-const semiLight = "hsl(0, 0%, 0%)";
+const dark = "hsl(0, 0%, 0%)";
+const light = "hsl(46, 100%, 54%)";
+const semiDark = "hsl(100, 0%, 0%)";
+const semiLight = "hsl(0, 0%, 100%)";
 
 let mode = "darkMode";
 btnMode.addEventListener("click", () => {
