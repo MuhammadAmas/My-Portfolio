@@ -3,8 +3,8 @@ const rootSelector = document.querySelector(":root");
 
 const dark = "hsl(0, 0%, 100%)";
 const light = "hsl(0, 0%, 0%)";
-const semiDark = "hsl(0, 2%, 76%)";
-const semiLight = "hsl(0, 3%, 6%)";
+const semiDark = "hsl(0, 0%, 100%)";
+const semiLight = "hsl(0, 0%, 0%)";
 
 let mode = "darkMode";
 btnMode.addEventListener("click", () => {

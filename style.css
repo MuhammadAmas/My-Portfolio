@@ -1,8 +1,8 @@
 :root{
     --dark: hsl(0, 0%, 0%);
     --light: hsl(0, 0%, 100%);
-    --semiDark: hsl(0, 3%, 6%);
-    --semiLight: hsl(0, 2%, 76%);
+    --semiDark: hsl(0, 0%, 0%);
+    --semiLight: hsl(0, 0%, 100%);
 }
 body {
     padding: 0px;
@@ -30,10 +30,9 @@ html {
     max-width: 100%;
     color: var(--light);
     background-color: var(--semiDark);
-    /* margin-top: 5em; */
     margin: 0;
     padding: 8em 0em 8em 0em;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     height: 70vh;
 }
 
