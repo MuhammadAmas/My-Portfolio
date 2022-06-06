@@ -3,8 +3,6 @@
     --light: hsl(0, 0%, 100%);
     --semiDark: hsl(0, 3%, 6%);
     --semiLight: hsl(0, 2%, 76%);
-
-
 }
 body {
     padding: 0px;
@@ -51,7 +49,7 @@ html {
 .btn, .btn a{
     display: block;
     font-size: 1rem;
-    border-radius: 2em;
+    border-radius: 0.8em;
     margin: 0.4em;
     padding: 0.2em 0.4em;
     background-color: var(--light);
