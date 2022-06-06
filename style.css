@@ -2,6 +2,7 @@
     --dark: hsl(0, 0%, 0%);
     --light: hsl(0, 0%, 100%);
     --semiDark: hsl(0, 3%, 6%);
+    --semiLight: hsl(0, 2%, 76%);
 
 
 }
@@ -91,7 +92,7 @@ html {
 }
 
 .navbar a {
-    color: rgb(195, 193, 193);
+    color: var(--semiLight);
 
 }
 
