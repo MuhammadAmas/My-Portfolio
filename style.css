@@ -1,7 +1,14 @@
+:root{
+    --dark: hsl(0, 0%, 0%);
+    --light: hsl(0, 0%, 100%);
+    --semiDark: hsl(0, 3%, 6%);
+
+
+}
 body {
     padding: 0px;
     margin: 0px;
-    background-color: #000000;
+    background-color: var(--dark);
     scrollbar-width: none;
 }
 
@@ -11,21 +18,25 @@ html {
 
 .maincontainer {
     width: auto;
-    color: #ffff;
+    color: var(--light);
 }
 
 .title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     max-width: 100%;
-    color: #ffffff;
-    background-color: rgb(16, 15, 15);
+    color: var(--light);
+    background-color: var(--semiDark);
     margin-top: 5em;
     padding: 8em 0em 8em 0em;
     opacity: 0.8;
-    text-align: center;
 }
 
 .title h1 {
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: bold;
     font-family: "Sofia", sans-serif;
     text-align: center;
@@ -34,21 +45,19 @@ html {
 }
 
 .btn, .btn a{
-    font-size: 1.2em;
+    display: block;
+    font-size: 1rem;
     border-radius: 2em;
     margin: 0.4em;
-    padding: 0.2em;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0.2em 0.4em;
+    background-color: var(--light);
+    color:  var(--dark);
 }
 
 
 .text {
     margin: 2.67em 5px 0px 10px;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-family: "sans-serif";
     overflow: auto;
 
@@ -64,7 +73,7 @@ html {
 
 .navbar {
     font-weight: bold;
-    background-color: #000000;
+    background-color: var(--dark);
     position: fixed;
     display: flex;
     align-items: center;
@@ -77,7 +86,7 @@ html {
 .navbar p {
     font-size: 24px;
     text-decoration: none;
-    color: #fff;
+    color: var(--light);
 
 }
 
@@ -97,6 +106,7 @@ footer {
 footer i,
 a {
     text-decoration: none;
-    color: #fff;
+    color: var(--light);
 
 }
+
