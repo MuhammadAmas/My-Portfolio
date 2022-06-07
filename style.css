@@ -88,11 +88,11 @@ html {
 }
 
 
-/* .details {
+.details {
 
     display: flex;
     flex-direction: column;
-} */
+}
 
 @media (min-width: 50em) {
 .grid-auto-flow {
