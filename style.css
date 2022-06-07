@@ -43,7 +43,6 @@ html {
     background-color: var(--semiDark);
     margin: 0;
     padding: 8em 0em 8em 0em;
-    /* opacity: 0.8; */
     height: 70vh;
 }
 
@@ -87,7 +86,6 @@ html {
     max-width: 65ch;
     padding: 5em 1em; 
     margin: auto;
-
 }
 
 
