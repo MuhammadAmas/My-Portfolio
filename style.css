@@ -4,7 +4,7 @@
     --semiDark: hsl(0, 0%, 0%);
     --semiLight: hsl(0, 0%, 100%); */
 
-/* const dark = "hsl(0, 0%, 100%)";
+    /* const dark = "hsl(0, 0%, 100%)";
 const light = "hsl(0, 0%, 0%)";
 const semiDark = "hsl(0, 0%, 100%)";
 const semiLight = "hsl(0, 0%, 0%)"; */
@@ -76,22 +76,33 @@ html {
     overflow: auto;
 
 }
-.aboutme{
+
+.aboutme {
     font-size: 1.5rem;
     justify-content: center;
     align-items: center;
     text-align: center;
     max-width: 65ch;
-    padding: 5em 1em; 
+    padding: 5em 1em;
     margin: auto;
 }
 
 
-.details {
+/* .details {
 
     display: flex;
     flex-direction: column;
+} */
+
+@media (min-width: 50em) {
+.grid-auto-flow {
+        display: grid;
+        gap: 1rem;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+    }
 }
+
 
 .navbar {
     font-weight: bold;
