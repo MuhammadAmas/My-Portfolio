@@ -89,11 +89,11 @@ html {
 }
 
 
-/* .details {
-
+.details {
     display: flex;
+    align-items: center;
     flex-direction: column;
-} */
+}
 
 .flow {
     background-color: var(--light);
