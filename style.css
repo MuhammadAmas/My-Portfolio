@@ -151,17 +151,6 @@ a {
 
 }
 
-
-
-/* @media  {
-.grid-auto-flow {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(3,1fr);
-
-    }
-} */
-
 .grid-auto-flow {
     display: grid;
     gap: 1.5rem;
@@ -178,7 +167,7 @@ a {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 420px) {
 
     .details,
     .grid-auto-flow {
