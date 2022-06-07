@@ -88,18 +88,20 @@ html {
 }
 
 
-.details {
+/* .details {
 
     display: flex;
     flex-direction: column;
-}
+} */
 
-@media (min-width: 50em) {
+@media (min-width: 60em) {
 .grid-auto-flow {
         display: grid;
         gap: 1rem;
         grid-auto-flow: column;
         grid-auto-columns: 1fr;
+        /* grid-template-columns: repeat(3, 1fr); */
+        
     }
 }
 
