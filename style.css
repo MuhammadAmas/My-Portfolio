@@ -148,6 +148,7 @@ html {
     right: 0px;
     left: 0px;
     z-index: 2;
+    padding: 0em 8px;
 }
 
 .navbar p {
