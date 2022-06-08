@@ -100,7 +100,7 @@ html {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    margin: 0% 20%;
+    margin: 5% 20%;
     gap: 1em;
 
 }
