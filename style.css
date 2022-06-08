@@ -100,7 +100,7 @@ html {
 .edu{
     background-color: var(--light);
     color: var(--dark);
-    padding: 0.7em;
+    padding: 0.5em;
     border-radius: 0.9em;
     text-align: center;
     width: 100%;
