@@ -22,6 +22,9 @@ body {
     scrollbar-width: none;
     /* overflow: hidden; */
 }
+h1{
+    font-size: 2em;
+}
 
 html {
     scroll-behavior: smooth;
