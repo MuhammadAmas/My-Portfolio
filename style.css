@@ -71,10 +71,12 @@ html {
 
 
 .text {
-    margin: 2.67em 5px 0px 10px;
+    /* margin: 2.67em 5px 0px 10px; */
     font-size: 1.5rem;
     font-family: "sans-serif";
     overflow: auto;
+    color: var(--light);
+    background-color: var(--semiDark);
 
 }
 
