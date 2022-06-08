@@ -107,6 +107,7 @@ html {
     border-radius: 0.9em;
     text-align: center;
     width: 100%;
+    box-shadow: 8px 8px 10px var(--light);
 }
 
 .skills{
@@ -151,7 +152,6 @@ html {
     align-items: center;
     flex-direction: column;
     overflow: hidden;
-    /* margin: 0.5em; */
     margin: 10% 20%;
     padding: 0.8em;
 }
