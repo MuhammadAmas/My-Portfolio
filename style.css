@@ -88,6 +88,32 @@ html {
     margin: auto;
 }
 
+.skills{
+    font-size: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+}
+.skill-logos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin: 0% 20%;
+    gap: 1em;
+
+}
+
+.skill-logos img{
+    padding: 0.7em;
+    max-width: 256px;
+    max-height: 256px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .details {
     display: flex;
