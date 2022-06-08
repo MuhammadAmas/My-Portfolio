@@ -89,6 +89,22 @@ html {
     padding: 5em 1em;
     margin: auto;
 }
+.education{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.7em 20%;
+    gap: 1em;
+}
+.edu{
+    background-color: var(--light);
+    color: var(--dark);
+    padding: 0.7em;
+    border-radius: 0.9em;
+    text-align: center;
+    width: 100%;
+}
 
 .skills{
     font-size: 2rem;
