@@ -51,7 +51,9 @@ html {
 .title h1 {
     font-size: 5rem;
     font-weight: bold;
-    font-family: "Sofia", sans-serif;
+    /* font-family: "Sofia", sans-serif; */
+    font-family: 'Blaka Hollow', cursive;
+    /* font-family: 'Archivo', sans-serif; */
     text-align: center;
     display: flex;
     justify-content: center;
