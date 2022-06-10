@@ -191,7 +191,7 @@ body {
     justify-content: center;
 }
 
-.footer-elements, p {
+.footer-elements, .footer-elements p {
     display: flex;
     align-items: center;
     justify-content: space-around;
