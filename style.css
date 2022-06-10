@@ -191,7 +191,13 @@ body {
     justify-content: center;
 }
 
-.footer-elements, .footer-elements p {
+.footer-elements {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5em;
+}
+.copyright p{
     display: flex;
     align-items: center;
     justify-content: space-around;
