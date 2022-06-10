@@ -185,7 +185,13 @@ body {
     padding: 0.8em;
 }
 
-footer {
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-elements, p {
     display: flex;
     align-items: center;
     justify-content: space-around;
