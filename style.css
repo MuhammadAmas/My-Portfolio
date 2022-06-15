@@ -192,8 +192,9 @@ body {
     align-items: center;
     justify-content: center; */
     background-color: var(--dark);
+    color: var(--light);
     /* box-sizing: border-box; */
-    margin: 30%;
+    margin: 20%;
     border-radius: 10px;
     /* width: 50%; */
     
@@ -219,11 +220,7 @@ body {
     border-bottom: 2px solid var(--light); 
     outline: none;
     background-color: var(--dark);
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-
+    color: var(--light);
 }
 
 .messagebox .inputbox label{
@@ -246,14 +243,6 @@ body {
 }
 
 .submit input{ 
-    /* width: 100px;
-    border: none;
-    cursor: pointer;
-    padding:10px;
-    font-size: 18px;
-    color: aqua;
-    background-color: #1722a1; */
-
     border: none;
     outline: none;
     padding: 10px 20px;
