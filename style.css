@@ -183,7 +183,7 @@ body {
     margin: 10% 20%;
     padding: 0.8em;
 }
-
+/* 
 .messagebox{
     display: flex;
     flex-direction: column;
@@ -195,7 +195,7 @@ body {
     border: 2px solid #f1f1f1;
     padding: 40px;
     border-radius: 10px; */
-}
+} */
 
 .inputbox{
     display: flex;
