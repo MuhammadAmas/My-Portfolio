@@ -194,7 +194,7 @@ body {
     background-color: var(--dark);
     color: var(--light);
     /* box-sizing: border-box; */
-    margin: 20%;
+    margin: 5% 20% 20% 20%;
     border-radius: 10px;
     /* width: 50%; */
     
