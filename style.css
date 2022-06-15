@@ -183,7 +183,8 @@ body {
     margin: 10% 20%;
     padding: 0.8em;
 }
-.messagebox{   
+
+.messagebox {
     position: relative;
     /* min-height: 80vh; */
     /* padding: 50px 100px; */
@@ -197,10 +198,10 @@ body {
     margin: 5% 20% 20% 20%;
     border-radius: 10px;
     /* width: 50%; */
-    
+
 }
 
-.messagebox h2{
+.messagebox h2 {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
@@ -210,20 +211,20 @@ body {
 
 
 .messagebox .inputbox input,
-.messagebox .inputbox textarea{
+.messagebox .inputbox textarea {
     position: relative;
     width: 100%;
     padding: 5px 0;
     margin-bottom: 2em;
-    font-size:0.8rem;
+    font-size: 0.8rem;
     border: none;
-    border-bottom: 2px solid var(--light); 
+    border-bottom: 2px solid var(--light);
     outline: none;
     background-color: var(--dark);
     color: var(--light);
 }
 
-.messagebox .inputbox label{
+.messagebox .inputbox label {
     position: absolute;
     padding: 5px 0;
     /* margin: 10px 0; */
@@ -233,16 +234,16 @@ body {
 
 }
 
-.messagebox .inputbox input:focus ~ label,
-.messagebox .inputbox input:valid ~ label,
-.messagebox .inputbox textarea:focus ~ label,
-.messagebox .inputbox textarea:valid ~ label{
+.messagebox .inputbox input:focus~label,
+.messagebox .inputbox input:valid~label,
+.messagebox .inputbox textarea:focus~label,
+.messagebox .inputbox textarea:valid~label {
     color: var(--light);
     font-size: 12px;
     transform: translateY(-20px);
 }
 
-.submit input{ 
+.submit input {
     border: none;
     outline: none;
     padding: 10px 20px;
@@ -252,7 +253,7 @@ body {
 
 
 
-.footer{
+.footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,7 +265,8 @@ body {
     justify-content: space-around;
     margin: 5em;
 }
-.copyright p{
+
+.copyright p {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -301,4 +303,3 @@ a {
         grid-template-columns: 1fr;
     }
 } */
-
