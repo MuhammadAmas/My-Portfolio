@@ -183,25 +183,81 @@ body {
     margin: 10% 20%;
     padding: 0.8em;
 }
-.messagebox{
-    display: flex;
+.messagebox{   
+    position: relative;
+    /* min-height: 80vh; */
+    /* padding: 50px 100px; */
+    /* display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; */
+    background-color: var(--dark);
+    /* box-sizing: border-box; */
+    margin: 0 30%;
+    border-radius: 10px;
+    /* width: 50%; */
+    
+}
+
+.messagebox h2{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.messagebox .inputbox input,
+.messagebox .inputbox textarea{
+    position: relative;
+    width: 100%;
+    padding: 5px 0;
+    margin-bottom: 2em;
+    font-size:0.8rem;
+    border: none;
+    border-bottom: 2px solid var(--light); 
+    outline: none;
+    background-color: var(--dark);
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* background: var(--light);
-    color: var(--dark);
-    margin: 0 20%;
-    border: 2px solid #f1f1f1;
-    padding: 40px;
-    border-radius: 10px; */
+    justify-content: center; */
+
 }
 
-.inputbox{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;    
+.messagebox .inputbox label{
+    position: absolute;
+    padding: 5px 0;
+    /* margin: 10px 0; */
+    pointer-events: none;
+    transition: 0.5s;
+    left: 0;
+
 }
 
+.messagebox .inputbox input:focus ~ label,
+.messagebox .inputbox input:valid ~ label,
+.messagebox .inputbox textarea:focus ~ label,
+.messagebox .inputbox textarea:valid ~ label{
+    color: var(--light);
+    font-size: 12px;
+    transform: translateY(-20px);
+}
+
+.submit input{ 
+    /* width: 100px;
+    border: none;
+    cursor: pointer;
+    padding:10px;
+    font-size: 18px;
+    color: aqua;
+    background-color: #1722a1; */
+
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 
 
