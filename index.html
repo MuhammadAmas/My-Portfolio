@@ -19,7 +19,7 @@
             <a href="#home"> HOME</a>
             <a href="#aboutme">ABOUT</a>
             <!-- <a href="#services">MY SERVICES</a> -->
-            <a href="#contact">CONTACT</a>
+            <a href="#messagebox">CONTACT</a>
 
             <button class="btn btn-mode" id="btn-mode">
                 <i class="fa-solid fa-moon fa-3x"></i>
@@ -156,36 +156,35 @@
                 </div> -->
             </div>
         </div>
+            <div class="messagebox" id="messagebox">
+                <h2>SEND MESSAGE</h2>
+                <form action="https://formsubmit.co/amaswaseem@gmail.com" method="POST">
+                    <div class="inputbox">
+                        <input type="text" name="name" required="required" />
+                        <label>Name</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" name="email" required="required" />
+                        <label>Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="subject" required="required" />
+                        <label>Subject</label>
+                    </div>
+                    <div class="inputbox">
+                        <textarea name="message" id="message" rows="5" required="required"></textarea>
+                        <label>Type Your Message...</label>
+                    </div>
+                    <div class="submit">
+                        <input type="submit" value="Send" class="submit">
+                    </div>
 
-        <div class="messagebox">
-            <h2>SEND MESSAGE</h2>
-            <form action="https://formsubmit.co/amaswaseem@gmail.com" method="POST">
-                <div class="inputbox">
-                    <input type="text" name="name" required="required" />
-                    <label>Name</label>
-                </div>
-                <div class="inputbox">
-                    <input type="email" name="email" required="required" />
-                    <label>Email</label>
-                </div>
-                <div class="inputbox">
-                    <input type="text" name="subject" required="required" />
-                    <label>Subject</label>
-                </div>
-                <div class="inputbox">
-                    <textarea name="message" id="message" rows="5" required="required"></textarea>
-                    <label>Type Your Message...</label>
-                </div>
-                <div class="submit">
-                    <input type="submit" value="Send" class="submit">
-                </div>
+                    <input type="hidden" name="_next" value="https://muhammadamas.netlify.app/thanks.html" />
+                    <input type="hidden" name="_captcha" value="false" />
 
-                <input type="hidden" name="_next" value="https://muhammadamas.netlify.app/thanks.html" /> 
-                <input type="hidden" name="_captcha" value="false" />
+                </form>
 
-            </form>
-
-        </div>
+            </div>
 
 
         <footer>
