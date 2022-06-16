@@ -185,6 +185,7 @@ body {
 }
 
 .messagebox {
+    scroll-margin: 5em;
     position: relative;
     /* min-height: 80vh; */
     /* padding: 50px 100px; */
