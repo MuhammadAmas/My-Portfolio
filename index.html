@@ -159,13 +159,13 @@
 
         <div class="messagebox">
             <h2>SEND MESSAGE</h2>
-            <form onsubmit="sendEmail(); reset(); return false;">
+            <form action="https://formsubmit.co/8c1564d904d328e1b0facc23fbfdd807" method="POST">
                 <div class="inputbox">
                     <input type="text" id="name" required="required">
                     <label>Name</label>
                 </div>
                 <div class="inputbox">
-                    <input type="text" id="email" required="required">
+                    <input type="email" id="email" required="required">
                     <label>Email</label>
                 </div>
                 <div class="inputbox">
@@ -207,24 +207,6 @@
 
         </footer>
 
-
     </div>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="app.js"></script>
-
-    <script>
-        function sendEmail() {
-            Email.send({
-                Host: "smtp.gmail.com",
-                Username: "",
-                Password: "",
-                To: "",
-                From: document.getElementById("email").value,
-                Subject: "This is the subject",
-                Body: "And this is the body"
-            }).then(
-                message => alert("Message sent successfully")
-            );
-        }
-    </script>
 </body>
