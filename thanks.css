@@ -1,14 +1,8 @@
-:root {
-    --dark: hsl(0, 0%, 0%);
-    --light: hsl(0, 0%, 100%);
-    --semiDark: hsl(100, 0%, 0%);
-    --semiLight: hsl(0, 0%, 100%);
-}
-
 body{
     margin: 0;
     padding: 0;
     background-color: #daefb3;
+
 }
 
 .container{
