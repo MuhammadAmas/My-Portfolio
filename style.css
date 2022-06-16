@@ -245,12 +245,14 @@ body {
     transform: translateY(-20px);
 }
 
-.submit input {
+.submit button {
     border: none;
     outline: none;
-    padding: 10px 20px;
+    padding: 17px 0px;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
 }
 
 
