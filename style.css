@@ -18,6 +18,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5em;
     transition: 0.3s;
 }
 
@@ -185,7 +186,6 @@ body {
 }
 
 .messagebox {
-    scroll-margin: 5em;
     position: relative;
     /* min-height: 80vh; */
     /* padding: 50px 100px; */
