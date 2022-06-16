@@ -159,28 +159,35 @@
 
         <div class="messagebox">
             <h2>SEND MESSAGE</h2>
-            <form action="https://formsubmit.co/8c1564d904d328e1b0facc23fbfdd807" method="POST">
+            <form action="https://formsubmit.co/amaswaseem@gmail.com" method="POST">
                 <div class="inputbox">
-                    <input type="text" id="name" required="required">
+                    <input type="text" name="name" required="required" />
                     <label>Name</label>
                 </div>
                 <div class="inputbox">
-                    <input type="email" id="email" required="required">
+                    <input type="email" name="email" required="required" />
                     <label>Email</label>
                 </div>
                 <div class="inputbox">
-                    <input type="text" id="subject" required="required">
+                    <input type="text" name="subject" required="required" />
                     <label>Subject</label>
                 </div>
                 <div class="inputbox">
-                    <textarea id="message" required="required"></textarea>
+                    <textarea name="message" id="message" rows="5" required="required"></textarea>
                     <label>Type Your Message...</label>
                 </div>
                 <div class="submit">
                     <input type="submit" value="Send" class="submit">
                 </div>
+
+                <input type="hidden" name="_next" value="https://muhammadamas.netlify.app/thanks.html" /> 
+                <input type="hidden" name="_captcha" value="false" />
+
             </form>
+
         </div>
+
+
 
         <footer>
             <div class="footer-elements">
