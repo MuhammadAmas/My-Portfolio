@@ -70,7 +70,6 @@ body {
 .navbar a {
     display: inline-block;
     position: relative;
-    /* color: var(--light); */
 }
 
 .navbar a:before,
