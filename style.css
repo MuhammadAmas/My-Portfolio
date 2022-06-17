@@ -64,9 +64,7 @@ body {
 .navbar p {
     font-size: 24px;
     text-decoration: none;
-    /* color: var(--light); */
     font-weight: bold;
-
 }
 
 .navbar a {
@@ -145,6 +143,15 @@ body {
     margin: 0.4em;
     padding: 0.2em 0.4em;
     color: var(--dark);
+}
+.resumeBtn{
+    margin-top: 5em;
+}
+.resumeBtn:hover,
+.resumeBtn a:hover{
+    background-color: var(--dark);
+    color: var(--light);
+    transition: 0.2s;
 }
 
 .btn:hover,
