@@ -1,8 +1,8 @@
 const btnMode = document.querySelector(".btn-mode");
 const rootSelector = document.querySelector(":root");
 
-const dark = "#b2e7e8";
-const light = "#304d63";
+const dark = "#304d63";
+const light = "#b2e7e8";
 
 let mode = "darkMode";
 btnMode.addEventListener("click", () => {
