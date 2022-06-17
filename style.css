@@ -291,7 +291,6 @@ body {
     color: var(--light);
     font-size: 12px;
     transform: translateY(-20px);
-    zoom: 0;
 }
 
 .submit button {
