@@ -1,21 +1,24 @@
 :root {
-    /* --dark: hsl(0, 0%, 0%);
-    --light: hsl(0, 0%, 100%);
-    --semiDark: hsl(0, 0%, 0%);
-    --semiLight: hsl(0, 0%, 100%); */
-
-    /* const dark = "hsl(0, 0%, 100%)";
-    const light = "hsl(0, 0%, 0%)";
-    const semiDark = "hsl(0, 0%, 100%)";
-    const semiLight = "hsl(0, 0%, 0%)"; */
-
-    --dark: hsl(0, 0%, 0%);
-    /* --light: hsl(46, 100%, 54%); */
-    --light: hsl(0, 0%, 100%);
-    --semiDark: hsl(100, 0%, 0%);
-    --semiLight: hsl(0, 0%, 100%);
+    --dark: #b2e7e8;
+    --light: #304d63; 
 }
-
+/* let mode = "darkMode";
+btnMode.addEventListener("click", () => {
+  if (mode === "darkMode") {
+    rootSelector.style.setProperty("--dark", light);
+    rootSelector.style.setProperty("--light", dark);
+    rootSelector.style.setProperty("--semiDark", semiLight);
+    rootSelector.style.setProperty("--semiLight", semiDark);
+    mode = "lightMode";
+  } 
+  else {
+    rootSelector.style.setProperty("--dark", dark);
+    rootSelector.style.setProperty("--light", light);
+    rootSelector.style.setProperty("--semiDark", semiDark);
+    rootSelector.style.setProperty("--semiLight", semiLight);
+    mode = "darkMode";
+  }
+}); */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5em;
@@ -27,12 +30,10 @@ body {
     margin: 0px;
     background-color: var(--dark);
     scrollbar-width: none;
-    /* overflow: hidden; */
 }
 
 
 .maincontainer {
-    /* width: auto; */
     color: var(--light);
 }
 
@@ -59,7 +60,7 @@ body {
 }
 
 .navbar a {
-    color: var(--semiLight);
+    color: var(--light);
 
 }
 
@@ -71,7 +72,7 @@ body {
     text-align: center;
     max-width: 100%;
     color: var(--light);
-    background-color: var(--semiDark);
+    background-color: var(--dark);
     margin: 0;
     padding: 8em 0em 8em 0em;
     height: 60vh;
@@ -80,9 +81,7 @@ body {
 .title h1 {
     font-size: 5rem;
     font-weight: bold;
-    /* font-family: "Sofia", sans-serif; */
     font-family: 'Blaka Hollow', cursive;
-    /* font-family: 'Archivo', sans-serif; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -97,14 +96,15 @@ body {
     padding: 0.2em 0.4em;
     background-color: var(--light);
     color: var(--dark);
+    outline: none;
+    border: none;
 }
 
 .text {
-    /* margin: 2.67em 5px 0px 10px; */
     font-size: 1.5rem;
     overflow: auto;
     color: var(--light);
-    background-color: var(--semiDark);
+    background-color: var(--dark);
 
 }
 
@@ -188,23 +188,13 @@ body {
 .messagebox {
     font-size: 2rem;
     position: relative;
-    /* min-height: 80vh; */
-    /* padding: 50px 100px; */
-    /* display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center; */
     background-color: var(--dark);
     color: var(--light);
-    /* box-sizing: border-box; */
     margin: 5% 20% 20% 20%;
     border-radius: 10px;
-    /* width: 50%; */
-
 }
 
 .messagebox h2 {
-    /* font-size: 2rem; */
     font-weight: bold;
     text-align: center;
     margin-bottom: 2.5em;
@@ -229,11 +219,9 @@ body {
 .messagebox .inputbox label {
     position: absolute;
     padding: 5px 0;
-    /* margin: 10px 0; */
     pointer-events: none;
     transition: 0.5s;
     left: 0;
-
 }
 
 .messagebox .inputbox input:focus~label,
@@ -254,8 +242,6 @@ body {
     width: 100%;
     font-weight: bold;
 }
-
-
 
 .footer {
     display: flex;
