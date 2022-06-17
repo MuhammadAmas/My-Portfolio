@@ -19,6 +19,10 @@ btnMode.addEventListener("click", () => {
     mode = "darkMode";
   }
 }); */
+*{
+    font-family: 'Poppins', sans-serif;
+    
+}
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5em;
