@@ -1,7 +1,8 @@
 :root {
     --dark: #b2e7e8;
-    --light: #304d63; 
+    --light: #304d63;
 }
+
 /* let mode = "darkMode";
 btnMode.addEventListener("click", () => {
   if (mode === "darkMode") {
@@ -19,10 +20,11 @@ btnMode.addEventListener("click", () => {
     mode = "darkMode";
   }
 }); */
-*{
+* {
     font-family: 'Poppins', sans-serif;
-    
+
 }
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5em;
@@ -60,12 +62,43 @@ body {
     font-size: 24px;
     text-decoration: none;
     color: var(--light);
+    font-weight: bold;
 
 }
 
 .navbar a {
+    display: inline-block;
+    position: relative;
     color: var(--light);
+}
 
+.navbar a:before,
+.navbar a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0px;
+    left: 0;
+    background-color: var(--light);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar a:before {
+    top: -5px;
+    transform-origin: left;
+}
+
+.navbar a:hover:after {
+    bottom: -5px;
+    transform-origin: right;
+}
+
+.navbar a:hover::before,
+.navbar a:hover::after {
+    transform: scaleX(1);
 }
 
 .title {
@@ -91,18 +124,31 @@ body {
     justify-content: center;
 }
 
-.btn,
+.btn {
+    color: var(--dark);
+    background-color: var(--light);
+    border-radius: 0.8em;
+    margin: 0.4em;
+    padding: 0.2em 0.4em;
+    font-size: 1.2rem;
+    border: none;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
 .btn a {
     display: block;
     font-size: 1rem;
     border-radius: 0.8em;
     margin: 0.4em;
     padding: 0.2em 0.4em;
-    background-color: var(--light);
     color: var(--dark);
-    outline: none;
-    border: none;
 }
+
+.btn:hover,
+.footer-elements a:hover {
+    opacity: 0.9;
+}
+
 
 .text {
     font-size: 1.5rem;
