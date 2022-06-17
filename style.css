@@ -201,8 +201,8 @@ body {
 .messagebox h2 {
     font-weight: bold;
     text-align: center;
+    justify-content: center;
     margin-bottom: 2.5em;
-    text-align: center;
 }
 
 
