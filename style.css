@@ -110,9 +110,9 @@ body {
     max-width: 100%;
     color: var(--light);
     background-color: var(--dark);
-    margin: 0;
+    margin: 5em 0;
     padding: 8em 0em 8em 0em;
-    height: 60vh;
+    /* height: 60vh; */
 }
 
 .title h1 {
