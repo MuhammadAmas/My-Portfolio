@@ -110,7 +110,7 @@ body {
     max-width: 100%;
     color: var(--light);
     background-color: var(--dark);
-    margin: 5em 0;
+    margin-top: 5em;
     padding: 8em 0em 8em 0em;
     /* height: 60vh; */
 }
