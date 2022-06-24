@@ -6,7 +6,9 @@
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <script src="https://kit.fontawesome.com/43cd7fdf3d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+
 
 </head>
 
@@ -26,44 +28,57 @@
             </button>
         </nav>
 
-        <div class="title">
-            <h1>Hey! </h1>
-            <h1>I am Muhammad Amas</h1>
+        <section>
+            <div class="title">
+                <h1>Hey! </h1>
+                <h1>I am Muhammad Amas</h1>
 
-            <button type="button" class="btn resumeBtn">
-                <a href="Muhammad Amas Resume.pdf">VIEW RESUME
-                </a>
-                <!-- <span></span><span></span><span></span><span></span> -->
-            </button>
-        </div>
-
-
-        <div class="text">
-
-            <div class="aboutme" id="aboutme">
-
-                <h1>ABOUT ME</h1>
-
-                <p>I am Muhammad Amas, a persistent Computer Science undergraduate in a well-recognized institute
-                    "University of Karachi - UBIT" having knowledge of Web Development and Data Analytics. I am Skilled
-                    in designing creative Web Pages and Patterns. A technology enthusiast who believes in the technology
-                    revolution. I keep myself updated on the upcoming technologies which will revolutionize the digital
-                    world in the future and will solve modern-day life problems.</p>
-
+                <button type="button" class="btn resumeBtn">
+                    <a href="Muhammad Amas Resume.pdf">VIEW RESUME
+                    </a>
+                    <!-- <span></span><span></span><span></span><span></span> -->
+                </button>
             </div>
+        </section>
 
-            <section>
+
+        <section>
+            <div class="text">
+
+                <div class="aboutme" id="aboutme">
+
+                    <h1>ABOUT ME</h1>
+
+                    <p>I am Muhammad Amas, a persistent Computer Science undergraduate in a well-recognized institute
+                        "University of Karachi - UBIT" having knowledge of Web Development and Data Analytics. I am
+                        Skilled
+                        in designing creative Web Pages and Patterns. A technology enthusiast who believes in the
+                        technology
+                        revolution. I keep myself updated on the upcoming technologies which will revolutionize the
+                        digital
+                        world in the future and will solve modern-day life problems.</p>
+
+                </div>
+        </section>
+
+        <!-- <section>
+            <div class="my-projects">
+                <h1>My Projects</h1>
                 <div class="projects">
-                    <div>
+
+                    <div class="project-item">
                         <img src="projects-images/theseekers.png" alt="">
                         <div>
                             <h2>The Seekers Website</h2>
                             <p>A surveyor website for showing their information and work</p>
                         </div>
                     </div>
-                </div>
-            </section>
 
+                </div>
+            </div>
+        </section> -->
+
+        <section>
             <div class="education">
                 <h1>EDUCATION</h1>
 
@@ -83,7 +98,9 @@
                     <sup>(2005-2018)</sup>
                 </div>
             </div>
+        </section>
 
+        <section>
             <div class="skills">
                 <h1>SKILLS</h1>
                 <div class="skill-logos">
@@ -105,124 +122,68 @@
                     </div>
                 </div>
             </div>
+        </section>
 
 
 
-            <div class="details grid-auto-flow" id="services">
-                <!-- <h1 class="">My Services</h1> -->
 
-                <!-- <h3>FREELANCE ALGORITHM DEVELOPER</h3>  -->
+        <section>
+            <div class="messagebox" id="messagebox">
+                <h2>LEAVE ME A MESSAGE</h2>
+                <form action="https://formsubmit.co/amaswaseem@gmail.com" method="POST">
+                    <div class="inputbox">
+                        <input type="text" name="name" required="required" />
+                        <label>Name</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" name="email" required="required" />
+                        <label>Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="subject" required="required" />
+                        <label>Subject</label>
+                    </div>
+                    <div class="inputbox">
+                        <textarea name="message" id="message" rows="5" required="required"></textarea>
+                        <label>Type Your Message...</label>
+                    </div>
+                    <div class="submit">
+                        <button type="submit" value="Send" class="submit btn">SEND</button>
+                    </div>
 
+                    <input type="hidden" name="_next" value="https://muhammadamas.netlify.app/thanks.html" />
+                    <input type="hidden" name="_captcha" value="false" />
 
+                </form>
 
-                <!-- <div class="flow">
-                    <p>
-                    <h3>Development<br></h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-                    voluptate
-                    quidem doloremque
-                    reprehenderit qui officiis eum perferendis deleniti quibusdam, tempora incidunt voluptatem
-                    dolorum
-                    ipsam
-                    facere omnis aut laudantium porro exercitationem!</p>
-                </div>
-                <div class="flow">
-                    <p>
-                    <h3>SEO Optimization<br></h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-                    necessitatibus nostrum. In error
-                    facilis exercitationem ab voluptates consequuntur voluptatum ullam quae aliquid blanditiis
-                    cumque
-                    excepturi voluptatem officiis quibusdam, necessitatibus temporibus.</p>
-                </div>
-                <div class="flow">
-                    <p>
-                    <h3>Data Cleaning<br></h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-                    necessitatibus nostrum. In error
-                    facilis exercitationem ab voluptates consequuntur voluptatum ullam quae aliquid blanditiis
-                    cumque
-                    excepturi voluptatem officiis quibusdam, necessitatibus temporibus.</p>
-                </div>
-                <div class="flow">
-                    <p>
-                    <h3>Analyzation<br></h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-                    necessitatibus nostrum. In error
-                    facilis exercitationem ab voluptates consequuntur voluptatum ullam quae aliquid blanditiis
-                    cumque
-                    excepturi voluptatem officiis quibusdam, necessitatibus temporibus.</p>
-                </div>
-                <div class="flow">
-                    <p>
-                    <h3>SEO Optimization<br></h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-                    necessitatibus nostrum. In error
-                    facilis exercitationem ab voluptates consequuntur voluptatum ullam quae aliquid blanditiis
-                    cumque
-                    excepturi voluptatem officiis quibusdam, necessitatibus temporibus.</p>
-                </div>
-                <div class="flow">
-                    <p>
-                    <h3>SEO Optimization<br></h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-                    necessitatibus nostrum. In error
-                    facilis exercitationem ab voluptates consequuntur voluptatum ullam quae aliquid blanditiis
-                    cumque
-                    excepturi voluptatem officiis quibusdam, necessitatibus temporibus.</p>
-                </div> -->
             </div>
-        </div>
-        <div class="messagebox" id="messagebox">
-            <h2>LEAVE ME A MESSAGE</h2>
-            <form action="https://formsubmit.co/amaswaseem@gmail.com" method="POST">
-                <div class="inputbox">
-                    <input type="text" name="name" required="required" />
-                    <label>Name</label>
-                </div>
-                <div class="inputbox">
-                    <input type="email" name="email" required="required" />
-                    <label>Email</label>
-                </div>
-                <div class="inputbox">
-                    <input type="text" name="subject" required="required" />
-                    <label>Subject</label>
-                </div>
-                <div class="inputbox">
-                    <textarea name="message" id="message" rows="5" required="required"></textarea>
-                    <label>Type Your Message...</label>
-                </div>
-                <div class="submit">
-                    <button type="submit" value="Send" class="submit btn">SEND</button>
-                </div>
-
-                <input type="hidden" name="_next" value="https://muhammadamas.netlify.app/thanks.html" />
-                <input type="hidden" name="_captcha" value="false" />
-
-            </form>
-
-        </div>
+        </section>
 
 
         <footer class="footer">
             <div class="footer-elements">
                 <a href="https://github.com/muhammadamas" target="_blank">
-                    <i class="fa-brands fa-github fa-2x"></i>
+                    <i class="fa-brands fa-github "></i>
                 </a>
                 <a href="https://www.linkedin.com/in/amaswaseem/" target="_blank">
-                    <i class="fa-brands fa-linkedin-in fa-2x"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
                 </a>
                 <a href="mailto:amaswaseem@gmail.com" target="_blank" id="contact">
-                    <i class="fa-solid fa-envelope fa-2x"></i>
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
                 <a href="https://www.facebook.com/mohammad.amas.79" target="_blank">
-                    <i class="fa-brands fa-facebook-f fa-2x"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
                 </a>
                 <a href="#home">
-                    <i class="fa-solid fa-house fa-2x"></i>
+                    <i class="fa-solid fa-house"></i>
                 </a>
             </div>
             <div class="copyright">
-                <p>©Muhammad Amas-2022 | all rights reserved</p>
+                <p>©Muhammad Amas | all rights reserved</p>
             </div>
-
-
         </footer>
 
-    </div>
-    <script src="app.js"></script>
+        <script src="app.js"></script>
 </body>
+
+</html>
