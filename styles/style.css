@@ -34,6 +34,7 @@ html {
 
 body {
     background-color: var(--dark);
+    color: var(--light);
 }
 
 h1{
@@ -210,15 +211,17 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0.7em 20%;
-    gap: 1em;
+    left: 50%;
+    margin: 0.7rem 20%;
+    gap: 2em;
+  
 }
 
-.edu {
+.education-item {
     background-color: var(--light);
     color: var(--dark);
-    padding: 0.5em;
-    border-radius: 0.9em;
+    padding: 1em 0;
+    border-radius: 1em;
     text-align: center;
     width: 100%;
     box-shadow: 0px 0px 10px 0px var(--light);
