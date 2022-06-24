@@ -178,6 +178,16 @@ body {
     padding: 5em 1em;
 
 }
+.projects{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projects img{
+    max-width:28rem;
+
+}
 
 .education {
     font-size: 2rem;
