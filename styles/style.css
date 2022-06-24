@@ -215,7 +215,6 @@ section {
 }
 
 .edu {
-    font-size: 1.5rem;
     background-color: var(--light);
     color: var(--dark);
     padding: 0.5em;
@@ -226,7 +225,6 @@ section {
 }
 
 .skills {
-    font-size: 2rem;
     justify-content: center;
     align-items: center;
     text-align: center;
