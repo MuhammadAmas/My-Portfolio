@@ -328,8 +328,20 @@ footer {
     color: var(--dark);
     background-color: var(--light);
     padding: 5em 0em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3em;
 }
 
+.email{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+}
 .footer-elements {
     display: flex;
     align-items: center;
@@ -341,16 +353,12 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-footer i {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     border: 1.5px solid var(--dark);
- 
-
 }
+
 
 footer i,
 a {
@@ -363,5 +371,4 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 5em;
 }
