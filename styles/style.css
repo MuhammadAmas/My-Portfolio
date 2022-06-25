@@ -119,7 +119,6 @@ section {
     background-color: var(--dark);
     margin-top: 5em;
     padding: 8em 0em 8em 0em;
-    /* height: 60vh; */
 }
 
 .title h1 {
@@ -169,7 +168,6 @@ section {
 }
 
 .aboutme {
-    font-size: 1.5rem;
     justify-content: center;
     align-items: center;
     text-align: center;
