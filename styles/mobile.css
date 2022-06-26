@@ -1,11 +1,17 @@
 @media (max-width: 768px) {
-    .projects {
-        
-       
-
+    .my-projects h1 {
+        flex-direction: row;
     }
+
+    .projects  {
+        display: flex;
+        flex-direction: column;
+    }
+
+
 
     h1 {
         color: red;
     }
+
 }

@@ -203,10 +203,9 @@ section {
 }
 
 .projects {
+    background-color: red;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 4em;   
+
 }
 
 
@@ -224,6 +223,7 @@ section {
 
 .projects img {
     max-width: 28rem;
+    border-radius: 0.5em;
 }
 
 .project-item .button{
@@ -296,7 +296,7 @@ section {
     border-radius: 10px;
 }
 
-.messagebox h2 {
+.messagebox h1 {
     font-weight: bold;
     text-align: center;
     justify-content: center;
