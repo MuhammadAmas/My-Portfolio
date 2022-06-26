@@ -1,19 +1,15 @@
-const btnMode = document.querySelector(".btn-mode");
-const rootSelector = document.querySelector(":root");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-const dark = "#304d63";
-const light = "#b2e7e8";
-
-let mode = "darkMode";
-btnMode.addEventListener("click", () => {
-  if (mode === "darkMode") {
-    rootSelector.style.setProperty("--dark", light);
-    rootSelector.style.setProperty("--light", dark);
-    mode = "lightMode";
-  } 
-  else {
-    rootSelector.style.setProperty("--dark", dark);
-    rootSelector.style.setProperty("--light", light);
-    mode = "darkMode";
-  }
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
 });
+
+document.querySelectorAll(".nav-link").forEach((n) =>
+  n.addEventListener("click", () => {
+    hamburger.ClassList.remove("active");
+    navMenu.classList.remove("active");
+  })
+);
+
