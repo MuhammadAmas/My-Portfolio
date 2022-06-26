@@ -70,6 +70,13 @@
     .project-item img {
         max-width: 18em;
     }
+    .my-skills{
+        gap: 2em;
+    }
+    .skill-logo img{
+        max-width: 8rem;
+        max-height: 8rem;
+    }
 
     .footer-content {
         display: flex;

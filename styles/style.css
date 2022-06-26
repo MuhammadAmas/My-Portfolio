@@ -179,6 +179,26 @@ h1{
     align-items: center;
     gap: 1rem;
 }
+.skills{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9em;
+    text-align: center;
+}
+.my-skills{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6em;
+}
+.skill-logo img{
+    max-width: 15rem;
+    max-height: 15rem;
+
+    align-items: center;
+    justify-content: center;
+}
 
 
 form {
