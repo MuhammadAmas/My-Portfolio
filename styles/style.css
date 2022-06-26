@@ -205,16 +205,18 @@ section {
 .projects {
     background-color: red;
     display: flex;
+    flex-direction: column;
+    gap: 5em;
 
 }
 
 
 .project-item{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    gap: 1em;
+    gap: 5em;
 
 }
 .my-projects h1{
@@ -222,6 +224,7 @@ section {
 }
 
 .projects img {
+    display: inline-block;
     max-width: 28rem;
     border-radius: 0.5em;
 }
@@ -229,9 +232,8 @@ section {
 .project-item .button{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    gap: 3em;
 }
 .project-item button{
     color: var(--dark);
