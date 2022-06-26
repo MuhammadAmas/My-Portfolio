@@ -162,6 +162,12 @@ h1{
     gap: 3em;
 }
 
+.project-item{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .project-item img{
     max-width: 25em;
     margin-bottom: 2em;
