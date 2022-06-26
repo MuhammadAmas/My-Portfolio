@@ -131,9 +131,6 @@ h1{
 
 }
 
-.intro h1 {
-}
-
 .about-me {
     max-width: 60%;
     text-align: center;
@@ -203,7 +200,7 @@ form {
     margin-bottom: 2em;
     border: none;
     outline: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     color: var(--gray);
     background-color: transparent;
     border-bottom: 1px solid;
@@ -227,7 +224,7 @@ form {
 
 .submit button {
     padding: 17px 0px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     width: 100%;
     font-weight: bold;
     color: var(--gray);
