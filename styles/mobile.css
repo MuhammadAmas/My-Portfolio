@@ -4,8 +4,7 @@
         margin: auto 15px;
     }
 
-    h1,
-    h2 {
+    h1{
         font-size: 2rem;
     }
 
@@ -57,24 +56,6 @@
 
     .about-us p {
         font-size: 0.8rem;
-    }
-
-    .videos {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .videos>div {
-        width: 70%;
-    }
-
-    .quotes {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .quotes>div {
-        max-width: 60%;
     }
 
     .footer-content {
