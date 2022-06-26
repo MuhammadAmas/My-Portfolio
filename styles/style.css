@@ -18,7 +18,7 @@ body {
     background-color: var(--white);
 
     color: var(--gray);
-    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Barlow', sans-serif;
 }
 
 ::-webkit-scrollbar {
