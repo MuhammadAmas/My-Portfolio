@@ -49,7 +49,7 @@ section {
 
 h1{
     font-size: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-shadow: 1.5px 1.5px rgba(255, 255, 255, 0.5);
 }
 
@@ -178,18 +178,17 @@ h1{
 form {
     font-size: 1rem;
 }
+.contact-me{
+    margin-top: 10em;
+}
+.contact-me h1 {
+    text-align: center;
+}
 
 .contact-box {
     position: relative;
-    margin: 5% 20% 20% 20%;
+    margin: 0% 20% 20% 20%;
     border-radius: 10px;
-    margin-top: 10em;
-
-
-}
-
-.contact-box h1 {
-    text-align: center;
 }
 
 .contact-box .inputbox input,
