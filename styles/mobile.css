@@ -28,7 +28,7 @@
     .nav-menu {
         position: absolute;
         left: -100%;
-        top: 90px;
+        top: 70px;
         gap: 0;
         flex-direction: column;
         background-color: var(--gray);
