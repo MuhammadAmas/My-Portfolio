@@ -125,10 +125,13 @@ h1{
     margin-right: 15px;
 }
 
-.intro h2 {
+.intro{
+    margin: 8em auto;
     text-align: center;
-    margin: 2.5em auto;
-    text-shadow: none;
+
+}
+
+.intro h1 {
 }
 
 .about-me {
@@ -141,6 +144,10 @@ h1{
 
 .about-me p {
     font-size: 1.2rem;
+}
+
+.about-me .resume-btn{
+    margin: 2.5em;
 }
 
 .my-projects{
