@@ -47,11 +47,21 @@ section {
     max-width: 1200px;
 }
 
-h1,
-h2 {
+h1{
     font-size: 4rem;
     margin-bottom: 1rem;
     text-shadow: 1.5px 1.5px rgba(255, 255, 255, 0.5);
+}
+
+.btn{
+    padding: 0.5rem 1rem;
+    color: var(--gray);
+    border: 2px solid var(--gray);
+}
+
+.btn:hover{
+    background-color: var(--gray);
+    color: var(--white);
 }
 
 .navbar {
@@ -129,6 +139,32 @@ h2 {
 
 .about-us p {
     font-size: 1.2rem;
+}
+
+.my-projects{
+    max-width: 60%;
+    text-align: center;
+    margin: auto;
+}
+
+.projects{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+}
+
+.project-item img{
+    max-width: 25em;
+    margin-bottom: 2em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 

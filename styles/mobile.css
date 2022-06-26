@@ -58,6 +58,16 @@
         font-size: 0.8rem;
     }
 
+
+    .projects{
+        display: flex;
+        flex-direction: column;
+        gap: 3em;
+    }
+    .project-item img {
+        max-width: 18em;
+    }
+
     .footer-content {
         display: flex;
         flex-direction: column;
