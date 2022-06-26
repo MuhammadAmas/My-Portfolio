@@ -1,6 +1,11 @@
-@media(max-width:746px){
-    .education {
-        margin: 0;
+@media (max-width: 768px) {
+    .projects {
+        
+       
 
+    }
+
+    h1 {
+        color: red;
     }
 }

@@ -204,21 +204,42 @@ section {
 
 .projects {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    gap: 4em;   
 }
 
 
 .project-item{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    gap: 3rem;
+    gap: 1em;
+
+}
+.my-projects h1{
+    flex-direction: row;
 }
 
 .projects img {
     max-width: 28rem;
+}
+
+.project-item .button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+}
+.project-item button{
+    color: var(--dark);
+    background-color: var(--light);
+    padding: 1em 3em;
+    border-radius: 5px;
+    border: none;
+   
 }
 
 .education {
