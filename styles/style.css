@@ -126,7 +126,7 @@ h1{
 }
 
 .intro{
-    margin: 8em auto;
+    margin-top: 8em;
     text-align: center;
 
 }
@@ -135,7 +135,7 @@ h1{
     max-width: 60%;
     text-align: center;
     margin: auto;
-    margin-top: 10em;
+    margin-top: 9em;
 
 }
 

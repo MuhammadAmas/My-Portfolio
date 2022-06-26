@@ -50,6 +50,9 @@
         left: 0;
     }
 
+    .intro{
+        margin-top: 6em ;    
+    }
     .about-me {
         max-width: 90%;
     }
