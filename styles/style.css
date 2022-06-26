@@ -44,7 +44,7 @@ a {
 
 section {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1200px;    
 }
 
 h1{
@@ -131,13 +131,15 @@ h1{
     text-shadow: none;
 }
 
-.about-us {
+.about-me {
     max-width: 60%;
     text-align: center;
     margin: auto;
+    margin-top: 10em;
+
 }
 
-.about-us p {
+.about-me p {
     font-size: 1.2rem;
 }
 
@@ -145,6 +147,7 @@ h1{
     max-width: 60%;
     text-align: center;
     margin: auto;
+    margin-top: 10em;
 }
 
 .projects{
@@ -176,6 +179,8 @@ form {
     position: relative;
     margin: 5% 20% 20% 20%;
     border-radius: 10px;
+    margin-top: 10em;
+
 
 }
 
