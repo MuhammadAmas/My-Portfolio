@@ -171,6 +171,8 @@ h1{
 .project-item img{
     max-width: 25em;
     margin-bottom: 2em;
+    padding: 0.1em;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .buttons {
