@@ -71,8 +71,10 @@
         max-width: 18em;
     }
     .my-skills{
+        grid-template-columns: 1fr 1fr;
         gap: 2em;
     }
+
     .skill-logo img{
         max-width: 8rem;
         max-height: 8rem;

@@ -64,6 +64,16 @@ h1{
     color: var(--white);
 }
 
+.view-code-btn{
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.view-code-btn:hover{
+    background-color: var(--white);
+    color: var(--gray);
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -191,7 +201,7 @@ h1{
 }
 .my-skills{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 6em;
 }
 .skill-logo img{
