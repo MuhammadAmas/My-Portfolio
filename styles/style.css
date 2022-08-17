@@ -14,9 +14,7 @@ html {
 }
 
 body {
-    
     background-color: var(--white);
-
     color: var(--gray);
     font-family: 'Barlow', sans-serif;
 }
@@ -261,18 +259,16 @@ form {
 
 .submit button {
     padding: 17px 0px;
-    /* border-radius: 5px; */
     width: 100%;
     font-weight: bold;
-    color: var(--gray);
-    background-color: var(--white);
+    background-color: var(--gray);
+    color: var(--white);
     box-shadow: 0px 0px 10px 0px rgba(100%, 100%, 100%, 0.5);
-
 }
 
 .submit-btn:hover {
-    background-color: var(--gray);
-    color: var(--white);
+    color: var(--gray);
+    background-color: var(--white);
 }
 
 footer {
