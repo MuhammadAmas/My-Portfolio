@@ -4,7 +4,7 @@
         margin: auto 15px;
     }
 
-    h1{
+    h1 {
         font-size: 2rem;
     }
 
@@ -50,9 +50,10 @@
         left: 0;
     }
 
-    .intro{
-        margin-top: 6em ;    
+    .intro {
+        margin-top: 6em;
     }
+
     .about-me {
         max-width: 80%;
     }
@@ -62,21 +63,27 @@
     }
 
 
-    .projects{
+    .projects {
         display: flex;
         flex-direction: column;
         gap: 3em;
         flex-wrap: nowrap;
     }
+
+    .project-item {
+        width: 400px;
+    }
+
     .project-item img {
         max-width: 18em;
     }
-    .my-skills{
+
+    .my-skills {
         grid-template-columns: 1fr 1fr;
         gap: 2em;
     }
 
-    .skill-logo img{
+    .skill-logo img {
         max-width: 8rem;
         max-height: 8rem;
     }
