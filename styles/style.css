@@ -163,11 +163,15 @@ h1{
 }
 
 .projects{
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     gap: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
 }
 
 .project-item{

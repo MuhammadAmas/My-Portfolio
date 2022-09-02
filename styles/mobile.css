@@ -67,11 +67,11 @@
         display: flex;
         flex-direction: column;
         gap: 3em;
-        flex-wrap: nowrap;
+        /* flex-wrap: nowrap; */
     }
 
     .project-item {
-        width: 380px;
+        width: 350px;
     }
 
     .project-item img {
