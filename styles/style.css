@@ -164,10 +164,9 @@ h1{
 
 .projects{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 3em;
 }
 
@@ -175,7 +174,7 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 450px;
+    width: 500px;
     /* margin: auto; */
 }
 
