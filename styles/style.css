@@ -156,30 +156,31 @@ h1{
 }
 
 .my-projects{
-    max-width: 60%;
+    max-width: 80%;
     text-align: center;
     margin: auto;
     margin-top: 10em;
 }
 
 .projects{
-    /* display: flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     gap: 3em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
 }
 
 .project-item{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    width: 400px;
-    /* margin: auto; */
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 350px;
+    margin: 3em 4em;
+
 }
 
 .project-item img{
