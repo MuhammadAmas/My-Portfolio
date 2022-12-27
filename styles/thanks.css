@@ -1,7 +1,8 @@
-:root{
+:root {
     --gray: #0b1523;
     --white: #fff;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -44,5 +45,5 @@ body {
 .btn a {
     text-decoration: none;
     font-weight: bold;
-    color:var(--white)
+    color: var(--white)
 }

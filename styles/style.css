@@ -42,32 +42,32 @@ a {
 
 section {
     margin: 0 auto;
-    max-width: 1200px;    
+    max-width: 1200px;
 }
 
-h1{
+h1 {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     text-shadow: 1.5px 1.5px rgba(255, 255, 255, 0.5);
 }
 
-.btn{
+.btn {
     padding: 0.5rem 1rem;
     color: var(--gray);
     border: 2px solid var(--gray);
 }
 
-.btn:hover{
+.btn:hover {
     background-color: var(--gray);
     color: var(--white);
 }
 
-.view-code-btn{
+.view-code-btn {
     background-color: var(--gray);
     color: var(--white);
 }
 
-.view-code-btn:hover{
+.view-code-btn:hover {
     background-color: var(--white);
     color: var(--gray);
 }
@@ -100,7 +100,7 @@ h1{
     justify-content: space-between;
     align-items: center;
     gap: 4em;
-    
+
 }
 
 .navbar ul li a {
@@ -108,7 +108,7 @@ h1{
     font-size: 1.2rem;
     font-weight: bold;
     border-bottom: 2px solid var(--gray);
-    color: var(--gray);     
+    color: var(--gray);
 }
 
 .navbar ul li a:hover {
@@ -133,7 +133,7 @@ h1{
     margin-right: 15px;
 }
 
-.intro{
+.intro {
     margin-top: 8em;
     text-align: center;
 
@@ -151,18 +151,18 @@ h1{
     font-size: 1.2rem;
 }
 
-.about-me .resume-btn{
+.about-me .resume-btn {
     margin: 2.5em;
 }
 
-.my-projects{
+.my-projects {
     max-width: 80%;
     text-align: center;
     margin: auto;
     margin-top: 10em;
 }
 
-.projects{
+.projects {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -172,7 +172,7 @@ h1{
     grid-template-columns: 1fr 1fr; */
 }
 
-.project-item{
+.project-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,7 +183,7 @@ h1{
 
 }
 
-.project-item img{
+.project-item img {
     max-width: 25em;
     margin-bottom: 2em;
     padding: 0.1em;
@@ -196,7 +196,8 @@ h1{
     align-items: center;
     gap: 1rem;
 }
-.skills{
+
+.skills {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -204,12 +205,14 @@ h1{
     margin-top: 9em;
     text-align: center;
 }
-.my-skills{
+
+.my-skills {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 6em;
 }
-.skill-logo img{
+
+.skill-logo img {
     max-width: 15rem;
     max-height: 15rem;
 
@@ -221,9 +224,11 @@ h1{
 form {
     font-size: 1rem;
 }
-.contact-me{
+
+.contact-me {
     margin-top: 10em;
 }
+
 .contact-me h1 {
     text-align: center;
 }
@@ -292,13 +297,15 @@ footer {
     align-items: center;
 }
 
-.contacts{
+.contacts {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2em;
 }
-.email, .phone-no {
+
+.email,
+.phone-no {
     display: flex;
     flex-direction: row;
     align-items: center;
