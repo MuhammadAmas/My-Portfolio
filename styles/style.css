@@ -17,6 +17,7 @@ body {
     background-color: var(--white);
     color: var(--gray);
     font-family: 'Barlow', sans-serif;
+    /* font-family: 'Satoshi', sans-serif; */
 }
 
 ::-webkit-scrollbar {
