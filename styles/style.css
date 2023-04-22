@@ -209,14 +209,13 @@ h1 {
 
 .my-skills {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 6em;
 }
 
 .skill-logo img {
-    max-width: 15rem;
-    max-height: 15rem;
-
+    max-width: 12rem;
+    max-height: 12rem;
     align-items: center;
     justify-content: center;
 }
