@@ -334,7 +334,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: 1.5em;
 }
 
 .social-media i {
@@ -359,5 +359,5 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2em;
+    padding-bottom: 2em;
 }
