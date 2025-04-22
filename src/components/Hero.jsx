@@ -197,7 +197,20 @@ const Hero = () => {
                   "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
             >
-              <div className="text-sm font-medium">Available for freelance</div>
+              <div className="text-sm font-medium">
+                <a
+                  href="https://www.upwork.com/freelancers/~01a884fcaeb317020c?mp_source=share"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 transition-colors duration-300 flex items-center gap-1.5"
+                >
+                  <span className="relative inline-flex h-2 w-2 mr-1">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
+                  Available for freelance
+                </a>
+              </div>
             </motion.div>
           </div>
         </motion.div>
