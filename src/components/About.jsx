@@ -81,7 +81,7 @@ const About = () => {
 
             <Button asChild>
               <a
-                href="/Muhammad_Amas_Resume.pdf"
+                href="/Muhammad Amas Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
