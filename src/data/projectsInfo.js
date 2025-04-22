@@ -52,7 +52,7 @@ const projects = [
     image: "/projects-images/mailSpend.png",
     technologies: ["React.js", "Ant Design", "Charts.js", "Vite"],
     category: "Frontend",
-    demoLink: "https://mail-spend.vercel.app/Dashboard",
+    demoLink: "https://mail-spend.vercel.app",
     githubLink: "https://github.com/MuhammadAmas/MailSpend",
     highlights: [
       "Implemented a queueing system using mathematical models",
