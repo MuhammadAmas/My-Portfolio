@@ -7,6 +7,65 @@
 
 const projects = [
   {
+    id: "4",
+    title: "MailSpend",
+    description:
+      "An AI-powered expense tracker that categorizes spending and provides personalized financial management insights, all wrapped in a user-friendly interface designed for maximum accessibility.",
+    image: "/projects-images/mailSpend.png",
+    technologies: ["React.js", "Ant Design", "Charts.js", "Vite"],
+    category: ["Frontend"],
+    demoLink: "https://mail-spend.vercel.app",
+    githubLink: "https://github.com/MuhammadAmas/MailSpend",
+    highlights: [
+      "Implemented a queueing system using mathematical models",
+      "Minimized wait times and improved overall efficiency and customer satisfaction",
+    ],
+    yearCompleted: 2024,
+  },
+
+  {
+    id: 3,
+    title: "Cloudnosys",
+    description:
+      "Full stack SaaS platform coverage with risk prioritization, compliance, SOAR remediation, misconfigurations, OS vulnerabilities, malware, context-aware alerts, and third-party integrations.",
+    image: "/projects-images/cloudnosys.png",
+    demoLink: "https://cloudnosys.com",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Redux",
+      "Firebase",
+      "Ant Design",
+      "Frontend",
+      "GCP",
+      "AWS",
+      "OpenAI",
+    ],
+    category: ["Full Stack", "SaaS", "Cloud", "AI"],
+    githubLink: "#",
+    highlights: [
+      "Threat Detection, Risk Management and Response",
+      "Compliance and SOAR Remediation",
+    ],
+    yearCompleted: "In Progress",
+  },
+  {
+    id: 1,
+    title: "Queuing Model",
+    description:
+      "To optimize a queueing system using mathematical models to minimize wait times, eliminate bottlenecks, and improve overall efficiency and customer satisfaction.",
+    image: "/projects-images/queingModel.png",
+    technologies: ["React.js", "MUI", "Vite"],
+    category: ["Frontend"],
+    demoLink: "https://queuing-model.vercel.app",
+    githubLink: "https://github.com/MuhammadAmas/Queuing-Model",
+    highlights: [
+      "Implemented a queueing system using mathematical models",
+      "Minimized wait times and improved overall efficiency and customer satisfaction",
+    ],
+    yearCompleted: 2023,
+  },
+  {
     id: 2,
     title: "FuturConnect Dashboard",
     description:
@@ -19,7 +78,7 @@ const projects = [
       "Tailwind CSS",
       "Firebase Authentication",
     ],
-    category: "Full Stack",
+    category: ["Full Stack"],
     demoLink: "https://futur-connect.vercel.app",
     githubLink: "https://github.com/MuhammadAmas/FExpressuturConnect",
     highlights: [
@@ -28,44 +87,12 @@ const projects = [
     ],
     yearCompleted: 2024,
   },
-  {
-    id: 1,
-    title: "Queuing Model",
-    description:
-      "To optimize a queueing system using mathematical models to minimize wait times, eliminate bottlenecks, and improve overall efficiency and customer satisfaction.",
-    image: "/projects-images/queingModel.png",
-    technologies: ["React.js", "MUI", "Vite"],
-    category: "Frontend",
-    demoLink: "https://queuing-model.vercel.app",
-    githubLink: "https://github.com/MuhammadAmas/Queuing-Model",
-    highlights: [
-      "Implemented a queueing system using mathematical models",
-      "Minimized wait times and improved overall efficiency and customer satisfaction",
-    ],
-    yearCompleted: 2023,
-  },
-  {
-    id: "4",
-    title: "MailSpend",
-    description:
-      "An AI-powered expense tracker that categorizes spending and provides personalized financial management insights, all wrapped in a user-friendly interface designed for maximum accessibility.",
-    image: "/projects-images/mailSpend.png",
-    technologies: ["React.js", "Ant Design", "Charts.js", "Vite"],
-    category: "Frontend",
-    demoLink: "https://mail-spend.vercel.app",
-    githubLink: "https://github.com/MuhammadAmas/MailSpend",
-    highlights: [
-      "Implemented a queueing system using mathematical models",
-      "Minimized wait times and improved overall efficiency and customer satisfaction",
-    ],
-    yearCompleted: 2024,
-  },
 ];
 
 // Categories derived from projects
 const categories = [
   "All",
-  ...new Set(projects.map((project) => project.category)),
+  ...new Set(projects.flatMap((project) => project.category)),
 ];
 
 export { projects, categories };

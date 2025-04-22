@@ -21,14 +21,14 @@ import { fadeIn, staggerContainer } from "../lib/animations";
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
-  const projectsPerPage = 3;
+  const projectsPerPage = 6;
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   const filteredProjects =
     activeCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === activeCategory);
+      : projects.filter((project) => project.category.includes(activeCategory));
 
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
   const displayedProjects = filteredProjects.slice(
@@ -175,7 +175,7 @@ const Projects = () => {
                   className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-bl-lg z-20"
                   whileHover={{ scale: 1.05 }}
                 >
-                  {project.category}
+                  {project.category.join(", ")}
                 </motion.div>
               </div>
               <div className="p-6 flex-grow flex flex-col">
