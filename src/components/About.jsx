@@ -83,7 +83,7 @@ const About = () => {
               <a
                 href="/Muhammad Amas Resume.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                // rel="noopener noreferrer"
               >
                 <FileText className="mr-2 h-4 w-4" /> Download Resume
               </a>

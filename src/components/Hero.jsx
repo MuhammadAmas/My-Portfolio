@@ -107,7 +107,7 @@ const Hero = () => {
               <motion.a
                 href="/Muhammad Amas Resume.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                // rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
