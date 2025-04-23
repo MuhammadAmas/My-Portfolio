@@ -28,22 +28,44 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+    try {
+      // Using FormSubmit.co service
+      const formSubmitUrl = "https://formsubmit.co/amaswaseem@gmail.com";
 
-      // Reset success message after a delay
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1500);
+      const formSubmitData = new FormData(e.target);
+      // Instead of redirecting to a thanks page, we'll handle the success directly
+      formSubmitData.append("_captcha", "false");
+      // JSON response instead of redirect
+      formSubmitData.append("_redirect", "false");
+
+      const response = await fetch(formSubmitUrl, {
+        method: "POST",
+        body: formSubmitData,
+      });
+
+      if (response.ok) {
+        console.log("Form submitted successfully");
+        setIsSubmitting(false);
+        setSubmitted(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+
+        // Reset success message after a delay
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error("Failed to submit form");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      // You could add error handling UI here
+      alert("Failed to send message. Please try again later.");
+    }
   };
 
   const contactDetails = [
