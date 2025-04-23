@@ -1,17 +1,8 @@
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
-import CursorAnimation from "./components/CursorAnimation";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { initSmoothScrolling } from "./lib/smoothScroll";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,16 +14,6 @@ function App() {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    // Initialize smooth scrolling
-    if (!isLoading) {
-      initSmoothScrolling();
-
-      // Remove CSS smooth scrolling - we'll use the JS implementation instead
-      // which is more performant especially on mobile
-    }
-  }, [isLoading]);
 
   return (
     <ThemeProvider defaultTheme="system" enableSystem>
@@ -82,19 +63,7 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {/* <CursorAnimation /> */}
-            <Header />
-            <div className="md:pl-24 px-6 md:px-6 lg:px-8">
-              <main className="max-w-7xl mx-auto">
-                <Hero />
-                <About />
-                <Skills />
-                <Projects />
-                <Contact />
-              </main>
-              <Footer />
-            </div>
-            <ScrollToTop />
+            <Outlet />
           </motion.div>
         )}
       </AnimatePresence>

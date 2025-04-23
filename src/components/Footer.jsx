@@ -1,17 +1,28 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
+import { handleSmoothScroll } from "../lib/smoothScroll";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const handleNavigation = (e, sectionId) => {
+    if (isHomePage) {
+      e.preventDefault();
+      handleSmoothScroll(e, sectionId);
+    }
+  };
 
   return (
     <footer className="py-12 border-t border-gray-200 dark:border-gray-800 relative z-10">
       <div className="container md:pl-24">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
-            <a href="#home" className="text-2xl font-bold mb-4 block">
+            <Link to="/" className="text-2xl font-bold mb-4 block">
               <span className="text-blue-600">Muhammad Amas</span>
-            </a>
+            </Link>
             <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-md">
               A passionate Full Stack Developer building modern and responsive
               web applications with clean code and exceptional user experiences.
@@ -55,44 +66,56 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#home"
+                <Link
+                  to="/"
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#about"
+                <Link
+                  to="/#about"
+                  onClick={(e) => handleNavigation(e, "about")}
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#skills"
+                <Link
+                  to="/#skills"
+                  onClick={(e) => handleNavigation(e, "skills")}
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   Skills
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#projects"
+                <Link
+                  to="/#projects"
+                  onClick={(e) => handleNavigation(e, "projects")}
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   Projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  to="/publications"
+                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
+                >
+                  Publications
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/#contact"
+                  onClick={(e) => handleNavigation(e, "contact")}
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

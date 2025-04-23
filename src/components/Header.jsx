@@ -1,6 +1,16 @@
 import { useTheme } from "./ThemeProvider";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Moon, Sun, Home, User, Code, FolderKanban, Mail } from "lucide-react";
+import {
+  Moon,
+  Sun,
+  Home,
+  User,
+  Code,
+  FolderKanban,
+  Mail,
+  BookOpen,
+} from "lucide-react";
 import {
   Tooltip,
   TooltipTrigger,
@@ -11,52 +21,80 @@ import { handleSmoothScroll } from "../lib/smoothScroll";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
-  const navLinks = [
+  const mainNavLinks = [
     {
       name: "Home",
       href: "#home",
       id: "home",
+      path: "/",
       icon: <Home className="h-5 w-5" />,
     },
     {
       name: "About",
       href: "#about",
       id: "about",
+      path: "/#about",
       icon: <User className="h-5 w-5" />,
     },
     {
       name: "Skills",
       href: "#skills",
       id: "skills",
+      path: "/#skills",
       icon: <Code className="h-5 w-5" />,
     },
     {
       name: "Projects",
       href: "#projects",
       id: "projects",
+      path: "/#projects",
       icon: <FolderKanban className="h-5 w-5" />,
     },
     {
       name: "Contact",
       href: "#contact",
       id: "contact",
+      path: "/#contact",
       icon: <Mail className="h-5 w-5" />,
     },
   ];
+
+  const separatePageLinks = [
+    {
+      name: "Publications",
+      path: "/publications",
+      icon: <BookOpen className="h-5 w-5" />,
+    },
+  ];
+
+  // Combined links for display
+  const navLinks = [...mainNavLinks, ...separatePageLinks];
+
+  const handleNavigation = (e, link) => {
+    // If it's a separate page (not on homepage), use router navigation
+    if (link.path && !link.path.includes("#")) {
+      // Let the default Link behavior handle it
+      return;
+    }
+
+    // If we're on the homepage and it's a section link
+    if (isHomePage && link.id) {
+      e.preventDefault();
+      handleSmoothScroll(e, link.id);
+    }
+  };
 
   return (
     <TooltipProvider delayDuration={100}>
       {/* Mobile horizontal navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 glass py-3 px-3 md:hidden mx-4 mt-4 border-2 rounded-2xl">
         <div className="container flex items-center justify-between">
-          <a
-            href="#home"
-            className="text-2xl font-bold"
-            onClick={(e) => handleSmoothScroll(e, "home")}
-          >
+          <Link to="/" className="text-2xl font-bold">
             <span className="text-blue-600">Amas</span>
-          </a>
+          </Link>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -81,21 +119,21 @@ const Header = () => {
 
       {/* Desktop vertical navbar */}
       <aside className="fixed left-0 top-0 z-40 hidden md:block pl-6 h-screen pointer-events-none">
-        <div className="sidebar-glass flex flex-col items-center py-6 px-1/2 rounded-3xl shadow-lg pointer-events-auto absolute top-1/2 -translate-y-1/2">
+        <div className="sidebar-glass flex flex-col items-center py-6 px-2 rounded-3xl shadow-lg pointer-events-auto absolute top-1/2 -translate-y-1/2">
           <nav>
             <ul className="flex flex-col items-center space-y-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <a
-                        href={link.href}
+                      <Link
+                        to={link.path || link.href}
                         className="flex flex-col items-center justify-center w-16 h-16 text-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        onClick={(e) => handleSmoothScroll(e, link.id)}
+                        onClick={(e) => handleNavigation(e, link)}
                       >
                         <div className="mb-1">{link.icon}</div>
                         <span className="text-xs">{link.name}</span>
-                      </a>
+                      </Link>
                     </TooltipTrigger>
                     <TooltipContent side="right" sideOffset={5}>
                       {link.name}
