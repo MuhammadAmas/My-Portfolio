@@ -194,9 +194,10 @@ const Projects = () => {
                     {project.yearCompleted}
                   </div>
                 </motion.div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-5">
-                  {project.description}
-                </p>
+                <p
+                  className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-5"
+                  dangerouslySetInnerHTML={{ __html: project.description }}
+                ></p>
 
                 <motion.div
                   variants={staggerContainer(0.03, 0)}
@@ -247,52 +248,56 @@ const Projects = () => {
                   className="flex gap-4 mt-auto"
                   variants={fadeIn("up", 0.5)}
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="relative overflow-hidden"
+                  {project.demoLink && (
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Button
+                        asChild
+                        size="sm"
+                        variant="outline"
+                        className="relative overflow-hidden"
                       >
-                        <motion.div
-                          className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                          whileHover={{ opacity: 1 }}
-                        />
-                        <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                      </a>
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="relative overflow-hidden"
+                        <a
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                            whileHover={{ opacity: 1 }}
+                          />
+                          <ExternalLink className="mr-2 h-4 w-4" /> Demo
+                        </a>
+                      </Button>
+                    </motion.div>
+                  )}
+                  {project.githubLink && (
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Button
+                        asChild
+                        size="sm"
+                        variant="outline"
+                        className="relative overflow-hidden"
                       >
-                        <motion.div
-                          className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                          whileHover={{ opacity: 1 }}
-                        />
-                        <Github className="mr-2 h-4 w-4" /> Code
-                      </a>
-                    </Button>
-                  </motion.div>
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                            whileHover={{ opacity: 1 }}
+                          />
+                          <Github className="mr-2 h-4 w-4" /> Code
+                        </a>
+                      </Button>
+                    </motion.div>
+                  )}
                 </motion.div>
               </div>
             </AnimatedCard>
