@@ -132,8 +132,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="pt-6 border-t border-gray-200 dark:border-gray-800 text-center text-gray-600 dark:text-gray-400">
-          © {currentYear} Muhammad Amas. All rights reserved.
+        <div className="pt-6 border-gray-200 dark:border-gray-800 text-center text-gray-600 dark:text-gray-400">
+          Thanks for visit ✨
         </div>
       </div>
     </footer>

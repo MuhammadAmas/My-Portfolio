@@ -26,7 +26,7 @@ const About = () => {
           >
             <div className="glass rounded-2xl p-4 overflow-hidden">
               <img
-                src="/logo.jpeg"
+                src="/bwImage.jpeg"
                 alt="Muhammad Amas"
                 className="w-full h-auto rounded-xl"
               />
