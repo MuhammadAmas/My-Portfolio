@@ -19,7 +19,7 @@ import {
 } from "./ui/tooltip";
 import { handleSmoothScroll } from "../lib/smoothScroll";
 
-const Header = () => {
+const Sidebar = () => {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
@@ -32,46 +32,45 @@ const Header = () => {
       path: "/",
       icon: <Home className="h-5 w-5" />,
     },
-    {
-      name: "About",
-      href: "#about",
-      id: "about",
-      path: "/#about",
-      icon: <User className="h-5 w-5" />,
-    },
-    {
-      name: "Skills",
-      href: "#skills",
-      id: "skills",
-      path: "/#skills",
-      icon: <Code className="h-5 w-5" />,
-    },
+    // {
+    //   name: "About",
+    //   href: "#about",
+    //   id: "about",
+    //   path: "/#about",
+    //   icon: <User className="h-5 w-5" />,
+    // },
+    // {
+    //   name: "Skills",
+    //   href: "#skills",
+    //   id: "skills",
+    //   path: "/#skills",
+    //   icon: <Code className="h-5 w-5" />,
+    // },
     {
       name: "Projects",
       href: "#projects",
       id: "projects",
-      path: "/#projects",
+      path: "/projects",
       icon: <FolderKanban className="h-5 w-5" />,
+    },
+    {
+      name: "Publications",
+      href: "#publications",
+      id: "publications",
+      path: "/publications",
+      icon: <BookOpen className="h-5 w-5" />,
     },
     {
       name: "Contact",
       href: "#contact",
       id: "contact",
-      path: "/#contact",
+      path: "/contact",
       icon: <Mail className="h-5 w-5" />,
     },
   ];
 
-  const separatePageLinks = [
-    {
-      name: "Publications",
-      path: "/publications",
-      icon: <BookOpen className="h-5 w-5" />,
-    },
-  ];
-
   // Combined links for display
-  const navLinks = [...mainNavLinks, ...separatePageLinks];
+  const navLinks = [...mainNavLinks];
 
   const handleNavigation = (e, link) => {
     // If it's a separate page (not on homepage), use router navigation
@@ -92,10 +91,10 @@ const Header = () => {
       {/* Mobile horizontal navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 glass py-3 px-3 md:hidden mx-4 mt-4 border-2 rounded-2xl">
         <div className="container flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold">
-            <span className="text-blue-600">Amas</span>
-          </Link>
           <Tooltip>
+            <Link to="/" className="text-2xl font-bold">
+              <span className="text-blue-600">Amas</span>
+            </Link>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -170,4 +169,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Sidebar;

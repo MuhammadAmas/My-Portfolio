@@ -6,6 +6,8 @@ import App from "./App.jsx";
 import MainLayout from "./components/layout/MainLayout";
 import HomePage from "./pages/HomePage";
 import PublicationsPage from "./pages/PublicationsPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ContactPage from "./pages/ContactPage";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
           {
             path: "publications",
             element: <PublicationsPage />,
+          },
+          {
+            path: "projects",
+            element: <ProjectsPage />,
+          },
+          {
+            path: "contact",
+            element: <ContactPage />,
           },
         ],
       },

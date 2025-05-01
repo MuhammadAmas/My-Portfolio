@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
 import { Button } from "./ui/button";
@@ -21,9 +21,21 @@ import { fadeIn, staggerContainer } from "../lib/animations";
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const projectsPerPage = 6;
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const filteredProjects =
     activeCategory === "All"
@@ -44,56 +56,49 @@ const Projects = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
-  return (
-    <AnimatedSection
-      id="projects"
-      className="py-16 md:py-24 relative overflow-hidden"
-    >
-      {/* Decorative Elements */}
-      <motion.div
-        className="absolute top-40 left-5 md:left-20 w-40 h-40 bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-3xl -z-10"
-        animate={{
+  // Optimize background animations for mobile
+  const backgroundAnimations = isMobile
+    ? {
+        animate: {
+          scale: [1, 1.1, 1],
+          transition: { duration: 10, repeat: Infinity, ease: "linear" },
+        },
+      }
+    : {
+        animate: {
           scale: [1, 1.2, 1],
           x: [0, 20, 0],
           y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-40 right-5 md:right-20 w-60 h-60 bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-3xl -z-10"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          x: [0, -20, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+          transition: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+        },
+      };
 
+  return (
+    <AnimatedSection
+      id="projects"
+      className="py-8 md:py-24 relative overflow-hidden"
+    >
       <div className="container px-4" ref={sectionRef}>
-        <AnimatedElement
-          variants={fadeIn("down", 0.2)}
-          className="text-center mb-16"
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" id="projects">
-            My Projects
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+            Projects
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-[600px] mx-auto mb-8">
             Here are some of my recent projects. Each one was built to solve
             specific problems and showcases different skills in my toolkit.
           </p>
-        </AnimatedElement>
+        </motion.div>
 
         <motion.div
-          variants={staggerContainer(0.05, 0.1)}
+          variants={staggerContainer(
+            isMobile ? 0.03 : 0.05,
+            isMobile ? 0.05 : 0.1
+          )}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
           className="flex flex-wrap justify-center gap-4 mb-12"
@@ -101,11 +106,14 @@ const Projects = () => {
           {categories.map((category, index) => (
             <AnimatedElement
               key={category}
-              variants={fadeIn("up", index * 0.05 + 0.3)}
+              variants={fadeIn(
+                "up",
+                isMobile ? index * 0.03 : index * 0.05 + 0.3
+              )}
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={!isMobile ? { scale: 1.05 } : undefined}
+                whileTap={!isMobile ? { scale: 0.95 } : undefined}
               >
                 <Button
                   onClick={() => {
@@ -141,7 +149,10 @@ const Projects = () => {
         </motion.div>
 
         <motion.div
-          variants={staggerContainer(0.1, 0.3)}
+          variants={staggerContainer(
+            isMobile ? 0.05 : 0.1,
+            isMobile ? 0.1 : 0.3
+          )}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -155,7 +166,7 @@ const Projects = () => {
                   : index === displayedProjects.length - 1
                   ? "left"
                   : "up",
-                index * 0.2
+                isMobile ? index * 0.1 : index * 0.2
               )}
               className="glass rounded-xl overflow-hidden group h-full flex flex-col"
             >
@@ -306,13 +317,16 @@ const Projects = () => {
 
         {totalPages > 1 && (
           <motion.div
-            variants={fadeIn("up", 0.6)}
+            variants={fadeIn("up", isMobile ? 0.3 : 0.6)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
             className="flex justify-center mt-12 gap-4"
           >
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <motion.div
+              whileHover={!isMobile ? { scale: 1.1 } : undefined}
+              whileTap={!isMobile ? { scale: 0.9 } : undefined}
+            >
               <Button
                 variant="outline"
                 size="icon"
@@ -320,17 +334,16 @@ const Projects = () => {
                 disabled={currentPage === 0}
                 className="relative overflow-hidden"
               >
-                <motion.div
-                  className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                  whileHover={{ opacity: 1 }}
-                />
                 <ChevronLeft className="h-4 w-4" />
               </Button>
             </motion.div>
             <span className="flex items-center">
               {currentPage + 1} / {totalPages}
             </span>
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <motion.div
+              whileHover={!isMobile ? { scale: 1.1 } : undefined}
+              whileTap={!isMobile ? { scale: 0.9 } : undefined}
+            >
               <Button
                 variant="outline"
                 size="icon"
@@ -338,10 +351,6 @@ const Projects = () => {
                 disabled={currentPage === totalPages - 1}
                 className="relative overflow-hidden"
               >
-                <motion.div
-                  className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                  whileHover={{ opacity: 1 }}
-                />
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </motion.div>

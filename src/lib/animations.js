@@ -2,12 +2,14 @@
 export const fadeIn = (direction, delay) => {
   // Get device type for responsive animations
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  const duration = isMobile ? 0.5 : 0.8;
+  const duration = isMobile ? 0.3 : 0.8;
+  const distance = isMobile ? 40 : 80;
 
   return {
     hidden: {
-      y: direction === "up" ? 80 : direction === "down" ? -80 : 0,
-      x: direction === "left" ? 80 : direction === "right" ? -80 : 0,
+      y: direction === "up" ? distance : direction === "down" ? -distance : 0,
+      x:
+        direction === "left" ? distance : direction === "right" ? -distance : 0,
       opacity: 0,
     },
     show: {
@@ -17,38 +19,40 @@ export const fadeIn = (direction, delay) => {
       transition: {
         type: "tween",
         duration: duration,
-        delay: delay,
-        ease: [0.25, 0.25, 0.25, 0.75],
+        delay: isMobile ? delay * 0.5 : delay,
+        ease: "easeOut",
       },
     },
   };
 };
 
 export const staggerContainer = (staggerChildren, delayChildren) => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   return {
     hidden: {},
     show: {
       transition: {
-        staggerChildren,
-        delayChildren,
+        staggerChildren: isMobile ? staggerChildren * 0.5 : staggerChildren,
+        delayChildren: isMobile ? delayChildren * 0.5 : delayChildren,
       },
     },
   };
 };
 
 export const textVariant = (delay) => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   return {
     hidden: {
-      y: 50,
+      y: 25,
       opacity: 0,
     },
     show: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        duration: 1.25,
-        delay,
+        type: "tween",
+        duration: isMobile ? 0.5 : 1.25,
+        delay: isMobile ? delay * 0.5 : delay,
       },
     },
   };
@@ -57,19 +61,25 @@ export const textVariant = (delay) => {
 export const slideIn = (direction, type, delay, duration) => {
   // Shorter duration on mobile
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  const animDuration = isMobile ? duration * 0.6 : duration;
+  const animDuration = isMobile ? duration * 0.5 : duration;
+  const distance = isMobile ? "50%" : "100%";
 
   return {
     hidden: {
-      x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-      y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+      x:
+        direction === "left"
+          ? `-${distance}`
+          : direction === "right"
+          ? distance
+          : 0,
+      y: direction === "up" ? distance : direction === "down" ? distance : 0,
     },
     show: {
       x: 0,
       y: 0,
       transition: {
         type,
-        delay,
+        delay: isMobile ? delay * 0.5 : delay,
         duration: animDuration,
         ease: "easeOut",
       },
@@ -80,7 +90,7 @@ export const slideIn = (direction, type, delay, duration) => {
 export const zoomIn = (delay, duration) => {
   // Shorter duration on mobile
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  const animDuration = isMobile ? duration * 0.6 : duration;
+  const animDuration = isMobile ? duration * 0.5 : duration;
 
   return {
     hidden: {
@@ -92,7 +102,7 @@ export const zoomIn = (delay, duration) => {
       opacity: 1,
       transition: {
         type: "tween",
-        delay,
+        delay: isMobile ? delay * 0.5 : delay,
         duration: animDuration,
         ease: "easeOut",
       },

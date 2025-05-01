@@ -9,9 +9,41 @@ export const scrollToElement = (elementId, offset = 0) => {
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth",
-      // Use shorter duration for mobile devices through custom implementation
     });
   }
+};
+
+// Get all section IDs in order
+const getSectionIds = () => {
+  const sections = Array.from(document.querySelectorAll("section[id]"));
+  return sections
+    .sort((a, b) => a.offsetTop - b.offsetTop)
+    .map((section) => section.id);
+};
+
+// Find the current section based on scroll position
+const getCurrentSectionIndex = () => {
+  const sectionIds = getSectionIds();
+  const scrollPosition = window.scrollY + window.innerHeight / 2;
+  const sections = sectionIds.map((id) => document.getElementById(id));
+
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = sections[i];
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
+
+    if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+      return i;
+    }
+  }
+
+  // If we're before the first section
+  if (scrollPosition < sections[0].offsetTop) {
+    return 0;
+  }
+
+  // If we're after the last section
+  return sections.length - 1;
 };
 
 // Custom hook to intercept anchor clicks and apply smooth scrolling
@@ -19,53 +51,32 @@ export const initSmoothScrolling = () => {
   // Don't run during SSR
   if (typeof window === "undefined") return;
 
-  // Detect if device is mobile - will be used to adjust scroll behavior
-  const isMobile =
-    /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
-    window.innerWidth <= 768;
+  // Handle arrow key navigation
+  document.addEventListener("keydown", (e) => {
+    // Only handle arrow keys if we're not in an input or textarea
+    if (
+      e.target.tagName === "INPUT" ||
+      e.target.tagName === "TEXTAREA" ||
+      e.target.isContentEditable
+    ) {
+      return;
+    }
 
-  // If on mobile, use a shorter duration for smooth scrolling
-  if (isMobile) {
-    // Override the default smooth scrolling with a more performant version for mobile
-    const originalScrollTo = window.scrollTo;
-    window.scrollTo = function () {
-      if (arguments[0] && arguments[0].behavior === "smooth") {
-        const options = { ...arguments[0], behavior: "auto" };
-        originalScrollTo.call(this, options);
+    const sectionIds = getSectionIds();
+    const currentIndex = getCurrentSectionIndex();
 
-        // For mobile, use a custom smooth scroll with shorter duration
-        if (typeof arguments[0].top === "number") {
-          const start = window.pageYOffset;
-          const target = arguments[0].top;
-          const distance = target - start;
-          const duration = 300; // Shorter duration for mobile
-          const startTime = performance.now();
-
-          function step(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const easeInOutCubic =
-              progress < 0.5
-                ? 4 * progress * progress * progress
-                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-            window.scrollTo({
-              top: start + distance * easeInOutCubic,
-              behavior: "auto",
-            });
-
-            if (progress < 1) {
-              window.requestAnimationFrame(step);
-            }
-          }
-
-          window.requestAnimationFrame(step);
-        }
-        return;
-      }
-      originalScrollTo.apply(this, arguments);
-    };
-  }
+    if (e.key === "ArrowDown" && currentIndex < sectionIds.length - 1) {
+      e.preventDefault();
+      const nextSection = sectionIds[currentIndex + 1];
+      scrollToElement(nextSection, 80);
+      window.history.pushState(null, null, `#${nextSection}`);
+    } else if (e.key === "ArrowUp" && currentIndex > 0) {
+      e.preventDefault();
+      const prevSection = sectionIds[currentIndex - 1];
+      scrollToElement(prevSection, 80);
+      window.history.pushState(null, null, `#${prevSection}`);
+    }
+  });
 
   document.addEventListener("click", (e) => {
     // Find closest anchor element
@@ -84,12 +95,7 @@ export const initSmoothScrolling = () => {
       // If the target element exists on the page
       if (targetElement) {
         e.preventDefault();
-
-        // Calculate header offset - adjust this based on your fixed header height
-        const headerOffset = 80;
-        scrollToElement(targetId, headerOffset);
-
-        // Update URL without causing a page jump
+        scrollToElement(targetId, 80);
         window.history.pushState(null, null, anchor.hash);
       }
     }

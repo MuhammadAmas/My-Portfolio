@@ -3,184 +3,184 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply bg-white text-black;
-    }
+  body {
+    @apply bg-white text-black;
+  }
 
-    .dark body {
-        @apply bg-gray-900 text-white;
-    }
+  .dark body {
+    @apply bg-gray-900 text-white;
+  }
 }
 
 /* Glass effect styles */
 .glass {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 }
 
 .dark .glass {
-    background: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Sidebar glass effect */
 .sidebar-glass {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 /* Light mode sidebar adjustments */
 .sidebar-glass {
-    background: rgba(235, 235, 235, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(235, 235, 235, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Dark mode sidebar adjustments */
 .dark .sidebar-glass {
-    background: rgba(30, 30, 40, 0.7);
-    border: 1px solid rgba(70, 70, 80, 0.4);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(30, 30, 40, 0.7);
+  border: 1px solid rgba(70, 70, 80, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .animate-fade-in {
-    animation: fadeIn 0.2s ease-in-out;
+  animation: fadeIn 0.2s ease-in-out;
 }
 
 /* Animation utilities */
 @keyframes in {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes out {
-    from {
-        opacity: 1;
-    }
+  from {
+    opacity: 1;
+  }
 
-    to {
-        opacity: 0;
-    }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes slide-in-from-top {
-    from {
-        transform: translateY(-0.5rem);
-    }
+  from {
+    transform: translateY(-0.5rem);
+  }
 
-    to {
-        transform: translateY(0);
-    }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-in-from-right {
-    from {
-        transform: translateX(0.5rem);
-    }
+  from {
+    transform: translateX(0.5rem);
+  }
 
-    to {
-        transform: translateX(0);
-    }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes slide-in-from-bottom {
-    from {
-        transform: translateY(0.5rem);
-    }
+  from {
+    transform: translateY(0.5rem);
+  }
 
-    to {
-        transform: translateY(0);
-    }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-in-from-left {
-    from {
-        transform: translateX(-0.5rem);
-    }
+  from {
+    transform: translateX(-0.5rem);
+  }
 
-    to {
-        transform: translateX(0);
-    }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes zoom-in {
-    from {
-        transform: scale(0.95);
-    }
+  from {
+    transform: scale(0.95);
+  }
 
-    to {
-        transform: scale(1);
-    }
+  to {
+    transform: scale(1);
+  }
 }
 
 @keyframes zoom-out {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(0.95);
-    }
+  to {
+    transform: scale(0.95);
+  }
 }
 
 .animate-in {
-    animation: in 0.2s ease-out;
+  animation: in 0.2s ease-out;
 }
 
 .animate-out {
-    animation: out 0.2s ease-in;
+  animation: out 0.2s ease-in;
 }
 
 .fade-in-0 {
-    animation: in 0.2s ease-out;
+  animation: in 0.2s ease-out;
 }
 
 .fade-out-0 {
-    animation: out 0.2s ease-in;
+  animation: out 0.2s ease-in;
 }
 
 .zoom-in-95 {
-    animation: zoom-in 0.2s ease-out;
+  animation: zoom-in 0.2s ease-out;
 }
 
 .zoom-out-95 {
-    animation: zoom-out 0.2s ease-in;
+  animation: zoom-out 0.2s ease-in;
 }
 
 .slide-in-from-top-2 {
-    animation: slide-in-from-top 0.2s ease-out;
+  animation: slide-in-from-top 0.2s ease-out;
 }
 
 .slide-in-from-right-2 {
-    animation: slide-in-from-right 0.2s ease-out;
+  animation: slide-in-from-right 0.2s ease-out;
 }
 
 .slide-in-from-bottom-2 {
-    animation: slide-in-from-bottom 0.2s ease-out;
+  animation: slide-in-from-bottom 0.2s ease-out;
 }
 
 .slide-in-from-left-2 {
-    animation: slide-in-from-left 0.2s ease-out;
+  animation: slide-in-from-left 0.2s ease-out;
 }
 
 /* Custom cursor styles - modified to not hide the default cursor */
@@ -189,42 +189,41 @@ a,
 button,
 .glass,
 .sidebar-glass {
-    /* Removed cursor: none */
+  /* Removed cursor: none */
 }
 
 input,
 textarea,
 select,
 [contenteditable] {
-    cursor: text;
+  cursor: text;
 }
 
 /* No longer needed since we're not hiding cursor */
 @media (hover: none) {
-
-    body,
-    a,
-    button,
-    .glass,
-    .sidebar-glass {
-        cursor: auto;
-    }
+  body,
+  a,
+  button,
+  .glass,
+  .sidebar-glass {
+    cursor: auto;
+  }
 }
 
 /* Add custom scrollbar for testimonials */
 .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(59, 130, 246, 0.3);
-    border-radius: 10px;
+  background-color: rgba(59, 130, 246, 0.3);
+  border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(59, 130, 246, 0.5);
+  background-color: rgba(59, 130, 246, 0.5);
 }

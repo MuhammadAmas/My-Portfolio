@@ -1,0 +1,76 @@
+{
+    "publications": [
+        {
+            "title": "JavaScript Solution: Overcoming Popup Blocking Issues in Browser",
+            "description": "Unlock the potential of popups! Discover an ingenious solution to overcome browser popup blocking and create a seamless user experience.",
+            "publishedDate": "Jul 16, 2023",
+            "readTime": "2 min read",
+            "link": "https://muhammadamas.medium.com/javascript-solution-overcoming-popup-blocking-issues-in-browser-ea1b7c21aaad",
+            "image": "/publications/popup.png"
+        },
+        {
+            "title": "How To Kill A Localhost Port",
+            "description": "Mastering the Art of Killing Localhost Ports: A Step-by-Step Guide...",
+            "publishedDate": "Mar 14, 2023",
+            "readTime": "2 min read",
+            "link": "https://medium.com/@muhammadamas/how-to-kill-a-localhost-port-329574bc2413",
+            "image": "/publications/localHost.png"
+        },
+        {
+            "title": "How I Passed The Google Cloud Digital Leader Exam",
+            "description": "Passing the Google Cloud Digital Leader exam is a rewarding experience, especially if you're aiming to solidify your understanding of cloud...",
+            "publishedDate": "Sep 22, 2024",
+            "readTime": "4 min read",
+            "link": "https://medium.com/@muhammadamas/how-i-passed-the-google-cloud-digital-leader-exam-e22a5a6c1429",
+            "image": "/publications/CDL.png"
+        },
+        {
+            "title": "What is Cloud Computing?",
+            "description": "Discover the essentials of cloud computing—on-demand access to resources, flexible service models, and deployment options.",
+            "publishedDate": "Aug 31, 2024",
+            "readTime": "4 min read",
+            "link": "https://muhammadamas.medium.com/what-is-cloud-computing-f70fdfb43314",
+            "image": "/publications/cloudComputing.png"
+        },
+        {
+            "title": "The Day CrowdStrike Broke the Internet: What Went Wrong?",
+            "description": "On Friday, Yesterday, panic spread around the world as the internet temporarily came to a stop. Systems crashed, essential services halted...",
+            "publishedDate": "Jul 20, 2024",
+            "readTime": "3 min read",
+            "link": "https://muhammadamas.medium.com/the-day-crowdstrike-broke-the-internet-what-went-wrong-443ccd180ef9",
+            "image": "/publications/crowdStrrike.png"
+        },
+        {
+            "title": "From Zero to One: Insights on Startups by Peter Thiel",
+            "description": "A startup is a team of people on a mission",
+            "publishedDate": "May 18, 2024",
+            "readTime": "2 min read",
+            "link": "https://muhammadamas.medium.com/from-zero-to-one-insights-on-startups-by-peter-thiel-56cdd3e53607",
+            "image": "/publications/zeroToOne.png"
+        },
+        {
+            "title": "The New World Order: Why Adaptability Is The New Normal",
+            "description": "The measure of intelligence is the ability to change as Einstein stated. Let's Embrace the new world order by cultivating this ability.",
+            "publishedDate": "Mar 11, 2023",
+            "readTime": "8 min read",
+            "link": "https://muhammadamas.medium.com/the-new-world-order-why-adaptability-is-the-new-normal-22723a6cbbe2",
+            "image": "/publications/worldorder.png"
+        },
+        {
+            "title": "WHY ARE HOMO SAPIENS ADDICTED TO SCREENS",
+            "description": "Screen addiction, also known as digital addiction or internet addiction, refers to the excessive use of electronic devices, such as...",
+            "publishedDate": "Dec 13, 2022",
+            "readTime": "8 min read",
+            "link": "https://muhammadamas.medium.com/why-are-homo-sapiens-addicted-to-screens-df3a135b36a",
+            "image": "/publications/homosapiens.png"
+        },
+        {
+            "title": "How To Publish Your Code On GitHub From VS Code",
+            "description": "Git:",
+            "publishedDate": "Oct 9, 2022",
+            "readTime": "2 min read",
+            "link": "https://muhammadamas.medium.com/how-to-publish-your-code-on-github-from-vs-code-7ada7205ed2e",
+            "image": "/publications/vsCode.png"
+        }
+    ]
+}

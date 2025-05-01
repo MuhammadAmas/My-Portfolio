@@ -1,10 +1,11 @@
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import Contact from "../components/Contact";
 import Testimonials from "../components/Testimonials";
 import EmploymentStatus from "../components/EmploymentStatus";
+import FeaturedPublications from "../components/FeaturedPublications";
+import FeaturedProjects from "../components/FeaturedProjects";
+import ContactSection from "../components/ContactSection";
 
 const HomePage = () => {
   return (
@@ -13,9 +14,10 @@ const HomePage = () => {
       <EmploymentStatus />
       <About />
       <Skills />
-      <Projects />
+      <FeaturedProjects />
+      <FeaturedPublications />
       <Testimonials />
-      <Contact />
+      <ContactSection />
     </>
   );
 };

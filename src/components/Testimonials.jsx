@@ -205,7 +205,7 @@ const Testimonials = () => {
           variants={fadeIn("down", 0.2)}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
             What People Say
           </h2>
           <div className="w-40 h-1 bg-blue-600 mx-auto mb-6"></div>

@@ -107,6 +107,25 @@ export const AnimatedElement = ({
 
 // Export a reusable component for card-like elements with hover animations
 export const AnimatedCard = ({ children, className = "", onClick }) => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+  // Simplified animation for mobile
+  if (isMobile) {
+    return (
+      <motion.div
+        className={className}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.3 }}
+        onClick={onClick}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  // Full animations for desktop
   return (
     <motion.div
       className={className}

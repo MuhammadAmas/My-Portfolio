@@ -93,8 +93,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/#projects"
-                  onClick={(e) => handleNavigation(e, "projects")}
+                  to="/projects"
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   Projects
@@ -110,8 +109,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/#contact"
-                  onClick={(e) => handleNavigation(e, "contact")}
+                  to="/contact"
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
                 >
                   Contact

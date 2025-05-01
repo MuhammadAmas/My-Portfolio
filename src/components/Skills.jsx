@@ -99,8 +99,9 @@ const Skills = () => {
             variants={fadeIn("down", 0.2)}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+              My SKills
+            </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               I've worked with a variety of technologies in the web development
               world. Here are the main areas I specialize in:

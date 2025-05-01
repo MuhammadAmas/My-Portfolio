@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -12,22 +11,42 @@ import { fadeIn, slideIn, zoomIn } from "../lib/animations";
 import { handleSmoothScroll } from "../lib/smoothScroll";
 
 const Hero = () => {
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Full Stack Developer";
+  const text = "Full Stack Developer";
 
-  useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setTypedText(fullText.substring(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 100);
+  const letterVariants = {
+    initial: {
+      opacity: 0.8,
+      textShadow: "0 0 0px rgba(37, 99, 235, 0)",
+    },
+    animate: {
+      opacity: [0.8, 1, 0.8],
+      textShadow: [
+        "0 0 0px rgba(37, 99, 235, 0)",
+        "0 0 15px rgba(37, 99, 235, 0.5)",
+        "0 0 0px rgba(37, 99, 235, 0)",
+      ],
+      color: [
+        "rgb(37, 99, 235)", // blue-600
+        "rgb(96, 165, 250)", // blue-400
+        "rgb(37, 99, 235)", // blue-600
+      ],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const containerVariants = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
     <section id="home" className="relative pt-36 pb-16 md:pt-40 md:pb-24">
@@ -60,10 +79,21 @@ const Hero = () => {
             Hi, I'm <span className="text-blue-600">Muhammad Amas</span>
           </h1>
           <div className="h-8 mb-6">
-            <h2 className="text-xl md:text-2xl font-medium">
-              {typedText}
-              <span className="animate-pulse"> |</span>
-            </h2>
+            <motion.h2
+              variants={containerVariants}
+              initial="initial"
+              animate="animate"
+              className="text-xl md:text-2xl font-medium"
+            >
+              <motion.span
+                variants={letterVariants}
+                initial="initial"
+                animate="animate"
+                className="bg-clip-text"
+              >
+                {text}
+              </motion.span>
+            </motion.h2>
           </div>
           <motion.p
             variants={fadeIn("up", 0.4)}

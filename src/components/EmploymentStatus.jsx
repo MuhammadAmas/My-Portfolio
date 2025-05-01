@@ -33,7 +33,7 @@ const EmploymentStatus = () => {
                 variants={fadeIn("up", 0.3)}
                 className="text-4xl md:text-5xl font-bold mb-2"
               >
-                Junior : {"{"}
+                FullStackDev: {"{"}
               </AnimatedElement>
 
               <AnimatedElement variants={fadeIn("up", 0.4)}>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1e293b"/>
+  <g fill="#475569">
+    <circle cx="400" cy="150" r="60"/>
+    <rect x="250" y="250" width="300" height="20" rx="10"/>
+    <rect x="300" y="290" width="200" height="20" rx="10"/>
+  </g>
+  <text x="400" y="160" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="24">
+    Article Image
+  </text>
+</svg> 
