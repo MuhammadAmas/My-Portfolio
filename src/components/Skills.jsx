@@ -100,7 +100,7 @@ const Skills = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
-              My SKills
+              My Skills
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               I've worked with a variety of technologies in the web development
