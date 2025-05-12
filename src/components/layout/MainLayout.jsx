@@ -12,16 +12,17 @@ const MainLayout = () => {
   }, []);
 
   return (
-    <>
+    <div className="min-h-screen bg-background">
       <ScrollToTop />
       <Sidebar />
-      <div className="md:pl-24 px-4 md:px-6 lg:px-8 pt-20 md:pt-0">
+      {/* Main content wrapper with padding to account for sidebar */}
+      <div className="md:pl-[6.5rem] px-4 md:px-6 lg:px-8">
         <main className="max-w-7xl mx-auto">
           <Outlet />
         </main>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

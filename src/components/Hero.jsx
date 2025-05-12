@@ -49,7 +49,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative pt-36 pb-16 md:pt-40 md:pb-24">
+    <section id="home" className="relative py-16 md:py-24">
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 to-white/80 dark:to-gray-900/80 -z-10"></div>
 
