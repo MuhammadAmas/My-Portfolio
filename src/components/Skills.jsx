@@ -34,6 +34,8 @@ const Skills = () => {
         { name: "Node.js", icon: "/skills-logo/nodejs-logo.png" },
         { name: "Express.js", icon: "/skills-logo/expressjs-logo.png" },
         { name: "Python", icon: "/skills-logo/python-logo.png" },
+        { name: "Nest.js", icon: "/skills-logo/nestjs-logo.png" },
+        { name: "GraphQL", icon: "/skills-logo/graphql-logo.png" },
       ],
     },
     {
@@ -41,10 +43,11 @@ const Skills = () => {
       icon: <Database className="h-6 w-6" />,
       skills: [
         { name: "MongoDB", icon: "/skills-logo/MongoDB-logo.png" },
-        { name: "Firebase", icon: "/skills-logo/firebase-logo.png" },
+        { name: "Firestore", icon: "/skills-logo/firestore.png" },
         { name: "MY SQL", icon: "/skills-logo/mysql-logo.png" },
         { name: "PostgreSQL", icon: "/skills-logo/PostgresSQL.png" },
         { name: "Redis", icon: "/skills-logo/Redis.png" },
+        { name: "Supabase", icon: "/skills-logo/supabase-logo.png" },
       ],
     },
     {
