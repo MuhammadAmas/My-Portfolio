@@ -7,7 +7,7 @@
 
 const projects = [
   {
-    id: 3,
+    id: "5",
     title: "Cloudnosys",
     description:
       "Full stack SaaS platform coverage with risk prioritization, compliance, SOAR remediation, misconfigurations, OS vulnerabilities, malware, context-aware alerts, and third-party integrations.",
@@ -49,7 +49,7 @@ const projects = [
     yearCompleted: 2024,
   },
   {
-    id: 2,
+    id: "3",
     title: "FuturConnect Dashboard",
     description:
       "Effortlessly manage your meeting rooms with a streamlined platform designed for maximum efficiency and convenience. Ideal for businesses looking to optimize their space and reduce scheduling conflicts.",
@@ -71,7 +71,43 @@ const projects = [
     yearCompleted: 2024,
   },
   {
-    id: 1,
+    id: "2",
+    title: "Chatbot and Authentication APIs",
+    description:
+      "Developed a real-time chatbot system using NestJS with GraphQL subscriptions to handle live, bidirectional communication. Integrated Supabase Auth for secure user authentication and access control, managing user-specific conversations within Supabase. Leveraged Supabase Realtime events to provide dynamic message updates, ensuring smooth, real-time interactions across multiple users. Designed efficient data models, optimized queries, and implemented best practices for scalability and reliability.",
+    image: "/projects-images/chatbotandauthapis.png",
+    technologies: [
+      "NestJS", "GraphQL", "Supabase"
+    ],
+    category: ["Backend"],
+    demoLink: "https://github.com/MuhammadAmas/nestjs-graphql-chatbot",
+    githubLink: "https://github.com/MuhammadAmas/nestjs-graphql-chatbot",
+    highlights: [
+      "Real-time chatbot system using NestJS with GraphQL subscriptions",
+      "Integrated Supabase Auth for secure user authentication and access control",
+    ],
+    yearCompleted: 2025,
+  },
+  {
+    id: "12",
+    title: "InsightEdu: AI-Powered EdTech Platform",
+    description:
+      "Firebase, Redis, and AgoraRTC, it supports secure authentication, live engagement insights, and automated analytics. Hosted on Vercel and Railway, it ensures scalability, accessibility, and a seamless user experience across devices.",
+    image: "/projects-images/acadist1.png",
+    technologies: [
+      "React.js", "Node.js", "Tailwind CSS", "TensorFlow", "Firebase", "Redis", "Agora.io"
+    ],
+    category: ["Full Stack"],
+    demoLink: "https://acadist-beta.vercel.app",
+    githubLink: "https://github.com/MuhammadAmas/Tutorly-Frontend",
+    highlights: [
+      "AI-driven personalized learning paths and real-time engagement insights",
+      "Secure authentication and seamless video interactions",
+    ],
+    yearCompleted: 2024,
+  },
+  {
+    id: "1",
     title: "Queuing Model",
     description:
       "To optimize a queueing system using mathematical models to minimize wait times, eliminate bottlenecks, and improve overall efficiency and customer satisfaction.",
