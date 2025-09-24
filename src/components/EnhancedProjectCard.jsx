@@ -125,54 +125,6 @@ const EnhancedProjectCard = ({ project, index }) => {
             }}
           />
 
-          {/* Floating action buttons */}
-          <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                variants={contentVariants}
-                className="absolute top-4 right-4 flex gap-2 z-30"
-              >
-                {(project.demoLink) && (
-                  <motion.div className="relative group/tooltip">
-                    <motion.a
-                      href={project.demoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
-                      variants={iconVariants}
-                      whileHover="hover"
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Eye className="w-4 h-4 text-white" />
-                    </motion.a>
-                    {/* Tooltip */}
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                      View Demo
-                    </div>
-                  </motion.div>
-                )}
-                {(project.githubLink) && (
-                  <motion.div className="relative group/tooltip">
-                    <motion.a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
-                      variants={iconVariants}
-                      whileHover="hover"
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Code className="w-4 h-4 text-white" />
-                    </motion.a>
-                    {/* Tooltip */}
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                      View Code
-                    </div>
-                  </motion.div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
 
           {/* Project type badge */}
           <div className="absolute bottom-4 left-4 z-30">
