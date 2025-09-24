@@ -131,31 +131,43 @@ const EnhancedProjectCard = ({ project, index }) => {
                 variants={contentVariants}
                 className="absolute top-4 right-4 flex gap-2 z-30"
               >
-                {project.liveUrl && (
-                  <motion.a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
-                    variants={iconVariants}
-                    whileHover="hover"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Eye className="w-4 h-4 text-white" />
-                  </motion.a>
+                {(project.demoLink) && (
+                  <motion.div className="relative group/tooltip">
+                    <motion.a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+                      variants={iconVariants}
+                      whileHover="hover"
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Eye className="w-4 h-4 text-white" />
+                    </motion.a>
+                    {/* Tooltip */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                      View Demo
+                    </div>
+                  </motion.div>
                 )}
-                {project.githubUrl && (
-                  <motion.a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
-                    variants={iconVariants}
-                    whileHover="hover"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Code className="w-4 h-4 text-white" />
-                  </motion.a>
+                {(project.githubLink) && (
+                  <motion.div className="relative group/tooltip">
+                    <motion.a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+                      variants={iconVariants}
+                      whileHover="hover"
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Code className="w-4 h-4 text-white" />
+                    </motion.a>
+                    {/* Tooltip */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                      View Code
+                    </div>
+                  </motion.div>
                 )}
               </motion.div>
             )}
@@ -228,6 +240,48 @@ const EnhancedProjectCard = ({ project, index }) => {
               )}
             </motion.div>
 
+            {/* Action Buttons */}
+            <div className="flex gap-2 mb-4">
+              {project.demoLink && (
+                <motion.a
+                  href={project.demoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="view"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium shadow-lg"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    backgroundColor: "#1d4ed8",
+                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  View Demo
+                </motion.a>
+              )}
+              {project.githubLink && (
+                <motion.a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="code"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-700 dark:bg-gray-600 text-white rounded-lg font-medium shadow-lg"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    backgroundColor: "#374151",
+                    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Github className="w-4 h-4" />
+                  View Code
+                </motion.a>
+              )}
+            </div>
+
             {/* Footer with date and links */}
             <div className="flex items-center justify-between pt-2 border-t border-white/10 dark:border-gray-700/50">
               {project.date && (
@@ -253,9 +307,9 @@ const EnhancedProjectCard = ({ project, index }) => {
                 )}
                 
                 <div className="flex gap-1">
-                  {project.liveUrl && (
+                  {(project.liveUrl || project.demoLink) && (
                     <motion.a
-                      href={project.liveUrl}
+                      href={project.liveUrl || project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-1 rounded hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors"
@@ -265,9 +319,9 @@ const EnhancedProjectCard = ({ project, index }) => {
                       <ExternalLink className="w-4 h-4" />
                     </motion.a>
                   )}
-                  {project.githubUrl && (
+                  {(project.githubUrl || project.githubLink) && (
                     <motion.a
-                      href={project.githubUrl}
+                      href={project.githubUrl || project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-1 rounded hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors"

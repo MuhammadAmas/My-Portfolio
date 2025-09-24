@@ -79,6 +79,18 @@ const CursorEffect = () => {
         });
       });
 
+      // Special hover for code buttons
+      document.querySelectorAll("[data-cursor='code']").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          setLinkHovered(true);
+          setHoverType("code");
+        });
+        el.addEventListener("mouseleave", () => {
+          setLinkHovered(false);
+          setHoverType("default");
+        });
+      });
+
       // Special hover for interactive elements
       document.querySelectorAll("[data-cursor='grab']").forEach((el) => {
         el.addEventListener("mouseenter", () => {
@@ -154,6 +166,7 @@ const CursorEffect = () => {
   const getHoverContent = () => {
     switch(hoverType) {
       case "view": return "VIEW";
+      case "code": return "CODE";
       case "grab": return "DRAG";
       case "button": return "CLICK";
       default: return "";
