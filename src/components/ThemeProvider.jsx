@@ -13,13 +13,22 @@ export function ThemeProvider({
   themes = ["light", "dark", "system"],
   ...props
 }) {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || defaultTheme
-  );
+  const [theme, setTheme] = useState(defaultTheme);
+  const [mounted, setMounted] = useState(false);
+
+  // Initialize theme from localStorage after component mounts
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme") || defaultTheme;
+    setTheme(storedTheme);
+    setMounted(true);
+  }, [defaultTheme]);
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    if (!mounted) return;
 
+    const root = window.document.documentElement;
+    
+    // Clear existing theme classes
     root.classList.remove("light", "dark");
 
     if (theme === "system" && enableSystem) {
@@ -33,7 +42,7 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme);
-  }, [theme, enableSystem]);
+  }, [theme, enableSystem, mounted]);
 
   const value = {
     theme,

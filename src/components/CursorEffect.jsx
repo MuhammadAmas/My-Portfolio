@@ -8,6 +8,8 @@ const CursorEffect = () => {
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [trail, setTrail] = useState([]);
+  const [hoverType, setHoverType] = useState("default");
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -29,6 +31,12 @@ const CursorEffect = () => {
 
     const onMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      
+      // Update trail positions
+      setTrail(prevTrail => {
+        const newTrail = [...prevTrail, { x: e.clientX, y: e.clientY, id: Date.now() }];
+        return newTrail.slice(-8); // Keep only last 8 positions
+      });
     };
 
     const onMouseEnter = () => {
@@ -49,8 +57,38 @@ const CursorEffect = () => {
 
     const handleLinkHoverEvents = () => {
       document.querySelectorAll("a, button").forEach((el) => {
-        el.addEventListener("mouseenter", () => setLinkHovered(true));
-        el.addEventListener("mouseleave", () => setLinkHovered(false));
+        el.addEventListener("mouseenter", () => {
+          setLinkHovered(true);
+          setHoverType("button");
+        });
+        el.addEventListener("mouseleave", () => {
+          setLinkHovered(false);
+          setHoverType("default");
+        });
+      });
+
+      // Special hover for project cards
+      document.querySelectorAll("[data-cursor='view']").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          setLinkHovered(true);
+          setHoverType("view");
+        });
+        el.addEventListener("mouseleave", () => {
+          setLinkHovered(false);
+          setHoverType("default");
+        });
+      });
+
+      // Special hover for interactive elements
+      document.querySelectorAll("[data-cursor='grab']").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          setLinkHovered(true);
+          setHoverType("grab");
+        });
+        el.addEventListener("mouseleave", () => {
+          setLinkHovered(false);
+          setHoverType("default");
+        });
       });
     };
 
@@ -95,6 +133,7 @@ const CursorEffect = () => {
       x: position.x - 16,
       y: position.y - 16,
       opacity: hidden ? 0 : 0.8,
+      scale: 1,
     },
     clicked: {
       x: position.x - 16,
@@ -108,72 +147,102 @@ const CursorEffect = () => {
       height: 64,
       width: 64,
       opacity: hidden ? 0 : 0.9,
+      scale: 1,
     },
   };
 
-  const cursorTrailVariants = {
-    default: {
-      x: position.x - 8,
-      y: position.y - 8,
-      opacity: hidden ? 0 : 0.6,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cursorTrail2Variants = {
-    default: {
-      x: position.x - 10,
-      y: position.y - 10,
-      opacity: hidden ? 0 : 0.4,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
+  const getHoverContent = () => {
+    switch(hoverType) {
+      case "view": return "VIEW";
+      case "grab": return "DRAG";
+      case "button": return "CLICK";
+      default: return "";
+    }
   };
 
   return (
     <>
+      {/* Main cursor */}
       <motion.div
-        className="cursor-dot fixed top-0 left-0 z-50 pointer-events-none"
+        className="cursor-dot fixed top-0 left-0 z-50 pointer-events-none flex items-center justify-center"
         variants={cursorVariants}
         animate={clicked ? "clicked" : linkHovered ? "hovered" : "default"}
         style={{
-          height: 32,
-          width: 32,
+          height: linkHovered ? 64 : 32,
+          width: linkHovered ? 64 : 32,
           borderRadius: "50%",
           backgroundColor: colors.primary,
-          filter: "blur(5px)",
-          mixBlendMode: "screen",
+          border: `2px solid ${colors.secondary}`,
+          boxShadow: `0 0 20px ${colors.primary}`,
+          backdropFilter: "blur(5px)",
         }}
-      />
+      >
+        {linkHovered && (
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="text-xs font-bold text-white"
+            style={{ 
+              textShadow: "0 0 10px rgba(255,255,255,0.8)",
+              fontSize: "8px"
+            }}
+          >
+            {getHoverContent()}
+          </motion.span>
+        )}
+      </motion.div>
+
+      {/* Cursor trail */}
+      {trail.map((point, index) => (
+        <motion.div
+          key={point.id}
+          className="cursor-trail-point fixed top-0 left-0 z-40 pointer-events-none"
+          initial={{
+            x: point.x - 4,
+            y: point.y - 4,
+            opacity: 0.6,
+            scale: 1
+          }}
+          animate={{
+            x: point.x - 4,
+            y: point.y - 4,
+            opacity: 0,
+            scale: 0.2
+          }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut"
+          }}
+          style={{
+            height: 8,
+            width: 8,
+            borderRadius: "50%",
+            backgroundColor: colors.tertiary,
+            filter: "blur(3px)",
+            mixBlendMode: "screen",
+          }}
+        />
+      ))}
+
+      {/* Outer glow effect */}
       <motion.div
-        className="cursor-trail fixed top-0 left-0 z-50 pointer-events-none"
-        variants={cursorTrailVariants}
-        animate="default"
-        style={{
-          height: 16,
-          width: 16,
-          borderRadius: "50%",
-          backgroundColor: colors.secondary,
-          filter: "blur(3px)",
-          mixBlendMode: "screen",
+        className="cursor-glow fixed top-0 left-0 z-30 pointer-events-none"
+        animate={{
+          x: position.x - 40,
+          y: position.y - 40,
+          opacity: hidden ? 0 : 0.3,
         }}
-      />
-      <motion.div
-        className="cursor-trail-2 fixed top-0 left-0 z-50 pointer-events-none"
-        variants={cursorTrail2Variants}
-        animate="default"
+        transition={{
+          duration: 0.6,
+          ease: "easeOut",
+        }}
         style={{
-          height: 20,
-          width: 20,
+          height: 80,
+          width: 80,
           borderRadius: "50%",
-          backgroundColor: colors.tertiary,
-          filter: "blur(4px)",
-          mixBlendMode: "screen",
+          backgroundColor: colors.primary,
+          filter: "blur(20px)",
         }}
       />
     </>

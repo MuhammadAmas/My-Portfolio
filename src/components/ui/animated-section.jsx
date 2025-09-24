@@ -6,10 +6,74 @@ export const AnimatedSection = ({
   className = "",
   staggerDelay = 0.05,
   initialDelay = 0.2,
+  effect = "fade",
 }) => {
+  const getVariants = () => {
+    switch (effect) {
+      case "slide-up":
+        return {
+          hidden: { opacity: 0, y: 60 },
+          show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.8,
+              ease: "easeOut",
+              staggerChildren: staggerDelay,
+              delayChildren: initialDelay,
+            },
+          },
+        };
+      case "slide-left":
+        return {
+          hidden: { opacity: 0, x: -60 },
+          show: {
+            opacity: 1,
+            x: 0,
+            transition: {
+              duration: 0.8,
+              ease: "easeOut",
+              staggerChildren: staggerDelay,
+              delayChildren: initialDelay,
+            },
+          },
+        };
+      case "zoom":
+        return {
+          hidden: { opacity: 0, scale: 0.8 },
+          show: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+              duration: 0.8,
+              ease: "easeOut",
+              staggerChildren: staggerDelay,
+              delayChildren: initialDelay,
+            },
+          },
+        };
+      case "reveal":
+        return {
+          hidden: { opacity: 0, clipPath: "inset(100% 0 0 0)" },
+          show: {
+            opacity: 1,
+            clipPath: "inset(0% 0 0 0)",
+            transition: {
+              duration: 1,
+              ease: "easeInOut",
+              staggerChildren: staggerDelay,
+              delayChildren: initialDelay,
+            },
+          },
+        };
+      default:
+        return staggerContainer(staggerDelay, initialDelay);
+    }
+  };
+
   return (
     <motion.section
-      variants={staggerContainer(staggerDelay, initialDelay)}
+      variants={getVariants()}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}

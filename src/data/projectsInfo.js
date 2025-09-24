@@ -123,7 +123,7 @@ const projects = [
     yearCompleted: 2023,
   },
   {
-    id: 2,
+    id: "6",
     title: "LangX Compiler",
     // description: `CLI based compiler for the Custom LangX programming language. It supports syntax and semantic analysis, lexical and parsing analysis.<br/><br/><b>#Undergraduate Project</b>`,
     description: `CLI based compiler for the custom LangX programming language. It includes robust syntax and semantic analysis, lexical scanning, and parsing logic.<br/><br/><b>#Undergraduate Project</b>`,

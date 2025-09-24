@@ -19,11 +19,25 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  transition: all 0.3s ease;
 }
 
 .dark .glass {
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+  transform: translateY(-2px);
+}
+
+.dark .glass:hover {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Sidebar glass effect */
@@ -226,4 +240,108 @@ select,
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Creative animated gradient backgrounds */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #3b82f6, #1d4ed8, #2563eb, #1e40af);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.dark .animated-gradient {
+  background: linear-gradient(-45deg, #1e40af, #3730a3, #312e81, #1e1b4b);
+  background-size: 400% 400%;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4); }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.dark .shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Text gradient animations */
+.text-gradient-animate {
+  background: linear-gradient(-45deg, #3b82f6, #1d4ed8, #8b5cf6, #06b6d4);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Morphing border animation */
+@keyframes morphBorder {
+  0%, 100% { border-radius: 20px 40px 30px 50px; }
+  25% { border-radius: 50px 20px 40px 30px; }
+  50% { border-radius: 30px 50px 20px 40px; }
+  75% { border-radius: 40px 30px 50px 20px; }
+}
+
+.morph-border {
+  animation: morphBorder 8s ease-in-out infinite;
+}
+
+/* Enhanced theme transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, 
+              box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: inherit;
+}
+
+.dark ::selection {
+  background: rgba(147, 197, 253, 0.3);
+}
+
+/* Magnetic hover effect */
+@keyframes magnetic {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(2px, -2px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  75% { transform: translate(-3px, -1px) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.magnetic-hover:hover {
+  animation: magnetic 0.3s ease-in-out;
 }

@@ -13,6 +13,20 @@
 
 <body>
   <div id="root"></div>
+  <script>
+    // Prevent flash of wrong theme on page load
+    (function() {
+      const theme = localStorage.getItem('theme') || 'system';
+      const root = document.documentElement;
+      
+      if (theme === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        root.classList.add(systemTheme);
+      } else {
+        root.classList.add(theme);
+      }
+    })();
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

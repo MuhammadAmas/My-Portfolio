@@ -51,7 +51,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative py-16 md:py-24">
       {/* Background with overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 to-white/80 dark:to-gray-900/80 -z-10"></div>
+      <div className="absolute -z-10"></div>
 
       {/* Decorative Elements */}
       <AnimatedDecoration
@@ -67,7 +67,7 @@ const Hero = () => {
         animation="float"
       />
 
-      <div className="container px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="container px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
         <motion.div
           variants={fadeIn("right", 0.3)}
           initial="hidden"
@@ -76,7 +76,7 @@ const Hero = () => {
           className="text-center lg:text-left"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Hi, I'm <span className="text-blue-600">Muhammad Amas</span>
+            Hi, I'm <span className="text-gradient-animate">Muhammad Amas</span>
           </h1>
           <div className="h-8 mb-6">
             <motion.h2
@@ -113,7 +113,7 @@ const Hero = () => {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
-            <Button asChild size="lg" className="overflow-hidden relative">
+            <Button asChild size="lg" className="overflow-hidden relative animated-gradient magnetic-hover">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
@@ -121,18 +121,17 @@ const Hero = () => {
                 onClick={(e) => handleSmoothScroll(e, "contact")}
               >
                 <motion.div
-                  variants={slideIn("left", "tween", 0, 0.5)}
-                  className="absolute inset-0 bg-blue-700 -z-10 opacity-0"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 -z-10 opacity-0"
                   whileHover={{ opacity: 1 }}
                 />
-                Get in Touch
+                <span className="relative z-10">Get in Touch</span>
               </motion.a>
             </Button>
             <Button
               variant="outline"
               size="lg"
               asChild
-              className="overflow-hidden relative"
+              className="overflow-hidden relative pulse-glow magnetic-hover"
             >
               <motion.a
                 href="/Muhammad Amas Resume.pdf"
@@ -142,8 +141,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  variants={slideIn("right", "tween", 0, 0.5)}
-                  className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                  className="absolute inset-0 shimmer -z-10 opacity-0"
                   whileHover={{ opacity: 1 }}
                 />
                 <FileText className="mr-2 h-4 w-4" /> Resume

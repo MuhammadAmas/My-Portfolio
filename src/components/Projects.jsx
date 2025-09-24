@@ -159,7 +159,7 @@ const Projects = () => {
         >
           {displayedProjects.map((project, index) => (
             <AnimatedCard
-              key={project.id}
+              key={`${activeCategory}-${project.id}-${index}`}
               variants={fadeIn(
                 index === 0
                   ? "right"
