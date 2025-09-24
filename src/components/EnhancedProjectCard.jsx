@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Calendar, Eye, Code, Star } from "lucide-react";
+import { Button } from "./ui/button";
 
 const EnhancedProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +35,7 @@ const EnhancedProjectCard = ({ project, index }) => {
 
   const overlayVariants = {
     initial: { opacity: 0 },
-    hover: { 
+    hover: {
       opacity: 1,
       transition: { duration: 0.3 }
     },
@@ -42,25 +43,25 @@ const EnhancedProjectCard = ({ project, index }) => {
 
   const contentVariants = {
     initial: { y: 20, opacity: 0 },
-    hover: { 
-      y: 0, 
+    hover: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.3,
-        delay: 0.1 
+        delay: 0.1
       }
     },
   };
 
   const iconVariants = {
     initial: { scale: 1, rotate: 0 },
-    hover: { 
-      scale: 1.1, 
+    hover: {
+      scale: 1.1,
       rotate: 5,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 400,
-        damping: 10 
+        damping: 10
       }
     },
   };
@@ -108,11 +109,11 @@ const EnhancedProjectCard = ({ project, index }) => {
 
         {/* Image container */}
         <div className="aspect-video relative overflow-hidden">
-          <motion.div 
+          <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20"
             variants={overlayVariants}
           />
-          
+
           <motion.img
             src={project.image}
             alt={project.title}
@@ -197,14 +198,14 @@ const EnhancedProjectCard = ({ project, index }) => {
           />
 
           <div className="relative z-10">
-            <motion.h3 
+            <motion.h3
               className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
               layout
             >
               {project.title}
             </motion.h3>
-            
-            <motion.p 
+
+            <motion.p
               className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-1"
               layout
             >
@@ -212,7 +213,7 @@ const EnhancedProjectCard = ({ project, index }) => {
             </motion.p>
 
             {/* Tech stack */}
-            <motion.div 
+            <motion.div
               className="flex flex-wrap gap-2 mb-4"
               layout
             >
@@ -243,95 +244,70 @@ const EnhancedProjectCard = ({ project, index }) => {
             {/* Action Buttons */}
             <div className="flex gap-2 mb-4">
               {project.demoLink && (
-                <motion.a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="view"
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium shadow-lg"
-                  whileHover={{ 
-                    scale: 1.02, 
-                    backgroundColor: "#1d4ed8",
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="relative overflow-hidden"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  View Demo
-                </motion.a>
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                      whileHover={{ opacity: 1 }}
+                    />
+                    <ExternalLink className="mr-2 h-4 w-4" /> Demo
+                  </a>
+                </Button>
               )}
               {project.githubLink && (
-                <motion.a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="code"
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-700 dark:bg-gray-600 text-white rounded-lg font-medium shadow-lg"
-                  whileHover={{ 
-                    scale: 1.02, 
-                    backgroundColor: "#374151",
-                    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="relative overflow-hidden"
                 >
-                  <Github className="w-4 h-4" />
-                  View Code
-                </motion.a>
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                      whileHover={{ opacity: 1 }}
+                    />
+                    <ExternalLink className="mr-2 h-4 w-4" /> Code
+                  </a>
+                </Button>
               )}
             </div>
 
-            {/* Footer with date and links */}
-            <div className="flex items-center justify-between pt-2 border-t border-white/10 dark:border-gray-700/50">
+            {/* Footer with date and featured star */}
+            <div className="flex items-center justify-between pt-2 dark:border-gray-700/50">
               {project.date && (
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Calendar className="w-4 h-4" />
                   {project.date}
                 </div>
               )}
-              
+
               <div className="flex items-center gap-2">
                 {project.featured && (
                   <motion.div
                     initial={{ rotate: 0 }}
                     animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity, 
-                      repeatDelay: 3 
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3
                     }}
                   >
                     <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                   </motion.div>
                 )}
-                
-                <div className="flex gap-1">
-                  {(project.liveUrl || project.demoLink) && (
-                    <motion.a
-                      href={project.liveUrl || project.demoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1 rounded hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </motion.a>
-                  )}
-                  {(project.githubUrl || project.githubLink) && (
-                    <motion.a
-                      href={project.githubUrl || project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1 rounded hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Github className="w-4 h-4" />
-                    </motion.a>
-                  )}
-                </div>
               </div>
             </div>
           </div>
