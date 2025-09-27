@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
@@ -11,6 +11,7 @@ const CursorEffect = () => {
   const [trail, setTrail] = useState([]);
   const [hoverType, setHoverType] = useState("default");
   const { theme } = useTheme();
+  const trailIdCounter = useRef(0);
 
   useEffect(() => {
     const addEventListeners = () => {
@@ -31,10 +32,18 @@ const CursorEffect = () => {
 
     const onMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
-      
-      // Update trail positions
-      setTrail(prevTrail => {
-        const newTrail = [...prevTrail, { x: e.clientX, y: e.clientY, id: Date.now() }];
+
+      // Update trail positions with unique IDs
+      setTrail((prevTrail) => {
+        trailIdCounter.current += 1;
+        const newTrail = [
+          ...prevTrail,
+          {
+            x: e.clientX,
+            y: e.clientY,
+            id: `trail-${trailIdCounter.current}`,
+          },
+        ];
         return newTrail.slice(-8); // Keep only last 8 positions
       });
     };
@@ -164,12 +173,17 @@ const CursorEffect = () => {
   };
 
   const getHoverContent = () => {
-    switch(hoverType) {
-      case "view": return "VIEW";
-      case "code": return "CODE";
-      case "grab": return "DRAG";
-      case "button": return "CLICK";
-      default: return "";
+    switch (hoverType) {
+      case "view":
+        return "VIEW";
+      case "code":
+        return "CODE";
+      case "grab":
+        return "DRAG";
+      case "button":
+        return "CLICK";
+      default:
+        return "";
     }
   };
 
@@ -196,9 +210,9 @@ const CursorEffect = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             className="text-xs font-bold text-white"
-            style={{ 
+            style={{
               textShadow: "0 0 10px rgba(255,255,255,0.8)",
-              fontSize: "8px"
+              fontSize: "8px",
             }}
           >
             {getHoverContent()}
@@ -215,17 +229,17 @@ const CursorEffect = () => {
             x: point.x - 4,
             y: point.y - 4,
             opacity: 0.6,
-            scale: 1
+            scale: 1,
           }}
           animate={{
             x: point.x - 4,
             y: point.y - 4,
             opacity: 0,
-            scale: 0.2
+            scale: 0.2,
           }}
           transition={{
             duration: 0.8,
-            ease: "easeOut"
+            ease: "easeOut",
           }}
           style={{
             height: 8,

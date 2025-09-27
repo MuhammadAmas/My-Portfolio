@@ -11,6 +11,7 @@ import {
   CardDescription,
 } from "./ui/card";
 import { fadeIn } from "../lib/animations";
+import { trackContactFormEvent } from "../lib/analytics";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -34,6 +35,9 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Track form submission attempt
+    trackContactFormEvent("form_submit_attempt", "email_form");
+
     try {
       const formSubmitUrl = "https://formsubmit.co/amaswaseem@gmail.com";
       const formSubmitData = new FormData(e.target);
@@ -50,6 +54,9 @@ const Contact = () => {
         setSubmitted(true);
         setFormData({ name: "", email: "", subject: "", message: "" });
         setTimeout(() => setSubmitted(false), 5000);
+
+        // Track successful form submission
+        trackContactFormEvent("form_submit_success", "email_form");
       } else {
         throw new Error("Failed to submit form");
       }
@@ -57,6 +64,9 @@ const Contact = () => {
       console.error("Error submitting form:", error);
       setIsSubmitting(false);
       alert("Failed to send message. Please try again later.");
+
+      // Track failed form submission
+      trackContactFormEvent("form_submit_failed", "email_form");
     }
   };
 

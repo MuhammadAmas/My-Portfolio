@@ -8,6 +8,8 @@ import HomePage from "./pages/HomePage";
 import PublicationsPage from "./pages/PublicationsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
+// Initialize Firebase Analytics
+import "./lib/firebase.js";
 
 const router = createBrowserRouter([
   {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Calendar, Eye, Code, Star } from "lucide-react";
 import { Button } from "./ui/button";
+import { trackProjectView, trackExternalLink } from "../lib/analytics";
 
 const EnhancedProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -37,7 +38,7 @@ const EnhancedProjectCard = ({ project, index }) => {
     initial: { opacity: 0 },
     hover: {
       opacity: 1,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.3 },
     },
   };
 
@@ -48,8 +49,8 @@ const EnhancedProjectCard = ({ project, index }) => {
       opacity: 1,
       transition: {
         duration: 0.3,
-        delay: 0.1
-      }
+        delay: 0.1,
+      },
     },
   };
 
@@ -61,8 +62,8 @@ const EnhancedProjectCard = ({ project, index }) => {
       transition: {
         type: "spring",
         stiffness: 400,
-        damping: 10
-      }
+        damping: 10,
+      },
     },
   };
 
@@ -101,7 +102,8 @@ const EnhancedProjectCard = ({ project, index }) => {
             variants={shimmerVariants}
             className="absolute inset-0 w-full h-full opacity-20"
             style={{
-              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
               transform: "skewX(-20deg)",
             }}
           />
@@ -124,7 +126,6 @@ const EnhancedProjectCard = ({ project, index }) => {
               e.target.src = "/api/placeholder/400/300";
             }}
           />
-
 
           {/* Project type badge */}
           <div className="absolute bottom-4 left-4 z-30">
@@ -165,17 +166,14 @@ const EnhancedProjectCard = ({ project, index }) => {
             </motion.p>
 
             {/* Tech stack */}
-            <motion.div
-              className="flex flex-wrap gap-2 mb-4"
-              layout
-            >
+            <motion.div className="flex flex-wrap gap-2 mb-4" layout>
               {project.technologies?.slice(0, 4).map((tech, techIndex) => (
                 <motion.span
                   key={tech}
                   className="px-2 py-1 text-xs bg-blue-100/80 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-md"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: (index * 0.1) + (techIndex * 0.05) }}
+                  transition={{ delay: index * 0.1 + techIndex * 0.05 }}
                   whileHover={{ scale: 1.05 }}
                 >
                   {tech}
@@ -186,7 +184,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                   className="px-2 py-1 text-xs bg-gray-100/80 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 rounded-md"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: (index * 0.1) + 0.2 }}
+                  transition={{ delay: index * 0.1 + 0.2 }}
                 >
                   +{project.technologies.length - 4}
                 </motion.span>
@@ -206,6 +204,13 @@ const EnhancedProjectCard = ({ project, index }) => {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      trackProjectView(project.title);
+                      trackExternalLink(
+                        project.demoLink,
+                        `${project.title} Demo`
+                      );
+                    }}
                   >
                     <motion.div
                       className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
@@ -226,6 +231,13 @@ const EnhancedProjectCard = ({ project, index }) => {
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      trackProjectView(project.title);
+                      trackExternalLink(
+                        project.githubLink,
+                        `${project.title} GitHub`
+                      );
+                    }}
                   >
                     <motion.div
                       className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
@@ -254,7 +266,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                     transition={{
                       duration: 2,
                       repeat: Infinity,
-                      repeatDelay: 3
+                      repeatDelay: 3,
                     }}
                   >
                     <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
@@ -269,7 +281,8 @@ const EnhancedProjectCard = ({ project, index }) => {
         <motion.div
           className="absolute inset-0 rounded-xl pointer-events-none"
           style={{
-            background: "linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.2), transparent)",
+            background:
+              "linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.2), transparent)",
             padding: "1px",
           }}
           initial={{ opacity: 0 }}

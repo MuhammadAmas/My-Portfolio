@@ -9,6 +9,12 @@ import {
 } from "./ui/animated-section";
 import { fadeIn, slideIn, zoomIn } from "../lib/animations";
 import { handleSmoothScroll } from "../lib/smoothScroll";
+import {
+  trackButtonClick,
+  trackExternalLink,
+  trackResumeDownload,
+} from "../lib/analytics";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const text = "Full Stack Developer";
@@ -113,20 +119,15 @@ const Hero = () => {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
-            <Button asChild size="lg" className="overflow-hidden relative animated-gradient magnetic-hover">
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={(e) => handleSmoothScroll(e, "contact")}
+            <Link to="/contact">
+              <Button
+                asChild
+                size="lg"
+                className="overflow-hidden relative animated-gradient magnetic-hover"
               >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 -z-10 opacity-0"
-                  whileHover={{ opacity: 1 }}
-                />
                 <span className="relative z-10">Get in Touch</span>
-              </motion.a>
-            </Button>
+              </Button>
+            </Link>
             <Button
               variant="outline"
               size="lg"
@@ -139,6 +140,7 @@ const Hero = () => {
                 // rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => trackResumeDownload()}
               >
                 <motion.div
                   className="absolute inset-0 shimmer -z-10 opacity-0"
@@ -163,6 +165,12 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
+                  onClick={() =>
+                    trackExternalLink(
+                      "https://github.com/muhammadamas",
+                      "GitHub Profile"
+                    )
+                  }
                 >
                   <Github className="h-5 w-5" />
                   <motion.div
@@ -179,6 +187,12 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
+                  onClick={() =>
+                    trackExternalLink(
+                      "https://linkedin.com/in/amaswaseem",
+                      "LinkedIn Profile"
+                    )
+                  }
                 >
                   <Linkedin className="h-5 w-5" />
                   <motion.div

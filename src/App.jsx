@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "./components/ThemeProvider";
+import AnalyticsTracker from "./components/AnalyticsTracker";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,6 +64,7 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            <AnalyticsTracker />
             <Outlet />
           </motion.div>
         )}
