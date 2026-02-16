@@ -39,17 +39,31 @@ const Contact = () => {
     trackContactFormEvent("form_submit_attempt", "email_form");
 
     try {
-      const formSubmitUrl = "https://formsubmit.co/amaswaseem@gmail.com";
-      const formSubmitData = new FormData(e.target);
-      formSubmitData.append("_captcha", "false");
-      formSubmitData.append("_redirect", "false");
+      // Using FormSubmit.co AJAX endpoint
+      const formSubmitUrl = "https://formsubmit.co/ajax/amaswaseem@gmail.com";
+
+      const submitData = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        _subject: `[Portfolio Contact] ${formData.subject} - from ${formData.name}`,
+        _captcha: "false",
+        _template: "table",
+      };
 
       const response = await fetch(formSubmitUrl, {
         method: "POST",
-        body: formSubmitData,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(submitData),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setIsSubmitting(false);
         setSubmitted(true);
         setFormData({ name: "", email: "", subject: "", message: "" });

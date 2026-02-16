@@ -17,15 +17,15 @@ const MainLayout = () => {
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Background effects */}
       <FloatingParticles density={30} speed={0.8} />
-      
+
       {/* Interactive cursor */}
       <CursorEffect />
-      
+
       <ScrollToTop />
-      <Sidebar  />
-      
+      <Sidebar />
+
       {/* Main content wrapper with padding to account for sidebar */}
-      <div className="md:pl-[6.5rem] px-4 md:px-6 lg:px-8 relative z-10">
+      <div className="md:pl-[6.5rem] px-4 md:px-6 lg:px-8 relative z-0 pt-20 md:pt-0">
         <main className="max-w-7xl mx-auto">
           <Outlet />
         </main>

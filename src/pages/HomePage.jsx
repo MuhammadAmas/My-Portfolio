@@ -7,6 +7,7 @@ import EmploymentStatus from "../components/EmploymentStatus";
 import FeaturedPublications from "../components/FeaturedPublications";
 import FeaturedProjects from "../components/FeaturedProjects";
 import ContactSection from "../components/ContactSection";
+import ProblemSolverCTA from "../components/ProblemSolverCTA";
 import { logPageView } from "../lib/analytics";
 
 const HomePage = () => {
@@ -19,9 +20,10 @@ const HomePage = () => {
       <Hero />
       <EmploymentStatus />
       <About />
-      <Skills />
+      <ProblemSolverCTA />
       <FeaturedProjects />
       <FeaturedPublications />
+      <Skills />
       <Testimonials />
       <ContactSection />
     </>

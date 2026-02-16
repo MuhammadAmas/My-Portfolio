@@ -10,6 +10,7 @@ import {
   FolderKanban,
   Mail,
   BookOpen,
+  Lightbulb,
 } from "lucide-react";
 import {
   Tooltip,
@@ -59,6 +60,13 @@ const Sidebar = () => {
       id: "publications",
       path: "/publications",
       icon: <BookOpen className="h-5 w-5" />,
+    },
+    {
+      name: "Improve",
+      href: "#improve",
+      id: "improve",
+      path: "/improve",
+      icon: <Lightbulb className="h-5 w-5" />,
     },
     {
       name: "Contact",

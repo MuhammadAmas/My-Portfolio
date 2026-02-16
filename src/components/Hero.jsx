@@ -123,7 +123,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="overflow-hidden relative animated-gradient magnetic-hover"
+                className="overflow-hidden relative animated-gradient magnetic-hover w-full"
               >
                 <span className="relative z-10">Get in Touch</span>
               </Button>
@@ -168,7 +168,7 @@ const Hero = () => {
                   onClick={() =>
                     trackExternalLink(
                       "https://github.com/muhammadamas",
-                      "GitHub Profile"
+                      "GitHub Profile",
                     )
                   }
                 >
@@ -190,7 +190,7 @@ const Hero = () => {
                   onClick={() =>
                     trackExternalLink(
                       "https://linkedin.com/in/amaswaseem",
-                      "LinkedIn Profile"
+                      "LinkedIn Profile",
                     )
                   }
                 >

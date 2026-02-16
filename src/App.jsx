@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "./components/ThemeProvider";
 import AnalyticsTracker from "./components/AnalyticsTracker";
+import GlassBackground from "./components/GlassBackground";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -59,11 +60,12 @@ function App() {
         ) : (
           <motion.div
             key="content"
-            className="min-h-screen bg-white dark:bg-gray-900"
+            className="min-h-screen bg-transparent"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            <GlassBackground />
             <AnalyticsTracker />
             <Outlet />
           </motion.div>

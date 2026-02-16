@@ -84,6 +84,14 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  to="/improve"
+                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
+                >
+                  Improve
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/#skills"
                   onClick={(e) => handleNavigation(e, "skills")}
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors"
