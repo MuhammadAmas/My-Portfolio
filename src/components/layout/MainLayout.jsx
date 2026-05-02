@@ -16,7 +16,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Background effects */}
-  <FloatingParticles density={20} speed={0.7} />
+      <FloatingParticles density={20} speed={0.7} />
 
       {/* Interactive cursor */}
       <CursorEffect />

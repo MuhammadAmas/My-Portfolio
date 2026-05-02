@@ -13,7 +13,7 @@ const CursorParticles = () => {
     let lastEmitTime = 0;
     let isActive = true;
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     const maxParticles = 120;
 

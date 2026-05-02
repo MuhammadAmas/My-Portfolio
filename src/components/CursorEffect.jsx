@@ -142,7 +142,7 @@ const CursorEffect = () => {
   // Skip cursor effect if device doesn't support hover (like touch devices)
   if (typeof window !== "undefined" && window.matchMedia) {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     const hoverNone = window.matchMedia("(hover: none)").matches;
 

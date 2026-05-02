@@ -79,25 +79,29 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
       ctx.save();
       ctx.globalAlpha = this.opacity;
       ctx.beginPath();
-      
+
       // Create gradient for particle
       const gradient = ctx.createRadialGradient(
-        this.x, this.y, 0,
-        this.x, this.y, this.size * 3
+        this.x,
+        this.y,
+        0,
+        this.x,
+        this.y,
+        this.size * 3,
       );
       gradient.addColorStop(0, colors.center);
       gradient.addColorStop(0.4, colors.middle);
       gradient.addColorStop(1, colors.outer);
-      
+
       ctx.fillStyle = gradient;
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
-      
+
       // Add a subtle glow
       ctx.shadowBlur = 10;
       ctx.shadowColor = colors.glow;
       ctx.fill();
-      
+
       ctx.restore();
     }
   }
@@ -116,7 +120,7 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
     window.addEventListener("resize", resizeCanvas);
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     const isSmallScreen = window.innerWidth <= 768;
     const isLowPower = prefersReducedMotion || isSmallScreen;
@@ -208,9 +212,10 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < 120) {
-          const opacity = (120 - distance) / 120 * 0.5;
+          const opacity = ((120 - distance) / 120) * 0.5;
           ctx.save();
-          ctx.globalAlpha = opacity * Math.min(particles[i].opacity, particles[j].opacity);
+          ctx.globalAlpha =
+            opacity * Math.min(particles[i].opacity, particles[j].opacity);
           ctx.strokeStyle = colors.connection;
           ctx.lineWidth = 0.5;
           ctx.beginPath();
