@@ -72,7 +72,7 @@ const ProblemSolverCTA = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 justify-center lg:justify-start text-xs sm:text-sm text-blue-100"
+                className="flex sm:flex-row flex-wrap gap-2 sm:gap-4 justify-center lg:justify-start text-xs sm:text-sm text-blue-100"
               >
                 <span className="flex items-center justify-center sm:justify-start gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-400" />

@@ -10,6 +10,12 @@ const CursorParticles = () => {
     const ctx = canvas.getContext("2d");
     let particles = [];
     let animationFrameId;
+    let lastEmitTime = 0;
+    let isActive = true;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const maxParticles = 120;
 
     // Resize canvas to window size
     function setupCanvas() {
@@ -22,9 +28,13 @@ const CursorParticles = () => {
 
     // Track mouse movement and add particles
     function handleMouseMove(e) {
+      if (prefersReducedMotion || !isActive) return;
+      const now = performance.now();
+      if (now - lastEmitTime < 32) return;
+      lastEmitTime = now;
       const x = e.clientX;
       const y = e.clientY;
-      addParticles(6, x, y); // Increased from 5 to 6 particles
+      addParticles(3, x, y);
     }
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -79,6 +89,9 @@ const CursorParticles = () => {
       for (let i = 0; i < count; i++) {
         particles.push(new Particle(x, y));
       }
+      if (particles.length > maxParticles) {
+        particles.splice(0, particles.length - maxParticles);
+      }
     }
 
     // Animation loop
@@ -109,9 +122,16 @@ const CursorParticles = () => {
     // Set blend mode based on theme
     canvas.style.mixBlendMode = theme === "dark" ? "lighten" : "multiply";
 
+    const handleVisibilityChange = () => {
+      isActive = document.visibilityState === "visible";
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", setupCanvas);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       cancelAnimationFrame(animationFrameId);
     };
   }, [theme]); // Re-initialize when theme changes

@@ -12,6 +12,9 @@ const CursorEffect = () => {
   const [hoverType, setHoverType] = useState("default");
   const { theme } = useTheme();
   const trailIdCounter = useRef(0);
+  const positionRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef(null);
+  const lastTrailTimeRef = useRef(0);
 
   useEffect(() => {
     const addEventListeners = () => {
@@ -31,21 +34,32 @@ const CursorEffect = () => {
     };
 
     const onMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      positionRef.current = { x: e.clientX, y: e.clientY };
 
-      // Update trail positions with unique IDs
-      setTrail((prevTrail) => {
-        trailIdCounter.current += 1;
-        const newTrail = [
-          ...prevTrail,
-          {
-            x: e.clientX,
-            y: e.clientY,
-            id: `trail-${trailIdCounter.current}`,
-          },
-        ];
-        return newTrail.slice(-8); // Keep only last 8 positions
-      });
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(() => {
+          setPosition(positionRef.current);
+
+          const now = performance.now();
+          if (now - lastTrailTimeRef.current > 24) {
+            lastTrailTimeRef.current = now;
+            setTrail((prevTrail) => {
+              trailIdCounter.current += 1;
+              const newTrail = [
+                ...prevTrail,
+                {
+                  x: positionRef.current.x,
+                  y: positionRef.current.y,
+                  id: `trail-${trailIdCounter.current}`,
+                },
+              ];
+              return newTrail.slice(-4); // Keep only last 4 positions
+            });
+          }
+
+          rafRef.current = null;
+        });
+      }
     };
 
     const onMouseEnter = () => {
@@ -118,16 +132,23 @@ const CursorEffect = () => {
 
     return () => {
       removeEventListeners();
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
     };
   }, []);
 
   // Skip cursor effect if device doesn't support hover (like touch devices)
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(hover: none)").matches
-  ) {
-    return null;
+  if (typeof window !== "undefined" && window.matchMedia) {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const hoverNone = window.matchMedia("(hover: none)").matches;
+
+    if (prefersReducedMotion || hoverNone) {
+      return null;
+    }
   }
 
   // Colors based on theme - enhanced for better visibility

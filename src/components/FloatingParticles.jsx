@@ -8,6 +8,7 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
   const { theme } = useTheme();
   const animationRef = useRef();
   const mouseRef = useRef({ x: 0, y: 0 });
+  const lastFrameTimeRef = useRef(0);
 
   // Particle class
   class Particle {
@@ -114,9 +115,18 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const isSmallScreen = window.innerWidth <= 768;
+    const isLowPower = prefersReducedMotion || isSmallScreen;
+    const targetFps = isLowPower ? 30 : 60;
+    const frameInterval = 1000 / targetFps;
+
     // Initialize particles
     const particleArray = [];
-    for (let i = 0; i < density; i++) {
+    const effectiveDensity = isLowPower ? Math.min(15, density) : density;
+    for (let i = 0; i < effectiveDensity; i++) {
       particleArray.push(new Particle(canvas));
     }
     setParticles(particleArray);
@@ -129,10 +139,18 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
       };
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    if (!prefersReducedMotion) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     // Animation loop
-    const animate = () => {
+    const animate = (time) => {
+      if (time - lastFrameTimeRef.current < frameInterval) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTimeRef.current = time;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Get theme colors
@@ -143,13 +161,15 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
         particle.draw(ctx, colors);
       });
 
-      // Draw connections between nearby particles
-      drawConnections(ctx, particleArray, colors);
+      // Draw connections between nearby particles (skip on low power)
+      if (!isLowPower) {
+        drawConnections(ctx, particleArray, colors);
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
