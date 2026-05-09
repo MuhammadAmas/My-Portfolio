@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
-import { Monitor, Database, Wrench, Server, Cloud } from "lucide-react";
+import { Monitor, Database, Server, Cloud } from "lucide-react";
 import { useRef } from "react";
 import { fadeIn, staggerContainer } from "../lib/animations";
 import { AnimatedElement, AnimatedSection } from "./ui/animated-section";
@@ -10,11 +10,15 @@ const Skills = () => {
     {
       name: "Frontend",
       icon: <Monitor className="h-6 w-6" />,
+      colSpan: "md:col-span-4",
+      headerColor: "text-blue-500 dark:text-blue-400",
+      iconBg: "bg-blue-500/10 text-blue-500 dark:text-blue-400",
+      chipBase: "border-blue-500/20 bg-blue-500/5",
+      chipHover: "hover:border-blue-500/55 hover:bg-blue-500/12",
+      separator: "from-blue-500/50",
+      glowColor: "rgba(59, 130, 246, 0.22)",
       skills: [
-        {
-          name: "JavaScript",
-          icon: "/skills-logo/javascript-logo.png",
-        },
+        { name: "JavaScript", icon: "/skills-logo/javascript-logo.png" },
         { name: "TypeScript", icon: "/skills-logo/typescript-logo.png" },
         { name: "React.js", icon: "/skills-logo/react-logo.png" },
         { name: "Next.js", icon: "/skills-logo/Next.js.png" },
@@ -30,6 +34,13 @@ const Skills = () => {
     {
       name: "Backend",
       icon: <Server className="h-6 w-6" />,
+      colSpan: "md:col-span-2",
+      headerColor: "text-emerald-500 dark:text-emerald-400",
+      iconBg: "bg-emerald-500/10 text-emerald-500 dark:text-emerald-400",
+      chipBase: "border-emerald-500/20 bg-emerald-500/5",
+      chipHover: "hover:border-emerald-500/55 hover:bg-emerald-500/12",
+      separator: "from-emerald-500/50",
+      glowColor: "rgba(16, 185, 129, 0.2)",
       skills: [
         { name: "Node.js", icon: "/skills-logo/nodejs-logo.png" },
         { name: "Express.js", icon: "/skills-logo/expressjs-logo.png" },
@@ -41,10 +52,17 @@ const Skills = () => {
     {
       name: "Database",
       icon: <Database className="h-6 w-6" />,
+      colSpan: "md:col-span-3",
+      headerColor: "text-amber-500 dark:text-amber-400",
+      iconBg: "bg-amber-500/10 text-amber-500 dark:text-amber-400",
+      chipBase: "border-amber-500/20 bg-amber-500/5",
+      chipHover: "hover:border-amber-500/55 hover:bg-amber-500/12",
+      separator: "from-amber-500/50",
+      glowColor: "rgba(245, 158, 11, 0.2)",
       skills: [
         { name: "MongoDB", icon: "/skills-logo/MongoDB-logo.png" },
         { name: "Firestore", icon: "/skills-logo/firestore.png" },
-        { name: "MY SQL", icon: "/skills-logo/mysql-logo.png" },
+        { name: "MySQL", icon: "/skills-logo/mysql-logo.png" },
         { name: "PostgreSQL", icon: "/skills-logo/PostgresSQL.png" },
         { name: "Redis", icon: "/skills-logo/Redis.png" },
         { name: "Supabase", icon: "/skills-logo/supabase-logo.png" },
@@ -53,6 +71,13 @@ const Skills = () => {
     {
       name: "Cloud & Tools",
       icon: <Cloud className="h-6 w-6" />,
+      colSpan: "md:col-span-3",
+      headerColor: "text-violet-500 dark:text-violet-400",
+      iconBg: "bg-violet-500/10 text-violet-500 dark:text-violet-400",
+      chipBase: "border-violet-500/20 bg-violet-500/5",
+      chipHover: "hover:border-violet-500/55 hover:bg-violet-500/12",
+      separator: "from-violet-500/50",
+      glowColor: "rgba(139, 92, 246, 0.2)",
       skills: [
         { name: "AWS", icon: "/skills-logo/AWS.png" },
         { name: "GCP", icon: "/skills-logo/Google Cloud.png" },
@@ -64,148 +89,142 @@ const Skills = () => {
     },
   ];
 
-  // Create reference for the skill items
+  const allSkills = skillCategories.flatMap((cat) =>
+    cat.skills.map((skill) => ({
+      ...skill,
+      chipBase: cat.chipBase,
+      chipHover: cat.chipHover,
+    }))
+  );
+
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+  const isInView = useInView(containerRef, { once: true, amount: 0.15 });
 
   return (
     <section id="skills" className="py-16 md:py-24 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <motion.div
-        className="absolute -top-20 -right-20 w-64 h-64 rounded-full"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 90, 180, 270, 360],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-      <motion.div
-        className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          rotate: [270, 180, 90, 0, 270],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
       <div className="container px-4 md:pl-24 relative z-10">
         <AnimatedSection>
+
+          {/* Section heading */}
           <AnimatedElement
             variants={fadeIn("down", 0.2)}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+            <p className="text-xs font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-[0.2em] mb-3">
+              What I build with
+            </p>
+            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
               My Skills
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              I've worked with a variety of technologies in the web development
-              world. Here are the main areas I specialize in:
+            <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
+              A cross-stack toolkit spanning UI to infrastructure — the technologies I reach for daily.
             </p>
           </AnimatedElement>
 
+          {/* Dual-row marquee */}
+          <div className="relative overflow-hidden mb-16 space-y-2.5">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+            <div className="marquee-track flex gap-2.5">
+              {[...allSkills, ...allSkills].map((skill, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-2 flex-shrink-0 border ${skill.chipBase} px-3.5 py-2 rounded-xl transition-colors duration-200`}
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-5 h-5 object-contain"
+                    onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
+                  />
+                  <span className="text-xs font-semibold whitespace-nowrap">{skill.name}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="marquee-track-reverse flex gap-2.5">
+              {[...[...allSkills].reverse(), ...[...allSkills].reverse()].map((skill, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-2 flex-shrink-0 border ${skill.chipBase} px-3.5 py-2 rounded-xl transition-colors duration-200`}
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-5 h-5 object-contain"
+                    onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
+                  />
+                  <span className="text-xs font-semibold whitespace-nowrap">{skill.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bento cards */}
           <motion.div
             ref={containerRef}
             variants={staggerContainer(0.1, 0.2)}
             initial="hidden"
             animate={isInView ? "show" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-6 gap-5"
           >
             {skillCategories.map((category, index) => (
               <AnimatedElement
                 key={category.name}
-                variants={fadeIn(
-                  index % 2 === 0 ? "right" : "left",
-                  index * 0.1
-                )}
-                className="glass rounded-xl p-6 backdrop-blur-sm relative overflow-hidden hover:shadow-lg transition-shadow duration-500"
-                whileHover={{
-                  boxShadow:
-                    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                }}
+                variants={fadeIn(index % 2 === 0 ? "right" : "left", index * 0.1)}
+                className={`glass rounded-2xl p-7 relative overflow-hidden group ${category.colSpan}`}
               >
-                {/* Decorative gradient blob that animates on hover */}
-                <motion.div
-                  className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0"
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                {/* Ambient corner glow — brightens on card hover */}
+                <div
+                  className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none opacity-50 group-hover:opacity-90 transition-opacity duration-500"
+                  style={{ background: category.glowColor }}
                 />
 
-                <motion.h3
-                  className="text-xl font-bold mb-6 text-center flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <motion.div
-                    animate={{ rotate: [0, 10, 0, -10, 0] }}
-                    transition={{ duration: 5, repeat: Infinity }}
-                  >
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-5 relative">
+                  <div className={`p-3 rounded-2xl shrink-0 ${category.iconBg}`}>
                     {category.icon}
-                  </motion.div>
-                  {category.name}
-                </motion.h3>
+                  </div>
+                  <h3 className={`text-2xl font-bold leading-none ${category.headerColor}`}>
+                    {category.name}
+                  </h3>
+                </div>
 
-                <motion.div
-                  variants={staggerContainer(0.05, 0)}
-                  initial="hidden"
-                  animate={isInView ? "show" : "hidden"}
-                  className="grid grid-cols-2 sm:grid-cols-3 gap-6"
-                >
+                {/* Colored separator */}
+                <div className={`h-px bg-gradient-to-r ${category.separator} to-transparent mb-5`} />
+
+                {/* Skill chips */}
+                <div className="flex flex-wrap gap-2.5 relative">
                   {category.skills.map((skill, skillIndex) => (
-                    <AnimatedElement
+                    <motion.div
                       key={skill.name}
-                      variants={fadeIn("up", skillIndex * 0.05 + 0.2)}
-                      className="flex flex-col items-center gap-2 group"
+                      className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border ${category.chipBase} ${category.chipHover} transition-colors duration-200 cursor-default`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{
+                        delay: skillIndex * 0.035 + index * 0.05,
+                        duration: 0.25,
+                      }}
+                      whileHover={{ scale: 1.08, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <motion.div
-                        className="glass rounded-lg p-3 w-16 h-16 flex items-center justify-center transition-all duration-300"
-                        whileHover={{
-                          scale: 1.1,
-                          boxShadow:
-                            "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-                          y: -5,
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <motion.img
-                          src={skill.icon}
-                          alt={skill.name}
-                          className="w-10 h-10 object-contain"
-                          onError={(e) => {
-                            e.target.src = "/skills-logo/placeholder.svg";
-                          }}
-                          whileHover={{ rotate: 10 }}
-                          animate={
-                            isInView ? { opacity: [0, 1], scale: [0.5, 1] } : {}
-                          }
-                          transition={{
-                            duration: 0.3,
-                            delay: skillIndex * 0.05,
-                          }}
-                        />
-                      </motion.div>
-                      <motion.span
-                        className="text-sm font-medium"
-                        animate={isInView ? { opacity: [0, 1] } : {}}
-                        transition={{
-                          duration: 0.3,
-                          delay: skillIndex * 0.05 + 0.2,
-                        }}
-                      >
+                      <img
+                        src={skill.icon}
+                        alt={skill.name}
+                        className="w-7 h-7 object-contain"
+                        onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
+                      />
+                      <span className="text-sm font-semibold whitespace-nowrap">
                         {skill.name}
-                      </motion.span>
-                    </AnimatedElement>
+                      </span>
+                    </motion.div>
                   ))}
-                </motion.div>
+                </div>
               </AnimatedElement>
             ))}
           </motion.div>
+
         </AnimatedSection>
       </div>
     </section>

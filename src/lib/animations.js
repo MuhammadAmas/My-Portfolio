@@ -1,15 +1,18 @@
-// Animation variants for use with framer-motion
+// Cached once at module load — viewport doesn't meaningfully change during a session
+const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+// Easing curves
+const EASE_OUT_QUART = [0.25, 0.46, 0.45, 0.94];
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
+
 export const fadeIn = (direction, delay) => {
-  // Get device type for responsive animations
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  const duration = isMobile ? 0.3 : 0.8;
-  const distance = isMobile ? 40 : 80;
+  const duration = isMobile ? 0.35 : 0.6;
+  const distance = isMobile ? 28 : 50;
 
   return {
     hidden: {
       y: direction === "up" ? distance : direction === "down" ? -distance : 0,
-      x:
-        direction === "left" ? distance : direction === "right" ? -distance : 0,
+      x: direction === "left" ? distance : direction === "right" ? -distance : 0,
       opacity: 0,
     },
     show: {
@@ -18,51 +21,41 @@ export const fadeIn = (direction, delay) => {
       opacity: 1,
       transition: {
         type: "tween",
-        duration: duration,
+        duration,
         delay: isMobile ? delay * 0.5 : delay,
-        ease: "easeOut",
+        ease: EASE_OUT_QUART,
       },
     },
   };
 };
 
-export const staggerContainer = (staggerChildren, delayChildren) => {
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  return {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: isMobile ? staggerChildren * 0.5 : staggerChildren,
-        delayChildren: isMobile ? delayChildren * 0.5 : delayChildren,
-      },
+export const staggerContainer = (staggerChildren, delayChildren) => ({
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: isMobile ? staggerChildren * 0.5 : staggerChildren,
+      delayChildren: isMobile ? delayChildren * 0.5 : delayChildren,
     },
-  };
-};
+  },
+});
 
-export const textVariant = (delay) => {
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  return {
-    hidden: {
-      y: 25,
-      opacity: 0,
+export const textVariant = (delay) => ({
+  hidden: { y: 20, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      duration: isMobile ? 0.45 : 0.9,
+      delay: isMobile ? delay * 0.5 : delay,
+      ease: EASE_OUT_EXPO,
     },
-    show: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "tween",
-        duration: isMobile ? 0.5 : 1.25,
-        delay: isMobile ? delay * 0.5 : delay,
-      },
-    },
-  };
-};
+  },
+});
 
 export const slideIn = (direction, type, delay, duration) => {
-  // Shorter duration on mobile
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   const animDuration = isMobile ? duration * 0.5 : duration;
-  const distance = isMobile ? "50%" : "100%";
+  const distance = isMobile ? "45%" : "100%";
 
   return {
     hidden: {
@@ -72,7 +65,7 @@ export const slideIn = (direction, type, delay, duration) => {
           : direction === "right"
           ? distance
           : 0,
-      y: direction === "up" ? distance : direction === "down" ? distance : 0,
+      y: direction === "up" || direction === "down" ? distance : 0,
     },
     show: {
       x: 0,
@@ -81,40 +74,31 @@ export const slideIn = (direction, type, delay, duration) => {
         type,
         delay: isMobile ? delay * 0.5 : delay,
         duration: animDuration,
-        ease: "easeOut",
+        ease: EASE_OUT_QUART,
       },
     },
   };
 };
 
-export const zoomIn = (delay, duration) => {
-  // Shorter duration on mobile
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-  const animDuration = isMobile ? duration * 0.5 : duration;
-
-  return {
-    hidden: {
-      scale: 0,
-      opacity: 0,
+export const zoomIn = (delay, duration) => ({
+  hidden: { scale: 0.85, opacity: 0 },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      delay: isMobile ? delay * 0.5 : delay,
+      duration: isMobile ? duration * 0.5 : duration,
+      ease: EASE_OUT_EXPO,
     },
-    show: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "tween",
-        delay: isMobile ? delay * 0.5 : delay,
-        duration: animDuration,
-        ease: "easeOut",
-      },
-    },
-  };
-};
+  },
+});
 
 export const float = {
   animation: {
     y: [0, -10, 0],
     transition: {
-      duration: 3,
+      duration: 3.5,
       repeat: Infinity,
       repeatType: "mirror",
       ease: "easeInOut",
@@ -124,9 +108,9 @@ export const float = {
 
 export const pulse = {
   animation: {
-    scale: [1, 1.05, 1],
+    scale: [1, 1.04, 1],
     transition: {
-      duration: 2,
+      duration: 2.5,
       repeat: Infinity,
       repeatType: "mirror",
       ease: "easeInOut",
@@ -138,7 +122,7 @@ export const rotate = {
   animation: {
     rotate: [0, 360],
     transition: {
-      duration: 8,
+      duration: 10,
       repeat: Infinity,
       ease: "linear",
     },
@@ -150,25 +134,22 @@ export const reveal = {
   show: {
     clipPath: "inset(0 0 0 0)",
     transition: {
-      duration: 1,
-      ease: "easeInOut",
+      duration: 0.9,
+      ease: EASE_OUT_QUART,
     },
   },
 };
 
 export const cardHover = {
   whileHover: {
-    y: -10,
+    y: -8,
     boxShadow:
-      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
+      "0 20px 40px -8px rgba(0,0,0,0.15), 0 8px 16px -4px rgba(0,0,0,0.06)",
+    transition: { duration: 0.25, ease: EASE_OUT_QUART },
   },
   whileTap: {
-    y: -5,
-    boxShadow:
-      "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    y: -3,
+    scale: 0.98,
+    boxShadow: "0 8px 20px -4px rgba(0,0,0,0.12)",
   },
 };

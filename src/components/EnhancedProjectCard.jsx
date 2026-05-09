@@ -1,204 +1,88 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Calendar, Eye, Code, Star } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Calendar, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { trackProjectView, trackExternalLink } from "../lib/analytics";
 
-const EnhancedProjectCard = ({ project, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  const cardVariants = {
-    initial: {
-      rotateX: 0,
-      rotateY: 0,
-      z: 0,
-    },
-    hover: {
-      rotateX: (mousePosition.y - 200) / 20,
-      rotateY: -(mousePosition.x - 200) / 20,
-      z: 100,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-      },
-    },
-  };
-
-  const overlayVariants = {
-    initial: { opacity: 0 },
-    hover: {
-      opacity: 1,
-      transition: { duration: 0.3 },
-    },
-  };
-
-  const contentVariants = {
-    initial: { y: 20, opacity: 0 },
-    hover: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        delay: 0.1,
-      },
-    },
-  };
-
-  const iconVariants = {
-    initial: { scale: 1, rotate: 0 },
-    hover: {
-      scale: 1.1,
-      rotate: 5,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-  };
-
-  const shimmerVariants = {
-    initial: { x: "-100%" },
-    hover: {
-      x: "100%",
-      transition: {
-        duration: 0.6,
-        ease: "easeInOut",
-      },
-    },
-  };
+const EnhancedProjectCard = ({ project, index, featured = false }) => {
+  const date = project.date || project.yearCompleted;
+  const type = project.type || project.category?.[0];
 
   return (
     <motion.div
-      className="group relative"
-      initial="initial"
-      animate={isHovered ? "hover" : "initial"}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onMouseMove={handleMouseMove}
+      className="group relative h-full"
       data-cursor="view"
-      style={{ perspective: "1000px" }}
+      whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
     >
-      <motion.div
-        variants={cardVariants}
-        className="glass rounded-xl overflow-hidden h-full flex flex-col relative"
-        style={{
-          transformStyle: "preserve-3d",
-        }}
+      <div
+        className={`glass rounded-xl overflow-hidden h-full flex relative transition-shadow duration-300 group-hover:shadow-[0_0_0_1px_rgba(59,130,246,0.35),0_16px_48px_rgba(59,130,246,0.1)] ${
+          featured ? "flex-col md:flex-row" : "flex-col"
+        }`}
       >
-        {/* Shimmer effect */}
-        <div className="absolute inset-0 overflow-hidden rounded-xl z-10 pointer-events-none">
-          <motion.div
-            variants={shimmerVariants}
-            className="absolute inset-0 w-full h-full opacity-20"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
-              transform: "skewX(-20deg)",
-            }}
-          />
-        </div>
+        {/* Image */}
+        <div
+          className={`relative overflow-hidden ${
+            featured
+              ? "aspect-video md:aspect-auto md:w-1/2 md:shrink-0"
+              : "aspect-video"
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/* Image container */}
-        <div className="aspect-video relative overflow-hidden">
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20"
-            variants={overlayVariants}
-          />
-
-          <motion.img
+          <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.4 }}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {
               e.target.src = "/api/placeholder/400/300";
             }}
           />
 
-          {/* Project type badge */}
-          <div className="absolute bottom-4 left-4 z-30">
-            <motion.span
-              className="px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-100 rounded-full backdrop-blur-sm border border-blue-400/30"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              {project.type || "Web App"}
-            </motion.span>
-          </div>
+          {type && (
+            <span className="absolute bottom-4 left-4 z-30 px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-100 rounded-full backdrop-blur-sm border border-blue-400/30">
+              {type}
+            </span>
+          )}
         </div>
 
-        {/* Content section */}
+        {/* Content */}
         <div className="p-6 flex-1 flex flex-col relative">
-          {/* Animated background gradient */}
-          <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
-            style={{
-              background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.3), transparent 50%)`,
-            }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-xl" />
 
-          <div className="relative z-10">
-            <motion.h3
-              className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-              layout
-            >
+          <div className="relative z-10 flex flex-col h-full">
+            <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {project.title}
-            </motion.h3>
+            </h3>
 
-            <motion.p
-              className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-1"
-              layout
-            >
+            <p className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-1">
               {project.description}
-            </motion.p>
+            </p>
 
-            {/* Tech stack */}
-            <motion.div className="flex flex-wrap gap-2 mb-4" layout>
-              {project.technologies?.slice(0, 4).map((tech, techIndex) => (
-                <motion.span
+            {/* Tech badges — static, no per-badge animations */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.technologies?.slice(0, 4).map((tech) => (
+                <span
                   key={tech}
                   className="px-2 py-1 text-xs bg-blue-100/80 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-md"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 + techIndex * 0.05 }}
-                  whileHover={{ scale: 1.05 }}
                 >
                   {tech}
-                </motion.span>
+                </span>
               ))}
               {project.technologies?.length > 4 && (
-                <motion.span
-                  className="px-2 py-1 text-xs bg-gray-100/80 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 rounded-md"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 + 0.2 }}
-                >
+                <span className="px-2 py-1 text-xs bg-gray-100/80 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 rounded-md">
                   +{project.technologies.length - 4}
-                </motion.span>
+                </span>
               )}
-            </motion.div>
+            </div>
 
-            {/* Action Buttons */}
+            {/* Action buttons */}
             <div className="flex gap-2 mb-4">
               {project.demoLink && (
                 <Button
                   asChild
                   size="sm"
                   variant="outline"
-                  className="relative overflow-hidden"
+                  className="relative overflow-hidden group/btn"
                 >
                   <a
                     href={project.demoLink}
@@ -208,14 +92,11 @@ const EnhancedProjectCard = ({ project, index }) => {
                       trackProjectView(project.title);
                       trackExternalLink(
                         project.demoLink,
-                        `${project.title} Demo`
+                        `${project.title} Demo`,
                       );
                     }}
                   >
-                    <motion.div
-                      className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                      whileHover={{ opacity: 1 }}
-                    />
+                    <div className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
                     <ExternalLink className="mr-2 h-4 w-4" /> Demo
                   </a>
                 </Button>
@@ -225,7 +106,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                   asChild
                   size="sm"
                   variant="outline"
-                  className="relative overflow-hidden"
+                  className="relative overflow-hidden group/btn"
                 >
                   <a
                     href={project.githubLink}
@@ -235,63 +116,32 @@ const EnhancedProjectCard = ({ project, index }) => {
                       trackProjectView(project.title);
                       trackExternalLink(
                         project.githubLink,
-                        `${project.title} GitHub`
+                        `${project.title} GitHub`,
                       );
                     }}
                   >
-                    <motion.div
-                      className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                      whileHover={{ opacity: 1 }}
-                    />
-                    <ExternalLink className="mr-2 h-4 w-4" /> Code
+                    <div className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                    <Github className="mr-2 h-4 w-4" /> Code
                   </a>
                 </Button>
               )}
             </div>
 
-            {/* Footer with date and featured star */}
-            <div className="flex items-center justify-between pt-2 dark:border-gray-700/50">
-              {project.date && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            {/* Footer */}
+            <div className="flex items-center justify-between pt-2">
+              {date && (
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                   <Calendar className="w-4 h-4" />
-                  {project.date}
+                  {date}
                 </div>
               )}
-
-              <div className="flex items-center gap-2">
-                {project.featured && (
-                  <motion.div
-                    initial={{ rotate: 0 }}
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                    }}
-                  >
-                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                  </motion.div>
-                )}
-              </div>
+              {project.featured && (
+                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+              )}
             </div>
           </div>
         </div>
-
-        {/* Animated border */}
-        <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.2), transparent)",
-            padding: "1px",
-          }}
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="w-full h-full bg-background dark:bg-gray-900 rounded-xl" />
-        </motion.div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -129,25 +130,39 @@ const Sidebar = () => {
         <div className="sidebar-glass flex flex-col items-center py-6 px-2 rounded-3xl shadow-lg pointer-events-auto absolute top-1/2 -translate-y-1/2">
           <nav>
             <ul className="flex flex-col items-center space-y-8">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Link
-                        to={link.path || link.href}
-                        className="flex flex-col items-center justify-center w-16 h-16 text-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        onClick={(e) => handleNavigation(e, link)}
-                      >
-                        <div className="mb-1">{link.icon}</div>
-                        <span className="text-xs">{link.name}</span>
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent side="right" sideOffset={5}>
-                      {link.name}
-                    </TooltipContent>
-                  </Tooltip>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isActive =
+                  link.path === "/"
+                    ? location.pathname === "/"
+                    : location.pathname.startsWith(link.path);
+
+                return (
+                  <li key={link.name} className="relative">
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNavPill"
+                        className="absolute inset-0 bg-blue-600/15 dark:bg-blue-500/20 rounded-xl"
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link
+                          to={link.path || link.href}
+                          className="relative z-10 flex flex-col items-center justify-center w-16 h-16 text-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          onClick={(e) => handleNavigation(e, link)}
+                        >
+                          <div className="mb-1">{link.icon}</div>
+                          <span className="text-xs">{link.name}</span>
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent side="right" sideOffset={5}>
+                        {link.name}
+                      </TooltipContent>
+                    </Tooltip>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 

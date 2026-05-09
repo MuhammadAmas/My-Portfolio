@@ -1,22 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-// eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
 import { Button } from "./ui/button";
-import {
-  ExternalLink,
-  Github,
-  ChevronLeft,
-  ChevronRight,
-  Calendar,
-} from "lucide-react";
+import { Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects, categories } from "../data/projectsInfo";
-import {
-  AnimatedSection,
-  AnimatedElement,
-  AnimatedCard,
-  AnimatedText,
-} from "./ui/animated-section";
+import { AnimatedSection, AnimatedElement, AnimatedText } from "./ui/animated-section";
 import { fadeIn, staggerContainer } from "../lib/animations";
+import EnhancedProjectCard from "./EnhancedProjectCard";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -148,172 +137,19 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer(
-            isMobile ? 0.05 : 0.1,
-            isMobile ? 0.1 : 0.3
-          )}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedProjects.map((project, index) => (
-            <AnimatedCard
+            <motion.div
               key={`${activeCategory}-${project.id}-${index}`}
-              variants={fadeIn(
-                index === 0
-                  ? "right"
-                  : index === displayedProjects.length - 1
-                  ? "left"
-                  : "up",
-                isMobile ? index * 0.1 : index * 0.2
-              )}
-              className="glass rounded-xl overflow-hidden group h-full flex flex-col"
+              variants={fadeIn("up", index * 0.06)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}
+              className="h-full"
             >
-              <div className="aspect-video relative overflow-hidden">
-                <motion.div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 z-10 transition-opacity duration-300 group-hover:opacity-100" />
-
-                <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500"
-                  whileHover={{ scale: 1.05 }}
-                  onError={(e) => {
-                    e.target.src = "/projects-images/placeholder.jpg";
-                  }}
-                />
-                <motion.div
-                  className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-bl-lg z-20"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {project.category.join(", ")}
-                </motion.div>
-              </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <motion.div
-                  className="flex justify-between items-center mb-2"
-                  whileHover={{ x: 2 }}
-                >
-                  <motion.h3
-                    className="text-xl font-bold"
-                    whileHover={{ scale: 1.02, x: 2 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                    <Calendar className="h-3 w-3 mr-1" />
-                    {project.yearCompleted}
-                  </div>
-                </motion.div>
-                <p
-                  className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-5"
-                  dangerouslySetInnerHTML={{ __html: project.description }}
-                ></p>
-
-                <motion.div
-                  variants={staggerContainer(0.03, 0)}
-                  initial="hidden"
-                  animate="show"
-                  className="flex flex-wrap gap-2 mb-6"
-                >
-                  {project.technologies.map((tech, techIndex) => (
-                    <motion.span
-                      key={tech}
-                      variants={fadeIn("up", techIndex * 0.03)}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs"
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </motion.div>
-
-                {project.highlights && (
-                  <div className="mb-6 mt-auto">
-                    <motion.h4
-                      className="text-sm font-semibold mb-2"
-                      whileHover={{ x: 2 }}
-                    >
-                      Key Features:
-                    </motion.h4>
-                    <motion.ul
-                      className="text-sm text-gray-600 dark:text-gray-400 list-disc pl-5 space-y-1"
-                      variants={staggerContainer(0.05, 0.1)}
-                      initial="hidden"
-                      animate="show"
-                    >
-                      {project.highlights.slice(0, 2).map((highlight, i) => (
-                        <motion.li
-                          key={i}
-                          variants={fadeIn("left", i * 0.1)}
-                          whileHover={{ x: 2 }}
-                        >
-                          {highlight}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  </div>
-                )}
-
-                <motion.div
-                  className="flex gap-4 mt-auto"
-                  variants={fadeIn("up", 0.5)}
-                >
-                  {project.demoLink && (
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button
-                        asChild
-                        size="sm"
-                        variant="outline"
-                        className="relative overflow-hidden"
-                      >
-                        <a
-                          href={project.demoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <motion.div
-                            className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                            whileHover={{ opacity: 1 }}
-                          />
-                          <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                        </a>
-                      </Button>
-                    </motion.div>
-                  )}
-                  {project.githubLink && (
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button
-                        asChild
-                        size="sm"
-                        variant="outline"
-                        className="relative overflow-hidden"
-                      >
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <motion.div
-                            className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
-                            whileHover={{ opacity: 1 }}
-                          />
-                          <Github className="mr-2 h-4 w-4" /> Code
-                        </a>
-                      </Button>
-                    </motion.div>
-                  )}
-                </motion.div>
-              </div>
-            </AnimatedCard>
+              <EnhancedProjectCard project={project} index={index} />
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {totalPages > 1 && (
           <motion.div
