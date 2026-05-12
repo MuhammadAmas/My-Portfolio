@@ -1,243 +1,176 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { useTheme } from "./ThemeProvider";
+
+class Particle {
+  constructor(canvas, speed) {
+    this.canvas = canvas;
+    this.speed = speed;
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this._init();
+  }
+
+  _init() {
+    this.vx = (Math.random() - 0.5) * 0.5 * this.speed;
+    this.vy = (Math.random() - 0.5) * 0.5 * this.speed;
+    this.life = Math.random() * 0.6 + 0.4;
+    this.size = Math.random() * 2 + 0.5;
+    this.opacity = 0;
+    this.fadeIn = true;
+    this.fadeSpeed = Math.random() * 0.02 + 0.005;
+  }
+
+  reset() {
+    this.x = Math.random() * this.canvas.width;
+    this.y = Math.random() * this.canvas.height;
+    this._init();
+  }
+
+  update(mouse) {
+    const dx = mouse.x - this.x;
+    const dy = mouse.y - this.y;
+    const distSq = dx * dx + dy * dy;
+    if (distSq < 10000) {
+      const dist = Math.sqrt(distSq);
+      const force = (100 - dist) / 100;
+      this.vx -= (dx / dist) * force * 0.01;
+      this.vy -= (dy / dist) * force * 0.01;
+    }
+
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vx *= 0.99;
+    this.vy *= 0.99;
+
+    if (this.fadeIn) {
+      this.opacity += this.fadeSpeed;
+      if (this.opacity >= this.life) {
+        this.opacity = this.life;
+        this.fadeIn = false;
+      }
+    } else {
+      this.opacity -= this.fadeSpeed * 0.5;
+      if (this.opacity <= 0) this.reset();
+    }
+
+    if (this.x < 0) this.x = this.canvas.width;
+    else if (this.x > this.canvas.width) this.x = 0;
+    if (this.y < 0) this.y = this.canvas.height;
+    else if (this.y > this.canvas.height) this.y = 0;
+  }
+}
 
 const FloatingParticles = ({ density = 50, speed = 1 }) => {
   const canvasRef = useRef(null);
-  const [particles, setParticles] = useState([]);
   const { theme } = useTheme();
   const animationRef = useRef();
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const lastFrameTimeRef = useRef(0);
+  const mouseRef = useRef({ x: -9999, y: -9999 });
+  const lastFrameRef = useRef(0);
+  const particlesRef = useRef([]);
+  const colorRef = useRef("rgba(96,165,250,0.8)");
+  const connColorRef = useRef("rgba(96,165,250,0.1)");
 
-  // Particle class
-  class Particle {
-    constructor(canvas) {
-      this.canvas = canvas;
-      this.reset();
-      this.y = Math.random() * canvas.height;
-      this.fadeDelay = Math.random() * 600 + 100;
-      this.fadeStart = Date.now() + this.fadeDelay;
-      this.fadingOut = false;
+  useEffect(() => {
+    if (theme === "dark") {
+      colorRef.current = "rgba(96,165,250,0.8)";
+      connColorRef.current = "rgba(96,165,250,0.1)";
+    } else {
+      colorRef.current = "rgba(37,99,235,0.6)";
+      connColorRef.current = "rgba(37,99,235,0.05)";
     }
-
-    reset() {
-      this.x = Math.random() * this.canvas.width;
-      this.y = Math.random() * this.canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.5 * speed;
-      this.vy = (Math.random() - 0.5) * 0.5 * speed;
-      this.life = Math.random() * 0.6 + 0.4;
-      this.maxLife = this.life;
-      this.size = Math.random() * 2 + 0.5;
-      this.opacity = 0;
-      this.fadeIn = true;
-      this.fadeSpeed = Math.random() * 0.02 + 0.005;
-    }
-
-    update(mouse) {
-      // Mouse interaction
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const maxDistance = 100;
-
-      if (distance < maxDistance) {
-        const force = (maxDistance - distance) / maxDistance;
-        const angle = Math.atan2(dy, dx);
-        this.vx -= Math.cos(angle) * force * 0.01;
-        this.vy -= Math.sin(angle) * force * 0.01;
-      }
-
-      this.x += this.vx;
-      this.y += this.vy;
-
-      // Fade in/out animation
-      if (this.fadeIn && this.opacity < this.life) {
-        this.opacity += this.fadeSpeed;
-        if (this.opacity >= this.life) {
-          this.fadeIn = false;
-        }
-      } else if (!this.fadeIn) {
-        this.opacity -= this.fadeSpeed * 0.5;
-        if (this.opacity <= 0) {
-          this.reset();
-        }
-      }
-
-      // Boundary wrapping
-      if (this.x < 0) this.x = this.canvas.width;
-      if (this.x > this.canvas.width) this.x = 0;
-      if (this.y < 0) this.y = this.canvas.height;
-      if (this.y > this.canvas.height) this.y = 0;
-
-      // Add slight damping
-      this.vx *= 0.99;
-      this.vy *= 0.99;
-    }
-
-    draw(ctx, colors) {
-      ctx.save();
-      ctx.globalAlpha = this.opacity;
-      ctx.beginPath();
-
-      // Create gradient for particle
-      const gradient = ctx.createRadialGradient(
-        this.x,
-        this.y,
-        0,
-        this.x,
-        this.y,
-        this.size * 3,
-      );
-      gradient.addColorStop(0, colors.center);
-      gradient.addColorStop(0.4, colors.middle);
-      gradient.addColorStop(1, colors.outer);
-
-      ctx.fillStyle = gradient;
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Add a subtle glow
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = colors.glow;
-      ctx.fill();
-
-      ctx.restore();
-    }
-  }
+  }, [theme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    const resizeCanvas = () => {
+
+    const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
+    resize();
+    window.addEventListener("resize", resize);
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const isSmallScreen = window.innerWidth <= 768;
-    const isLowPower = prefersReducedMotion || isSmallScreen;
-    const targetFps = isLowPower ? 30 : 60;
-    const frameInterval = 1000 / targetFps;
-
-    // Initialize particles
-    const particleArray = [];
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isLowPower = prefersReducedMotion || window.innerWidth <= 768;
+    const frameInterval = 1000 / (isLowPower ? 30 : 60);
     const effectiveDensity = isLowPower ? Math.min(15, density) : density;
-    for (let i = 0; i < effectiveDensity; i++) {
-      particleArray.push(new Particle(canvas));
-    }
-    setParticles(particleArray);
 
-    // Mouse tracking
-    const handleMouseMove = (e) => {
-      mouseRef.current = {
-        x: e.clientX,
-        y: e.clientY,
-      };
+    particlesRef.current = Array.from(
+      { length: effectiveDensity },
+      () => new Particle(canvas, speed)
+    );
+
+    const onMouseMove = (e) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
-
     if (!prefersReducedMotion) {
-      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", onMouseMove);
     }
 
-    // Animation loop
     const animate = (time) => {
-      if (time - lastFrameTimeRef.current < frameInterval) {
+      if (time - lastFrameRef.current < frameInterval) {
         animationRef.current = requestAnimationFrame(animate);
         return;
       }
-      lastFrameTimeRef.current = time;
+      lastFrameRef.current = time;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Get theme colors
-      const colors = getParticleColors();
+      const pts = particlesRef.current;
+      const mouse = mouseRef.current;
+      const color = colorRef.current;
 
-      particleArray.forEach((particle) => {
-        particle.update(mouseRef.current);
-        particle.draw(ctx, colors);
-      });
-
-      // Draw connections between nearby particles (skip on low power)
-      if (!isLowPower) {
-        drawConnections(ctx, particleArray, colors);
+      for (const p of pts) {
+        p.update(mouse);
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
       }
 
+      if (!isLowPower && pts.length > 1) {
+        ctx.strokeStyle = connColorRef.current;
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < pts.length; i++) {
+          for (let j = i + 1; j < pts.length; j++) {
+            const dx = pts[i].x - pts[j].x;
+            const dy = pts[i].y - pts[j].y;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < 14400) {
+              const dist = Math.sqrt(distSq);
+              ctx.globalAlpha =
+                ((120 - dist) / 120) * 0.5 * Math.min(pts[i].opacity, pts[j].opacity);
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x, pts[i].y);
+              ctx.lineTo(pts[j].x, pts[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      ctx.globalAlpha = 1;
       animationRef.current = requestAnimationFrame(animate);
     };
 
     animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onMouseMove);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [theme, density, speed]);
-
-  const getParticleColors = () => {
-    if (theme === "dark") {
-      return {
-        center: "rgba(96, 165, 250, 0.8)", // Blue
-        middle: "rgba(147, 197, 253, 0.4)",
-        outer: "rgba(191, 219, 254, 0.1)",
-        glow: "rgba(96, 165, 250, 0.6)",
-        connection: "rgba(96, 165, 250, 0.1)",
-      };
-    } else {
-      return {
-        center: "rgba(37, 99, 235, 0.6)",
-        middle: "rgba(59, 130, 246, 0.3)",
-        outer: "rgba(96, 165, 250, 0.1)",
-        glow: "rgba(37, 99, 235, 0.4)",
-        connection: "rgba(37, 99, 235, 0.05)",
-      };
-    }
-  };
-
-  const drawConnections = (ctx, particles, colors) => {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 120) {
-          const opacity = ((120 - distance) / 120) * 0.5;
-          ctx.save();
-          ctx.globalAlpha =
-            opacity * Math.min(particles[i].opacity, particles[j].opacity);
-          ctx.strokeStyle = colors.connection;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-          ctx.restore();
-        }
-      }
-    }
-  };
+  }, [density, speed]);
 
   return (
-    <motion.canvas
+    <canvas
       ref={canvasRef}
       className="fixed inset-0 z-0 pointer-events-none"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}
-      style={{
-        background: "transparent",
-      }}
+      style={{ background: "transparent" }}
     />
   );
 };

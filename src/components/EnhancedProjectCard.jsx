@@ -208,7 +208,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                       trackProjectView(project.title);
                       trackExternalLink(
                         project.demoLink,
-                        `${project.title} Demo`
+                        `${project.title} Demo`,
                       );
                     }}
                   >
@@ -235,7 +235,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                       trackProjectView(project.title);
                       trackExternalLink(
                         project.githubLink,
-                        `${project.title} GitHub`
+                        `${project.title} GitHub`,
                       );
                     }}
                   >

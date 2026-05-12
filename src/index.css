@@ -4,11 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-white text-black;
+    @apply bg-white text-black font-sans;
   }
 
   .dark body {
     @apply bg-gray-900 text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   }
 }
 
@@ -441,31 +445,22 @@
   animation: slide-in-from-left 0.2s ease-out;
 }
 
-/* Custom cursor styles - modified to not hide the default cursor */
-body,
-a,
-button,
-.glass,
-.sidebar-glass {
-  /* Removed cursor: none */
-}
-
-input,
-textarea,
-select,
-[contenteditable] {
-  cursor: text;
-}
-
-/* No longer needed since we're not hiding cursor */
-@media (hover: none) {
-
+/* Custom cursor — hide native cursor on pointer devices so the canvas cursor takes over */
+@media (hover: hover) {
   body,
   a,
   button,
+  [data-cursor],
   .glass,
   .sidebar-glass {
-    cursor: auto;
+    cursor: none;
+  }
+
+  input,
+  textarea,
+  select,
+  [contenteditable] {
+    cursor: text;
   }
 }
 
@@ -601,10 +596,31 @@ select,
   animation: morphBorder 8s ease-in-out infinite;
 }
 
-/* Enhanced theme transitions */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease,
-    box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+/* Theme transitions — scoped to interactive/glass elements only (never use * { transition }) */
+.glass,
+.glass-card,
+.glass-button,
+.glass-badge,
+.glass-input,
+.glass-navbar,
+.glass-gradient-border,
+.sidebar-glass,
+button,
+a,
+input,
+textarea,
+select {
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Promote animated layers to their own compositor layer */
+.glass-orb {
+  will-change: transform;
+}
+
+.float-animation {
+  will-change: transform;
 }
 
 /* Selection styling */
@@ -643,3 +659,81 @@ select,
 .magnetic-hover:hover {
   animation: magnetic 0.3s ease-in-out;
 }
+
+/* ========================================
+   MESH GRADIENT BACKGROUND
+   ======================================== */
+
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(59, 130, 246, 0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 60% at 100% 0%, rgba(147, 51, 234, 0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(236, 72, 153, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 70% 60% at 0% 100%, rgba(6, 182, 212, 0.04) 0%, transparent 100%);
+}
+
+.dark .mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(59, 130, 246, 0.14) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 60% at 100% 0%, rgba(147, 51, 234, 0.10) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(236, 72, 153, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 70% 60% at 0% 100%, rgba(6, 182, 212, 0.07) 0%, transparent 100%);
+}
+
+/* ========================================
+   MARQUEE
+   ======================================== */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track-reverse {
+  animation: marquee-reverse 45s linear infinite;
+  width: max-content;
+}
+
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================
+   BLUR-IN STAGGER (scroll reveal)
+   ======================================== */
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.blur-in {
+  animation: blurIn 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.blur-in-delay-1 { animation-delay: 80ms; }
+.blur-in-delay-2 { animation-delay: 160ms; }
+.blur-in-delay-3 { animation-delay: 240ms; }
+.blur-in-delay-4 { animation-delay: 320ms; }

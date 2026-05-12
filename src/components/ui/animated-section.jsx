@@ -76,7 +76,7 @@ export const AnimatedSection = ({
       variants={getVariants()}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.1 }}
       className={className}
     >
       {children}
