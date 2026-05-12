@@ -89,20 +89,12 @@ const Skills = () => {
     },
   ];
 
-  const allSkills = skillCategories.flatMap((cat) =>
-    cat.skills.map((skill) => ({
-      ...skill,
-      chipBase: cat.chipBase,
-      chipHover: cat.chipHover,
-    }))
-  );
-
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.15 });
 
   return (
     <section id="skills" className="py-16 md:py-24 relative overflow-hidden">
-      <div className="container px-4 md:pl-24 relative z-10">
+      <div className="container px-6 relative z-10">
         <AnimatedSection>
 
           {/* Section heading */}
@@ -120,46 +112,6 @@ const Skills = () => {
               A cross-stack toolkit spanning UI to infrastructure — the technologies I reach for daily.
             </p>
           </AnimatedElement>
-
-          {/* Dual-row marquee */}
-          <div className="relative overflow-hidden mb-16 space-y-2.5">
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-
-            <div className="marquee-track flex gap-2.5">
-              {[...allSkills, ...allSkills].map((skill, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center gap-2 flex-shrink-0 border ${skill.chipBase} px-3.5 py-2 rounded-xl transition-colors duration-200`}
-                >
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className="w-5 h-5 object-contain"
-                    onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
-                  />
-                  <span className="text-xs font-semibold whitespace-nowrap">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="marquee-track-reverse flex gap-2.5">
-              {[...[...allSkills].reverse(), ...[...allSkills].reverse()].map((skill, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center gap-2 flex-shrink-0 border ${skill.chipBase} px-3.5 py-2 rounded-xl transition-colors duration-200`}
-                >
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className="w-5 h-5 object-contain"
-                    onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
-                  />
-                  <span className="text-xs font-semibold whitespace-nowrap">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Bento cards */}
           <motion.div
