@@ -445,22 +445,19 @@
   animation: slide-in-from-left 0.2s ease-out;
 }
 
-/* Custom cursor — hide native cursor on pointer devices so the canvas cursor takes over */
+/* Restore the native cursor now that the custom cursor effect is disabled */
 @media (hover: hover) {
   body,
   a,
   button,
   [data-cursor],
   .glass,
-  .sidebar-glass {
-    cursor: none;
-  }
-
+  .sidebar-glass,
   input,
   textarea,
   select,
   [contenteditable] {
-    cursor: text;
+    cursor: auto;
   }
 }
 
