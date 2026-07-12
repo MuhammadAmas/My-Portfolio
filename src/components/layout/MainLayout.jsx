@@ -5,7 +5,6 @@ import Sidebar from "../Sidebar";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
 import FloatingParticles from "../FloatingParticles";
-import CursorEffect from "../CursorEffect";
 import { initSmoothScrolling } from "../../lib/smoothScroll";
 
 const MainLayout = () => {
@@ -31,9 +30,6 @@ const MainLayout = () => {
 
       {/* Background effects */}
       <FloatingParticles density={12} speed={0.5} />
-
-      {/* Interactive cursor */}
-      <CursorEffect />
 
       <ScrollToTop />
       <Sidebar />
