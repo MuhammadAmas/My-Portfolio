@@ -282,7 +282,7 @@ const Contact = () => {
                     </div>
                     <Button
                       type="submit"
-                      className="w-full relative overflow-hidden"
+                      className="w-full relative overflow-hidden cursor-pointer"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (

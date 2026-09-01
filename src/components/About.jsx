@@ -44,18 +44,11 @@ const About = () => {
             <h3 className="text-2xl font-bold">Full Stack Developer</h3>
 
             <p className="text-gray-600 dark:text-gray-400">
-              I'm Muhammad Amas, a passionate Full Stack Developer. With a
-              strong focus on building clean, efficient, and user-friendly web
-              applications, I strive to create digital experiences that make a
-              positive impact.
+             I'm Muhammad Amas, a full-stack software engineer with <b className="font-bold text-blue-600 dark:text-blue-400">4+ years</b> building production-grade, AI-integrated systems across SaaS, marketplace, and enterprise platforms. I pair strong front-end craft in React and Next.js with backend and cloud architecture on Node.js, NestJS, Ruby on Rails, PostgreSQL, MySQL, MongoDB, AWS, Azure and GCP.
             </p>
 
             <p className="text-gray-600 dark:text-gray-400">
-              My journey in web development began 5 years ago, and since then
-              I've worked on a variety of projects ranging from small business
-              websites to complex web applications. I enjoy solving problems
-              through code and constantly learning new technologies to enhance
-              my skill set.
+            I enjoy the intersection of strong front-end craft and solid backend and cloud architecture, whether that's designing secure APIs, or automating cloud account provisioning across GCP and Azure to cut onboarding time. I hold a BS in Computer Science from the University of Karachi (UBIT) and hold certifications including <b className="font-bold text-blue-600 dark:text-blue-400">Google Cloud Digital Leader</b> and the <b className="font-bold text-blue-600 dark:text-blue-400">McKinsey Forward program</b>. I'm always looking for ways to pair thoughtful engineering with measurable impact on performance, security, and user experience.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
