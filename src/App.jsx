@@ -7,20 +7,20 @@ import AnalyticsTracker from "./components/AnalyticsTracker";
 import GlassBackground from "./components/GlassBackground";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   // Simulate loading time
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <ThemeProvider defaultTheme="system" enableSystem>
       <AnimatePresence mode="wait">
-        {isLoading ? (
+        {/* {isLoading ? (
           <motion.div
             key="loader"
             className="flex items-center justify-center h-screen bg-white dark:bg-gray-900"
@@ -57,7 +57,8 @@ function App() {
               </motion.p>
             </motion.div>
           </motion.div>
-        ) : (
+        ) : */}
+         {/* ( */}
           <motion.div
             key="content"
             className="min-h-screen bg-transparent"
@@ -69,7 +70,7 @@ function App() {
             <AnalyticsTracker />
             <Outlet />
           </motion.div>
-        )}
+        {/* )} */}
       </AnimatePresence>
     </ThemeProvider>
   );
