@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ArrowDown, Github, Linkedin, FileText } from "lucide-react";
+import { ArrowDown, Github, Linkedin, FileText, Mail } from "lucide-react";
 import { AnimatedDecoration } from "./ui/animated-section";
 import { fadeIn, slideIn, zoomIn } from "../lib/animations";
 import { handleSmoothScroll } from "../lib/smoothScroll";
@@ -235,6 +235,28 @@ const Hero = () => {
                   }
                 >
                   <Linkedin className="h-5 w-5" />
+                  <motion.div
+                    className="absolute inset-0 bg-blue-600/10 rounded-full -z-10 opacity-0"
+                    whileHover={{ opacity: 1, scale: 1.2 }}
+                  />
+                </a>
+              </Button>
+            </motion.div>
+             <motion.div whileHover={{ y: -5 }} whileTap={{ y: 0 }}>
+              <Button variant="ghost" size="icon" asChild className="relative cursor-pointer">
+                <a
+                  href="mailto:amaswaseem@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Email"
+                  onClick={() =>
+                    trackExternalLink(
+                      "mailto:amaswaseem@gmail.com",
+                      "Email Link",
+                    )
+                  }
+                >
+                  <Mail className="h-5 w-5" />
                   <motion.div
                     className="absolute inset-0 bg-blue-600/10 rounded-full -z-10 opacity-0"
                     whileHover={{ opacity: 1, scale: 1.2 }}
