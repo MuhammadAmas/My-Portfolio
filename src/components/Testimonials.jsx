@@ -203,7 +203,7 @@ const Testimonials = () => {
       <div className="container px-4">
         <AnimatedElement
           variants={fadeIn("down", 0.2)}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
             What People Say
@@ -219,18 +219,18 @@ const Testimonials = () => {
           <AnimatedCard
             variants={fadeIn(direction === "left" ? "right" : "left", 0.3)}
             key={currentTestimonial.id}
-            className="glass p-8 rounded-xl relative overflow-hidden min-h-[500px] md:min-h-[400px] flex flex-col"
+            className="glass p-5 md:p-8 rounded-2xl relative overflow-hidden min-h-[420px] md:min-h-[380px] flex flex-col"
           >
-            <Quote className="absolute top-6 right-6 h-12 w-12 text-blue-600/20 dark:text-blue-600/30" />
+            <Quote className="absolute top-4 right-4 h-8 w-8 md:top-6 md:right-6 md:h-12 md:w-12 text-blue-600/20 dark:text-blue-600/30" />
 
-            <div className="flex flex-col md:flex-row gap-6 items-start flex-grow">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start flex-grow">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
                 className="flex-shrink-0"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-blue-600/20">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-blue-600/20">
                   <img
                     src={currentTestimonial.image}
                     alt={currentTestimonial.name}
@@ -239,14 +239,14 @@ const Testimonials = () => {
                 </div>
               </motion.div>
 
-              <div className="flex-grow">
+              <div className="flex-grow w-full pr-8 md:pr-0">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 }}
                   className="h-full flex flex-col"
                 >
-                  <h3 className="text-xl font-bold mb-1 flex items-center">
+                  <h3 className="text-lg md:text-xl font-bold mb-1 flex items-center">
                     {currentTestimonial.name}
                     <a
                       href={currentTestimonial.linkedin}
@@ -265,7 +265,7 @@ const Testimonials = () => {
                     {currentTestimonial.relationship}
                   </p>
 
-                  <div className="prose prose-sm dark:prose-invert max-w-none overflow-y-auto max-h-[300px] md:max-h-[200px] pr-2 custom-scrollbar">
+                  <div className="prose prose-sm dark:prose-invert max-w-none overflow-y-auto max-h-[240px] md:max-h-[220px] pr-2 custom-scrollbar">
                     {currentTestimonial.content
                       .split("\n\n")
                       .map((paragraph, i) => (
@@ -282,7 +282,7 @@ const Testimonials = () => {
             </div>
           </AnimatedCard>
 
-          <div className="flex justify-center items-center mt-6 gap-6">
+          <div className="flex justify-center items-center mt-6 gap-3 md:gap-6">
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Button
                 variant="outline"
@@ -298,7 +298,7 @@ const Testimonials = () => {
               </Button>
             </motion.div>
 
-            <div className="flex space-x-2">
+            <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 max-w-[200px] md:max-w-none">
               {testimonials.map((_, index) => (
                 <button
                   key={index}

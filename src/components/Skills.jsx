@@ -94,13 +94,13 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-16 md:py-24 relative overflow-hidden">
-      <div className="container px-6 relative z-10">
+      <div className="container px-4 md:px-6 relative z-10">
         <AnimatedSection>
 
           {/* Section heading */}
           <AnimatedElement
             variants={fadeIn("down", 0.2)}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
             <p className="text-xs font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-[0.2em] mb-3">
               What I build with
@@ -119,13 +119,13 @@ const Skills = () => {
             variants={staggerContainer(0.1, 0.2)}
             initial="hidden"
             animate={isInView ? "show" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-6 gap-5"
+            className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5"
           >
             {skillCategories.map((category, index) => (
               <AnimatedElement
                 key={category.name}
                 variants={fadeIn(index % 2 === 0 ? "right" : "left", index * 0.1)}
-                className={`glass rounded-2xl p-7 relative overflow-hidden group ${category.colSpan}`}
+                className={`glass rounded-2xl p-5 md:p-7 relative overflow-hidden group ${category.colSpan}`}
               >
                 {/* Ambient corner glow — brightens on card hover */}
                 <div
@@ -134,24 +134,24 @@ const Skills = () => {
                 />
 
                 {/* Header */}
-                <div className="flex items-center gap-4 mb-5 relative">
-                  <div className={`p-3 rounded-2xl shrink-0 ${category.iconBg}`}>
+                <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-5 relative">
+                  <div className={`p-2.5 md:p-3 rounded-2xl shrink-0 ${category.iconBg}`}>
                     {category.icon}
                   </div>
-                  <h3 className={`text-2xl font-bold leading-none ${category.headerColor}`}>
+                  <h3 className={`text-xl md:text-2xl font-bold leading-none ${category.headerColor}`}>
                     {category.name}
                   </h3>
                 </div>
 
                 {/* Colored separator */}
-                <div className={`h-px bg-gradient-to-r ${category.separator} to-transparent mb-5`} />
+                <div className={`h-px bg-gradient-to-r ${category.separator} to-transparent mb-4 md:mb-5`} />
 
                 {/* Skill chips */}
-                <div className="flex flex-wrap gap-2.5 relative">
+                <div className="flex flex-wrap gap-2 md:gap-2.5 relative">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skill.name}
-                      className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border ${category.chipBase} ${category.chipHover} transition-colors duration-200 cursor-default`}
+                      className={`flex items-center gap-2 md:gap-2.5 px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl border ${category.chipBase} ${category.chipHover} transition-colors duration-200 cursor-default`}
                       initial={{ opacity: 0, y: 10 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{
@@ -164,10 +164,10 @@ const Skills = () => {
                       <img
                         src={skill.icon}
                         alt={skill.name}
-                        className="w-7 h-7 object-contain"
+                        className="w-5 h-5 md:w-7 md:h-7 object-contain"
                         onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
                       />
-                      <span className="text-sm font-semibold whitespace-nowrap">
+                      <span className="text-xs md:text-sm font-semibold whitespace-nowrap">
                         {skill.name}
                       </span>
                     </motion.div>
