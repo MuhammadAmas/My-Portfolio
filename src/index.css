@@ -734,3 +734,67 @@ select {
 .blur-in-delay-2 { animation-delay: 160ms; }
 .blur-in-delay-3 { animation-delay: 240ms; }
 .blur-in-delay-4 { animation-delay: 320ms; }
+
+/* ========================================
+   MOBILE SCROLL PERFORMANCE
+
+   Live `backdrop-filter: blur()` is the single
+   biggest cause of scroll jank on mobile GPUs —
+   the browser re-samples and blurs the backdrop
+   on every scroll frame. Drop it on small screens
+   and lean on more opaque fills so the frosted
+   look survives without the per-frame cost. Also
+   park the infinite decorative animations that
+   would otherwise steal frames mid-scroll.
+   ======================================== */
+@media (max-width: 768px) {
+  .glass,
+  .glass-card,
+  .glass-button,
+  .glass-input,
+  .glass-badge,
+  .glass-gradient-border,
+  .glass-navbar,
+  .sidebar-glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .glass { background: rgba(255, 255, 255, 0.85); }
+  .dark .glass { background: rgba(17, 25, 40, 0.92); }
+
+  .glass-card { background: rgba(255, 255, 255, 0.9); }
+  .dark .glass-card { background: rgba(30, 41, 59, 0.9); }
+
+  .glass-button { background: rgba(255, 255, 255, 0.82); }
+  .dark .glass-button { background: rgba(30, 41, 59, 0.8); }
+
+  .glass-input { background: rgba(255, 255, 255, 0.72); }
+  .dark .glass-input { background: rgba(0, 0, 0, 0.35); }
+
+  .glass-badge { background: rgba(59, 130, 246, 0.14); }
+
+  .glass-gradient-border { background: rgba(255, 255, 255, 0.85); }
+  .dark .glass-gradient-border { background: rgba(17, 25, 40, 0.9); }
+
+  .glass-navbar { background: rgba(255, 255, 255, 0.95); }
+  .dark .glass-navbar { background: rgba(15, 23, 42, 0.95); }
+
+  .sidebar-glass { background: rgba(235, 235, 235, 0.95); }
+  .dark .sidebar-glass { background: rgba(30, 30, 40, 0.95); }
+
+  .glass-orb,
+  .float-animation {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-orb,
+  .float-animation,
+  .marquee-track,
+  .marquee-track-reverse,
+  .blur-in {
+    animation: none !important;
+  }
+}
