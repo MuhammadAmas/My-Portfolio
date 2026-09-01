@@ -171,7 +171,7 @@ const Hero = () => {
                 variant="outline"
                 size="lg"
                 asChild
-                className="overflow-hidden relative pulse-glow cursor-pointer"
+                className="overflow-hidden relative pulse-glow w-full cursor-pointer"
               >
                 <motion.a
                   href="/Muhammad Amas Resume.pdf"
