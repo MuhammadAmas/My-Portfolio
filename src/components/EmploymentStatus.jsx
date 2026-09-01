@@ -42,9 +42,19 @@ const EmploymentStatus = () => {
                     Full Stack Engineer,
                   </span>
                 </div>
-                <div className="pl-8 md:pl-12">
+                <div className="pl-8 md:pl-12 mb-2">
                   <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text">
-                    Cloud Engineer,
+                    Frontend Developer,
+                  </span>
+                </div>  
+                <div className="pl-8 md:pl-12 mb-2">
+                  <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text">
+                    Backend Developer,
+                  </span>
+                </div>
+                <div className="pl-8 md:pl-12 mb-2">
+                  <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text">
+                    Cloud Engineer
                   </span>
                 </div>
               </AnimatedElement>
@@ -62,7 +72,7 @@ const EmploymentStatus = () => {
             variants={fadeIn("up", 0.6)}
             className="mt-16 text-gray-500 dark:text-gray-400 text-xl max-w-3xl mx-auto"
           >
-            I am particularly interested in Full Stack positions where I can
+            I am particularly interested in Full Stack Engineering positions where I can
             help make an organization wide impact.
           </AnimatedElement>
         </AnimatedElement>

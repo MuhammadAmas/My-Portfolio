@@ -107,7 +107,7 @@ const FeaturedPublications = () => {
             to="/publications"
             className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white font-medium text-lg shadow-lg shadow-blue-500/20 dark:shadow-blue-800/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-800/40 hover:-translate-y-1"
           >
-            <span className="relative z-10">View All Publications</span>
+            <span className="relative z-10 cursor-pointer">View All Publications</span>
             <ExternalLink className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             <motion.div
               className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-transparent dark:from-blue-300/20"

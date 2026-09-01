@@ -16,7 +16,7 @@ const roles = [
 ];
 
 const stats = [
-  { value: "3+", label: "Years Exp." },
+  { value: "4+", label: "Years Exp." },
   { value: "20+", label: "Projects" },
   { value: "5★", label: "Upwork" },
 ];
@@ -159,7 +159,7 @@ const Hero = () => {
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="overflow-hidden relative animated-gradient w-full"
+                  className="overflow-hidden relative animated-gradient w-full cursor-pointer"
                 >
                   <span className="relative z-10">Get in Touch</span>
                 </Button>
@@ -171,7 +171,7 @@ const Hero = () => {
                 variant="outline"
                 size="lg"
                 asChild
-                className="overflow-hidden relative pulse-glow"
+                className="overflow-hidden relative pulse-glow cursor-pointer"
               >
                 <motion.a
                   href="/Muhammad Amas Resume.pdf"
@@ -198,7 +198,7 @@ const Hero = () => {
             className="mt-8 flex justify-center lg:justify-start space-x-4"
           >
             <motion.div whileHover={{ y: -5 }} whileTap={{ y: 0 }}>
-              <Button variant="ghost" size="icon" asChild className="relative">
+              <Button variant="ghost" size="icon" asChild className="relative cursor-pointer">
                 <a
                   href="https://github.com/muhammadamas"
                   target="_blank"
@@ -221,7 +221,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.div whileHover={{ y: -5 }} whileTap={{ y: 0 }}>
-              <Button variant="ghost" size="icon" asChild className="relative">
+              <Button variant="ghost" size="icon" asChild className="relative cursor-pointer">
                 <a
                   href="https://linkedin.com/in/amaswaseem"
                   target="_blank"

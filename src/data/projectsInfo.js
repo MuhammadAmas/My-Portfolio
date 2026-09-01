@@ -48,9 +48,24 @@ const projects = [
     ],
     yearCompleted: 2024,
   },
+    {
+    id: "4",
+    title: "PartyGo",
+    description:
+      "Event-services marketplace connecting customers with vendors for bookings, payments, and event management. Includes vendor dashboards, secure payments, messaging, disputes, scheduling, and analytics.",
+    image: "/projects-images/partygo.png",
+    technologies: ["React.js", "Nest.js", "Tailwind CSS", "MongoDB", "AWS"],
+    category: ["Full Stack"],
+    demoLink: "https://partygo.app",
+    highlights: [
+      "Verified vendors with secure escrow bookings and payments",
+      "Complete marketplace with real-time vendor management",
+    ],
+    yearCompleted: 2024,
+  },
   {
     id: "3",
-    title: "FuturConnect Dashboard",
+    title: "FuturConnect",
     description:
       "Effortlessly manage your meeting rooms with a streamlined platform designed for maximum efficiency and convenience. Ideal for businesses looking to optimize their space and reduce scheduling conflicts.",
     image: "/projects-images/futurConnect.png",
