@@ -13,7 +13,7 @@ const Thanks = () => {
         transition={{ duration: 0.5 }}
       >
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-transparent -z-10 rounded-xl"
+          className="absolute inset-0 bg-gradient-to-br from-neutral-500/5 via-transparent to-transparent -z-10 rounded-xl"
           animate={{
             opacity: [0, 0.5, 0],
             scale: [1, 1.2, 1],
@@ -26,7 +26,7 @@ const Thanks = () => {
         />
 
         <motion.h1
-          className="text-3xl md:text-4xl font-bold mb-4"
+          className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -35,7 +35,7 @@ const Thanks = () => {
         </motion.h1>
 
         <motion.p
-          className="text-gray-600 dark:text-gray-400 mb-8"
+          className="text-neutral-600 dark:text-neutral-400 mb-8"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}

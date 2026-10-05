@@ -19,10 +19,10 @@ const FeaturedProjects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-100">
             Featured Projects
           </h2>
-          <p className="text-muted-foreground max-w-[600px] mx-auto mb-8">
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-[600px] mx-auto mb-8">
             Check out some of my recent work
           </p>
         </motion.div>
@@ -51,11 +51,11 @@ const FeaturedProjects = () => {
         >
           <Link
             to="/projects"
-            className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white font-medium text-lg shadow-lg shadow-blue-500/20 dark:shadow-blue-800/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-800/40 hover:-translate-y-1"
+            className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium text-lg shadow-lg border border-neutral-900 dark:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
             <span className="relative z-10 cursor-pointer">View All Projects</span>
             <motion.div
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-transparent dark:from-blue-300/20"
+              className="absolute inset-0 rounded-full bg-white/10 dark:bg-black/10"
               animate={{
                 opacity: [0, 1, 0],
               }}

@@ -72,11 +72,11 @@ const FloatingParticles = ({ density = 50, speed = 1 }) => {
 
   useEffect(() => {
     if (theme === "dark") {
-      colorRef.current = "rgba(96,165,250,0.8)";
-      connColorRef.current = "rgba(96,165,250,0.1)";
+      colorRef.current = "rgba(255, 255, 255, 0.45)";
+      connColorRef.current = "rgba(255, 255, 255, 0.08)";
     } else {
-      colorRef.current = "rgba(37,99,235,0.6)";
-      connColorRef.current = "rgba(37,99,235,0.05)";
+      colorRef.current = "rgba(0, 0, 0, 0.25)";
+      connColorRef.current = "rgba(0, 0, 0, 0.04)";
     }
   }, [theme]);
 

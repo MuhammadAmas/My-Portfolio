@@ -11,19 +11,19 @@ const GlassDecorations = ({ variant = "default" }) => {
         size: "w-32 h-32",
         position: "top-10 right-10",
         delay: 0,
-        gradient: "from-blue-500/10 to-purple-500/10",
+        gradient: "from-black/5 to-transparent dark:from-white/5 dark:to-transparent",
       },
       {
         size: "w-24 h-24",
         position: "bottom-20 left-10",
         delay: 2,
-        gradient: "from-pink-500/10 to-orange-500/10",
+        gradient: "from-neutral-500/5 to-transparent dark:from-white/5 dark:to-transparent",
       },
       {
         size: "w-16 h-16",
         position: "top-1/3 left-1/4",
         delay: 4,
-        gradient: "from-cyan-500/10 to-teal-500/10",
+        gradient: "from-neutral-400/5 to-transparent dark:from-neutral-200/5 dark:to-transparent",
       },
     ],
     minimal: [
@@ -31,7 +31,7 @@ const GlassDecorations = ({ variant = "default" }) => {
         size: "w-20 h-20",
         position: "top-20 right-20",
         delay: 0,
-        gradient: "from-blue-500/5 to-purple-500/5",
+        gradient: "from-black/5 to-transparent dark:from-white/5 dark:to-transparent",
       },
     ],
     hero: [
@@ -39,19 +39,19 @@ const GlassDecorations = ({ variant = "default" }) => {
         size: "w-64 h-64",
         position: "-top-32 -right-32",
         delay: 0,
-        gradient: "from-blue-500/20 to-transparent",
+        gradient: "from-neutral-500/10 to-transparent dark:from-white/5 dark:to-transparent",
       },
       {
         size: "w-48 h-48",
         position: "-bottom-24 -left-24",
         delay: 3,
-        gradient: "from-purple-500/15 to-transparent",
+        gradient: "from-neutral-400/10 to-transparent dark:from-white/5 dark:to-transparent",
       },
       {
         size: "w-32 h-32",
         position: "top-1/2 right-1/4",
         delay: 6,
-        gradient: "from-cyan-500/10 to-transparent",
+        gradient: "from-neutral-300/10 to-transparent dark:from-white/5 dark:to-transparent",
       },
     ],
   };
@@ -149,7 +149,7 @@ export const SpotlightCard = ({ children, className = "" }) => {
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
           background:
-            "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.1), transparent 40%)",
+            "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), transparent 40%)",
         }}
       />
       <div className="relative z-10">{children}</div>

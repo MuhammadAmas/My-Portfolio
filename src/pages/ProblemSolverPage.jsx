@@ -13,7 +13,6 @@ import {
   Globe,
   Package,
   Sparkles,
-  Send,
   CheckCircle2,
   Zap,
   Shield,
@@ -148,25 +147,21 @@ const ProblemSolverPage = () => {
       icon: <Palette className="h-6 w-6" />,
       title: "UX Suggestions",
       description: "Improve user experience with actionable design feedback",
-      color: "from-purple-500 to-pink-500",
     },
     {
       icon: <Zap className="h-6 w-6" />,
       title: "Performance Tips",
       description: "Speed up your site with optimization recommendations",
-      color: "from-yellow-500 to-orange-500",
     },
     {
       icon: <TrendingUp className="h-6 w-6" />,
       title: "Growth Ideas",
       description: "Scale your project with proven growth strategies",
-      color: "from-green-500 to-emerald-500",
     },
     {
       icon: <Shield className="h-6 w-6" />,
       title: "Accessibility Fixes",
       description: "Make your site inclusive for all users",
-      color: "from-blue-500 to-cyan-500",
     },
   ];
 
@@ -184,21 +179,21 @@ const ProblemSolverPage = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-3 sm:mb-4 md:mb-6 mx-auto w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/25"
+            className="mb-3 sm:mb-4 md:mb-6 mx-auto w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 flex items-center justify-center shadow-lg border border-neutral-800 dark:border-neutral-200"
           >
-            <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
+            <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10" />
           </motion.div>
 
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-blue-400 dark:via-purple-400 dark:to-blue-400 px-2">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-3 md:mb-4 text-neutral-900 dark:text-neutral-100 px-2">
             How I'd Improve Your Website
           </h1>
-          <p className="text-muted-foreground max-w-[700px] mx-auto text-sm sm:text-base md:text-lg lg:text-xl px-4 leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-[700px] mx-auto text-sm sm:text-base md:text-lg lg:text-xl px-4 leading-relaxed">
             Submit your website, product, or idea and I'll provide personalized
             suggestions for UX, performance, growth, and accessibility.
           </p>
         </motion.div>
 
-        {/* Benefits Grid - Compact on mobile */}
+        {/* Benefits Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -212,19 +207,17 @@ const ProblemSolverPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
             >
-              <Card className="h-full border-0 bg-gradient-to-br from-background to-muted/50 hover:shadow-lg transition-all duration-300 group">
+              <Card className="h-full border border-neutral-200/80 dark:border-neutral-800 bg-card/60 backdrop-blur-sm hover:shadow-md transition-all duration-300 group">
                 <CardContent className="p-3 sm:p-4 md:p-6 text-center">
-                  <div
-                    className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 rounded-lg md:rounded-xl bg-gradient-to-br ${benefit.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                  >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 rounded-lg md:rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
                     <div className="scale-75 sm:scale-90 md:scale-100">
                       {benefit.icon}
                     </div>
                   </div>
-                  <h3 className="font-semibold text-xs sm:text-sm md:text-base mb-1 sm:mb-2">
+                  <h3 className="font-semibold text-xs sm:text-sm md:text-base mb-1 sm:mb-2 text-neutral-900 dark:text-white">
                     {benefit.title}
                   </h3>
-                  <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground hidden sm:block">
+                  <p className="text-[10px] sm:text-xs md:text-sm text-neutral-600 dark:text-neutral-400 hidden sm:block">
                     {benefit.description}
                   </p>
                 </CardContent>
@@ -243,20 +236,20 @@ const ProblemSolverPage = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               className="max-w-2xl mx-auto"
             >
-              <Card className="border-0 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30">
+              <Card className="border border-neutral-200/80 dark:border-neutral-800 bg-card/80 backdrop-blur-sm shadow-xl">
                 <CardContent className="p-12 text-center">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", duration: 0.5 }}
-                    className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center"
+                    className="w-20 h-20 mx-auto mb-6 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 flex items-center justify-center shadow-lg"
                   >
-                    <CheckCircle2 className="w-10 h-10 text-white" />
+                    <CheckCircle2 className="w-10 h-10" />
                   </motion.div>
-                  <h2 className="text-2xl font-bold mb-4 text-green-700 dark:text-green-400">
+                  <h2 className="text-2xl font-bold mb-4 text-neutral-900 dark:text-white">
                     Request Received! 🎉
                   </h2>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-6">
                     Thank you for submitting your{" "}
                     {formData.submissionType || "project"}! I'll review it
                     carefully and get back to you within 48-72 hours with
@@ -264,7 +257,7 @@ const ProblemSolverPage = () => {
                   </p>
                   <Button
                     onClick={() => setSubmitted(false)}
-                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                    className="bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 shadow-md border border-neutral-900 dark:border-white"
                   >
                     Submit Another Request
                   </Button>
@@ -279,12 +272,12 @@ const ProblemSolverPage = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="max-w-3xl mx-auto"
             >
-              <Card className="border-0 shadow-xl sm:shadow-2xl shadow-blue-500/10 dark:shadow-blue-500/5 overflow-hidden rounded-2xl sm:rounded-3xl">
-                <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 sm:p-6 md:p-8">
+              <Card className="border border-neutral-200/80 dark:border-neutral-800 shadow-xl overflow-hidden rounded-2xl sm:rounded-3xl bg-card/80 backdrop-blur-sm">
+                <CardHeader className="bg-neutral-950 text-white p-4 sm:p-6 md:p-8 border-b border-neutral-800">
                   <CardTitle className="text-lg sm:text-xl md:text-2xl text-center">
                     Get Free Expert Feedback
                   </CardTitle>
-                  <CardDescription className="text-blue-100 text-center text-xs sm:text-sm md:text-base mt-1">
+                  <CardDescription className="text-neutral-300 text-center text-xs sm:text-sm md:text-base mt-1">
                     No strings attached — just genuine advice to help you
                     improve
                   </CardDescription>
@@ -292,15 +285,15 @@ const ProblemSolverPage = () => {
 
                 <CardContent className="p-3 sm:p-4 md:p-8">
                   {/* Submission Type Tabs */}
-                  <div className="grid grid-cols-3 gap-1 mb-4 sm:mb-6 md:mb-8 p-1 bg-muted rounded-lg sm:rounded-xl">
+                  <div className="grid grid-cols-3 gap-1 mb-4 sm:mb-6 md:mb-8 p-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg sm:rounded-xl">
                     {submissionTypes.map((type) => (
                       <button
                         key={type.id}
                         onClick={() => handleTabChange(type.id)}
-                        className={`flex flex-col items-center justify-center gap-0.5 sm:gap-1 md:flex-row md:gap-2 px-2 py-2 sm:py-2.5 md:py-3 rounded-md sm:rounded-lg font-medium text-[10px] sm:text-xs md:text-base transition-all duration-300 ${
+                        className={`flex flex-col items-center justify-center gap-0.5 sm:gap-1 md:flex-row md:gap-2 px-2 py-2 sm:py-2.5 md:py-3 rounded-md sm:rounded-lg font-medium text-[10px] sm:text-xs md:text-base transition-all duration-200 cursor-pointer ${
                           activeTab === type.id
-                            ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-md"
-                            : "text-muted-foreground hover:text-foreground"
+                            ? "bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-sm border border-neutral-200/60 dark:border-neutral-700"
+                            : "text-neutral-500 hover:text-black dark:hover:text-white"
                         }`}
                       >
                         <span className="scale-75 sm:scale-90 md:scale-100">
@@ -320,7 +313,7 @@ const ProblemSolverPage = () => {
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                          className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                         >
                           Your Name *
                         </label>
@@ -331,14 +324,14 @@ const ProblemSolverPage = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 text-sm sm:text-base"
                           placeholder="John Doe"
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                          className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                         >
                           Email Address *
                         </label>
@@ -349,7 +342,7 @@ const ProblemSolverPage = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 text-sm sm:text-base"
                           placeholder="john@example.com"
                         />
                       </div>
@@ -367,7 +360,7 @@ const ProblemSolverPage = () => {
                         >
                           <label
                             htmlFor="websiteUrl"
-                            className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                            className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                           >
                             Website URL *
                           </label>
@@ -378,10 +371,10 @@ const ProblemSolverPage = () => {
                             value={formData.websiteUrl}
                             onChange={handleChange}
                             required={activeTab === "website"}
-                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 text-sm sm:text-base"
                             placeholder="https://yourwebsite.com"
                           />
-                          <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-sm text-muted-foreground">
+                          <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-sm text-neutral-500 dark:text-neutral-400">
                             Enter the full URL including https://
                           </p>
                         </motion.div>
@@ -397,7 +390,7 @@ const ProblemSolverPage = () => {
                         >
                           <label
                             htmlFor="productDescription"
-                            className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                            className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                           >
                             Describe Your Product *
                           </label>
@@ -408,7 +401,7 @@ const ProblemSolverPage = () => {
                             onChange={handleChange}
                             required={activeTab === "product"}
                             rows={3}
-                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 resize-none text-sm sm:text-base"
                             placeholder="What does your product do? Who is it for?"
                           />
                         </motion.div>
@@ -424,7 +417,7 @@ const ProblemSolverPage = () => {
                         >
                           <label
                             htmlFor="ideaDescription"
-                            className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                            className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                           >
                             Describe Your Idea *
                           </label>
@@ -435,7 +428,7 @@ const ProblemSolverPage = () => {
                             onChange={handleChange}
                             required={activeTab === "idea"}
                             rows={3}
-                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base"
+                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 resize-none text-sm sm:text-base"
                             placeholder="What's your idea? What outcome do you envision?"
                           />
                         </motion.div>
@@ -446,7 +439,7 @@ const ProblemSolverPage = () => {
                     <div>
                       <label
                         htmlFor="specificConcerns"
-                        className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                        className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                       >
                         Specific Areas of Concern
                       </label>
@@ -456,7 +449,7 @@ const ProblemSolverPage = () => {
                         value={formData.specificConcerns}
                         onChange={handleChange}
                         rows={2}
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 resize-none text-sm sm:text-base"
                         placeholder="Any specific issues? (e.g., low conversions, slow load times)"
                       />
                     </div>
@@ -465,7 +458,7 @@ const ProblemSolverPage = () => {
                     <div>
                       <label
                         htmlFor="goals"
-                        className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2"
+                        className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 text-neutral-900 dark:text-neutral-200"
                       >
                         Your Goals
                       </label>
@@ -475,7 +468,7 @@ const ProblemSolverPage = () => {
                         value={formData.goals}
                         onChange={handleChange}
                         rows={2}
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50 transition-all duration-200 resize-none text-sm sm:text-base"
                         placeholder="What are you trying to achieve?"
                       />
                     </div>
@@ -484,7 +477,7 @@ const ProblemSolverPage = () => {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg sm:rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 group cursor-pointer"
+                      className="w-full py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg font-semibold bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 rounded-lg sm:rounded-xl shadow-lg border border-neutral-900 dark:border-white transition-all duration-300 group cursor-pointer"
                     >
                       {isSubmitting ? (
                         <>
@@ -499,7 +492,7 @@ const ProblemSolverPage = () => {
                       )}
                     </Button>
 
-                    <p className="text-center text-[10px] sm:text-xs md:text-sm text-muted-foreground">
+                    <p className="text-center text-[10px] sm:text-xs md:text-sm text-neutral-500 dark:text-neutral-400">
                       I typically respond within 48-72 hours with detailed
                       suggestions
                     </p>
@@ -517,24 +510,24 @@ const ProblemSolverPage = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="mt-6 sm:mt-8 md:mt-12 text-center pb-4"
         >
-          <p className="text-muted-foreground mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm md:text-base">
+          <p className="text-neutral-500 dark:text-neutral-400 mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm md:text-base">
             Why get feedback from me?
           </p>
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:flex md:flex-wrap justify-center md:gap-6 text-[10px] sm:text-xs md:text-sm">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:flex md:flex-wrap justify-center md:gap-6 text-[10px] sm:text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
             <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
+              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-neutral-900 dark:text-white flex-shrink-0" />
               <span>Full-Stack Dev</span>
             </div>
             <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
+              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-neutral-900 dark:text-white flex-shrink-0" />
               <span>UX/UI Focused</span>
             </div>
             <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
+              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-neutral-900 dark:text-white flex-shrink-0" />
               <span>Performance Expert</span>
             </div>
             <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
+              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-neutral-900 dark:text-white flex-shrink-0" />
               <span>No Obligation</span>
             </div>
           </div>

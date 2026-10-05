@@ -172,44 +172,16 @@ const Testimonials = () => {
       className="py-16 md:py-24 relative overflow-hidden"
       ref={sectionRef}
     >
-      {/* Decorative Elements */}
-      <motion.div
-        className="absolute top-40 left-5 md:left-20 w-40 h-40 bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-3xl -z-10"
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 20, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-40 right-5 md:right-20 w-60 h-60 bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-3xl -z-10"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          x: [0, -20, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
       <div className="container px-4">
         <AnimatedElement
           variants={fadeIn("down", 0.2)}
           className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-100">
             What People Say
           </h2>
-          <div className="w-40 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <div className="w-16 h-0.5 bg-neutral-900 dark:bg-white mx-auto mb-6"></div>
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
             Testimonials from professionals I've had the pleasure of working
             with throughout my career.
           </p>
@@ -219,9 +191,9 @@ const Testimonials = () => {
           <AnimatedCard
             variants={fadeIn(direction === "left" ? "right" : "left", 0.3)}
             key={currentTestimonial.id}
-            className="glass p-5 md:p-8 rounded-2xl relative overflow-hidden min-h-[420px] md:min-h-[380px] flex flex-col"
+            className="glass p-5 md:p-8 rounded-2xl relative overflow-hidden min-h-[420px] md:min-h-[380px] flex flex-col border border-neutral-200/80 dark:border-neutral-800"
           >
-            <Quote className="absolute top-4 right-4 h-8 w-8 md:top-6 md:right-6 md:h-12 md:w-12 text-blue-600/20 dark:text-blue-600/30" />
+            <Quote className="absolute top-4 right-4 h-8 w-8 md:top-6 md:right-6 md:h-12 md:w-12 text-neutral-400/20 dark:text-neutral-600/20" />
 
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start flex-grow">
               <motion.div
@@ -230,7 +202,7 @@ const Testimonials = () => {
                 transition={{ duration: 0.3 }}
                 className="flex-shrink-0"
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-blue-600/20">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-neutral-300 dark:border-neutral-700">
                   <img
                     src={currentTestimonial.image}
                     alt={currentTestimonial.name}
@@ -246,21 +218,21 @@ const Testimonials = () => {
                   transition={{ duration: 0.4, delay: 0.1 }}
                   className="h-full flex flex-col"
                 >
-                  <h3 className="text-lg md:text-xl font-bold mb-1 flex items-center">
+                  <h3 className="text-lg md:text-xl font-bold mb-1 flex items-center text-neutral-900 dark:text-white">
                     {currentTestimonial.name}
                     <a
                       href={currentTestimonial.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex ml-2 text-blue-600 hover:text-blue-800 transition-colors"
+                      className="inline-flex ml-2 text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
                     >
                       <Linkedin className="h-4 w-4" />
                     </a>
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                     {currentTestimonial.position}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-500 mb-4">
+                  <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-4">
                     {currentTestimonial.date} •{" "}
                     {currentTestimonial.relationship}
                   </p>
@@ -271,7 +243,7 @@ const Testimonials = () => {
                       .map((paragraph, i) => (
                         <p
                           key={i}
-                          className="mb-3 text-gray-700 dark:text-gray-300"
+                          className="mb-3 text-neutral-700 dark:text-neutral-300"
                         >
                           {paragraph}
                         </p>
@@ -288,10 +260,10 @@ const Testimonials = () => {
                 variant="outline"
                 size="icon"
                 onClick={handlePrev}
-                className="relative overflow-hidden rounded-full h-10 w-10 border-gray-300 dark:border-gray-700"
+                className="relative overflow-hidden rounded-full h-10 w-10 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 <motion.div
-                  className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0 rounded-full"
+                  className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 -z-10 opacity-0 rounded-full"
                   whileHover={{ opacity: 1 }}
                 />
                 <ChevronLeft className="h-5 w-5" />
@@ -303,10 +275,10 @@ const Testimonials = () => {
                 <button
                   key={index}
                   onClick={() => handleDotClick(index)}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
                     currentIndex === index
-                      ? "w-6 bg-blue-600"
-                      : "w-2 bg-gray-300 dark:bg-gray-700 hover:bg-blue-400 dark:hover:bg-blue-800"
+                      ? "w-6 bg-neutral-900 dark:bg-white"
+                      : "w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-500"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -318,10 +290,10 @@ const Testimonials = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleNext}
-                className="relative overflow-hidden rounded-full h-10 w-10 border-gray-300 dark:border-gray-700"
+                className="relative overflow-hidden rounded-full h-10 w-10 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 <motion.div
-                  className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0 rounded-full"
+                  className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 -z-10 opacity-0 rounded-full"
                   whileHover={{ opacity: 1 }}
                 />
                 <ChevronRight className="h-5 w-5" />

@@ -40,10 +40,10 @@ const Publications = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-100">
             Publications
           </h2>
-          <p className="text-muted-foreground max-w-[600px] mx-auto mb-8">
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-[600px] mx-auto mb-8">
             Explore my articles on technology, development, and industry
             insights
           </p>
@@ -56,21 +56,21 @@ const Publications = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search publications..."
-                className="w-full px-4 py-3 rounded-full bg-white/5 dark:bg-gray-950/50 border border-gray-200/20 dark:border-gray-800/30 backdrop-blur-xl
-                         focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/20
-                         placeholder:text-gray-400 dark:placeholder:text-gray-500 text-foreground
-                         transition-all duration-300 shadow-[0_0_1px_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_1px_1px_rgba(255,255,255,0.05)]"
+                className="w-full px-4 py-3 rounded-full bg-white/70 dark:bg-neutral-900/70 border border-neutral-300 dark:border-neutral-700 backdrop-blur-xl
+                         focus:outline-none focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50
+                         placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-foreground
+                         transition-all duration-300 shadow-sm"
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="p-1 hover:bg-white/10 dark:hover:bg-gray-800/50 rounded-full transition-colors"
+                    className="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full transition-colors cursor-pointer"
                   >
-                    <X className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                    <X className="w-4 h-4 text-neutral-400 dark:text-neutral-500" />
                   </button>
                 )}
-                <Search className="w-5 h-5 text-gray-400 dark:text-gray-500" />
+                <Search className="w-5 h-5 text-neutral-400 dark:text-neutral-500" />
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@ const Publications = () => {
               exit={{ opacity: 0, y: 20 }}
               className="text-center py-12"
             >
-              <p className="text-muted-foreground text-lg">
+              <p className="text-neutral-500 dark:text-neutral-400 text-lg">
                 No publications found matching your search.
               </p>
             </motion.div>
@@ -117,9 +117,9 @@ const Publications = () => {
                     className="block h-full transform-gpu transition-all duration-300 hover:-translate-y-2"
                   >
                     <Card
-                      className="h-full flex flex-col overflow-hidden group bg-card/50 dark:bg-card/50 backdrop-blur-sm border-gray-200/20 dark:border-gray-800/30 
-                    shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)] 
-                    hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_8px_30px_-4px_rgba(255,255,255,0.15)]
+                      className="h-full flex flex-col overflow-hidden group bg-card/60 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-800 
+                    shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] 
+                    hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.7)]
                     transition-shadow duration-300"
                     >
                       <div className="relative h-48 w-full overflow-hidden">
@@ -127,19 +127,19 @@ const Publications = () => {
                           src={pub.image || defaultImage}
                           alt={pub.title}
                           onError={handleImageError}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
                       </div>
                       <CardHeader className="relative">
-                        <CardTitle className="text-xl font-semibold line-clamp-2 group-hover:text-primary transition-colors">
+                        <CardTitle className="text-xl font-semibold line-clamp-2 text-neutral-900 dark:text-white group-hover:underline transition-colors">
                           {pub.title}
                         </CardTitle>
-                        <CardDescription className="line-clamp-2 text-muted-foreground">
+                        <CardDescription className="line-clamp-2 text-neutral-600 dark:text-neutral-400">
                           {pub.description}
                         </CardDescription>
                       </CardHeader>
-                      <CardFooter className="flex justify-between items-center text-sm text-muted-foreground mt-auto pt-6 border-t border-gray-200/20 dark:border-gray-800/30">
+                      <CardFooter className="flex justify-between items-center text-sm text-neutral-500 dark:text-neutral-400 mt-auto pt-6 border-t border-neutral-200/80 dark:border-neutral-800">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
                           <span>{pub.publishedDate}</span>
@@ -165,16 +165,16 @@ const Publications = () => {
           className="mt-16 text-center"
         >
           <Card
-            className="max-w-2xl mx-auto bg-card/50 backdrop-blur-sm border-gray-200/20 dark:border-gray-800/30 overflow-hidden
-          shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)]
-          hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_8px_30px_-4px_rgba(255,255,255,0.15)]
+            className="max-w-2xl mx-auto bg-card/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-800 overflow-hidden
+          shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)]
+          hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.7)]
           transition-shadow duration-300"
           >
             <CardHeader>
-              <CardTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+              <CardTitle className="text-2xl font-bold text-neutral-900 dark:text-white">
                 Stay Updated
               </CardTitle>
-              <CardDescription className="text-lg text-muted-foreground">
+              <CardDescription className="text-base text-neutral-600 dark:text-neutral-400">
                 Follow me on Medium for the latest articles and insights
               </CardDescription>
             </CardHeader>
@@ -183,7 +183,7 @@ const Publications = () => {
                 href="https://muhammadamas.medium.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 font-medium transition-colors duration-200 shadow-sm border border-neutral-900 dark:border-white"
               >
                 Follow on Medium
                 <ExternalLink className="w-4 h-4" />

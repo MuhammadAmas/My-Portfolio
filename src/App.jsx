@@ -36,7 +36,7 @@ function App() {
               transition={{ delay: 0.2 }}
             >
               <motion.div
-                className="w-16 h-16 border-t-4 border-b-4 border-blue-600 rounded-full"
+                className="w-16 h-16 border-t-4 border-b-4 border-neutral-900 dark:border-white rounded-full"
                 animate={{ rotate: 360 }}
                 transition={{
                   duration: 1.5,
@@ -45,7 +45,7 @@ function App() {
                 }}
               />
               <motion.p
-                className="mt-4 text-blue-600 font-medium"
+                className="mt-4 text-neutral-900 dark:text-white font-medium"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{
                   duration: 1.5,

@@ -84,15 +84,15 @@ const Hero = () => {
       <div className="absolute -z-10" />
 
       <AnimatedDecoration
-        className="absolute top-20 left-10 w-12 h-12 rounded-full bg-blue-600/10 dark:bg-blue-600/20 -z-5"
+        className="absolute top-20 left-10 w-12 h-12 rounded-full bg-neutral-900/5 dark:bg-white/5 border border-neutral-200/50 dark:border-neutral-800/50 -z-5"
         animation="float"
       />
       <AnimatedDecoration
-        className="absolute bottom-40 right-10 w-16 h-16 rounded-full bg-blue-600/10 dark:bg-blue-600/20 -z-5"
+        className="absolute bottom-40 right-10 w-16 h-16 rounded-full bg-neutral-900/5 dark:bg-white/5 border border-neutral-200/50 dark:border-neutral-800/50 -z-5"
         animation="pulse"
       />
       <AnimatedDecoration
-        className="absolute top-1/3 right-1/4 w-8 h-8 rounded-full bg-blue-600/10 dark:bg-blue-600/20 -z-5"
+        className="absolute top-1/3 right-1/4 w-8 h-8 rounded-full bg-neutral-900/5 dark:bg-white/5 border border-neutral-200/50 dark:border-neutral-800/50 -z-5"
         animation="float"
       />
 
@@ -111,10 +111,10 @@ const Hero = () => {
 
           {/* Typewriter */}
           <div className="h-9 mb-4 flex items-center justify-center lg:justify-start">
-            <span className="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400">
+            <span className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
               {displayText}
             </span>
-            <span className="ml-0.5 inline-block w-[2px] h-6 bg-blue-600 dark:bg-blue-400 animate-pulse" />
+            <span className="ml-0.5 inline-block w-[2px] h-6 bg-neutral-900 dark:bg-neutral-100 animate-pulse" />
           </div>
 
           <motion.p
@@ -122,7 +122,7 @@ const Hero = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto lg:mx-0"
+            className="text-neutral-600 dark:text-neutral-400 mb-6 max-w-md mx-auto lg:mx-0"
           >
             I build modern, responsive web applications with a focus on clean
             code and exceptional user experiences.
@@ -138,10 +138,10 @@ const Hero = () => {
           >
             {stats.map((stat, i) => (
               <div key={i} className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 font-display leading-none">
+                <div className="text-2xl font-bold text-neutral-900 dark:text-white font-display leading-none">
                   {stat.value}
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 font-medium mt-1">
+                <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium mt-1">
                   {stat.label}
                 </div>
               </div>
@@ -159,7 +159,7 @@ const Hero = () => {
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="overflow-hidden relative animated-gradient w-full cursor-pointer"
+                  className="overflow-hidden relative animated-gradient w-full cursor-pointer shadow-md"
                 >
                   <span className="relative z-10">Get in Touch</span>
                 </Button>
@@ -171,7 +171,7 @@ const Hero = () => {
                 variant="outline"
                 size="lg"
                 asChild
-                className="overflow-hidden relative pulse-glow w-full cursor-pointer"
+                className="overflow-hidden relative pulse-glow w-full cursor-pointer border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white"
               >
                 <motion.a
                   href="/Muhammad Amas Resume.pdf"
@@ -213,7 +213,7 @@ const Hero = () => {
                 >
                   <Github className="h-5 w-5" />
                   <motion.div
-                    className="absolute inset-0 bg-blue-600/10 rounded-full -z-10 opacity-0"
+                    className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 rounded-full -z-10 opacity-0"
                     whileHover={{ opacity: 1, scale: 1.2 }}
                   />
                 </a>
@@ -236,7 +236,7 @@ const Hero = () => {
                 >
                   <Linkedin className="h-5 w-5" />
                   <motion.div
-                    className="absolute inset-0 bg-blue-600/10 rounded-full -z-10 opacity-0"
+                    className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 rounded-full -z-10 opacity-0"
                     whileHover={{ opacity: 1, scale: 1.2 }}
                   />
                 </a>
@@ -258,7 +258,7 @@ const Hero = () => {
                 >
                   <Mail className="h-5 w-5" />
                   <motion.div
-                    className="absolute inset-0 bg-blue-600/10 rounded-full -z-10 opacity-0"
+                    className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 rounded-full -z-10 opacity-0"
                     whileHover={{ opacity: 1, scale: 1.2 }}
                   />
                 </a>
@@ -284,13 +284,13 @@ const Hero = () => {
                 transition={{ duration: 0.5 }}
               />
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent rounded-xl"
+                className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-xl"
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
               />
             </div>
             <motion.div
-              className="absolute -bottom-4 -right-4 glass rounded-xl p-4 shadow-lg"
+              className="absolute -bottom-4 -right-4 glass rounded-xl p-4 shadow-lg border border-neutral-200/60 dark:border-neutral-800"
               variants={slideIn("right", "spring", 0.8, 0.5)}
               initial="hidden"
               whileInView="show"
@@ -306,11 +306,11 @@ const Hero = () => {
                   href="https://www.upwork.com/freelancers/~01a884fcaeb317020c?mp_source=share"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 transition-colors duration-300 flex items-center gap-1.5"
+                  className="text-neutral-900 dark:text-neutral-100 hover:text-black dark:hover:text-white transition-colors duration-300 flex items-center gap-1.5"
                 >
                   <span className="relative inline-flex h-2 w-2 mr-1">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 dark:bg-neutral-500 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-900 dark:bg-white" />
                   </span>
                   Available for freelance
                 </a>
@@ -325,7 +325,7 @@ const Hero = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="absolute left-0 right-0 mx-auto mt-4 bottom-6 w-12 z-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-2 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+        className="absolute left-0 right-0 mx-auto mt-4 bottom-6 w-12 z-10 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full p-2 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
         onClick={(e) => handleSmoothScroll(e, "about", 100)}
       >
         <motion.div
@@ -335,7 +335,7 @@ const Hero = () => {
           whileHover={{ scale: 1.2 }}
           className="flex justify-center items-center"
         >
-          <ArrowDown className="h-6 w-6 text-blue-600" />
+          <ArrowDown className="h-6 w-6 text-neutral-900 dark:text-white" />
         </motion.div>
       </motion.div>
     </section>

@@ -56,23 +56,6 @@ const Projects = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
-  // Optimize background animations for mobile
-  const backgroundAnimations = isMobile
-    ? {
-        animate: {
-          scale: [1, 1.1, 1],
-          transition: { duration: 10, repeat: Infinity, ease: "linear" },
-        },
-      }
-    : {
-        animate: {
-          scale: [1, 1.2, 1],
-          x: [0, 20, 0],
-          y: [0, 30, 0],
-          transition: { duration: 15, repeat: Infinity, ease: "easeInOut" },
-        },
-      };
-
   return (
     <AnimatedSection
       id="projects"
@@ -85,10 +68,10 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-100">
             Projects
           </h2>
-          <p className="text-muted-foreground max-w-[600px] mx-auto mb-8">
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-[600px] mx-auto mb-8">
             Here are some of my recent projects. Each one was built to solve
             specific problems and showcases different skills in my toolkit.
           </p>
@@ -101,7 +84,7 @@ const Projects = () => {
           )}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {categories.map((category, index) => (
             <AnimatedElement
@@ -122,23 +105,16 @@ const Projects = () => {
                   }}
                   variant={activeCategory === category ? "default" : "outline"}
                   className={`
-                    relative overflow-hidden
+                    relative overflow-hidden cursor-pointer rounded-full px-5
                     ${
                       activeCategory === category
-                        ? "border-blue-600 bg-blue-600 hover:bg-blue-700"
-                        : "hover:border-blue-600"
+                        ? "border-neutral-900 bg-neutral-900 text-white hover:bg-black dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+                        : "border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white"
                     }
                   `}
                 >
                   <AnimatedElement
-                    className={`
-                      absolute inset-0 -z-10
-                      ${
-                        activeCategory === category
-                          ? "bg-blue-700 opacity-0"
-                          : "bg-blue-600/10 opacity-0"
-                      }
-                    `}
+                    className="absolute inset-0 -z-10 bg-neutral-900/10 dark:bg-white/10 opacity-0"
                     whileHover={{ opacity: 1 }}
                   />
                   {category}
@@ -168,10 +144,10 @@ const Projects = () => {
                   : "up",
                 isMobile ? index * 0.1 : index * 0.2
               )}
-              className="glass rounded-xl overflow-hidden group h-full flex flex-col"
+              className="glass rounded-xl overflow-hidden group h-full flex flex-col border border-neutral-200/80 dark:border-neutral-800"
             >
               <div className="aspect-video relative overflow-hidden">
-                <motion.div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 z-10 transition-opacity duration-300 group-hover:opacity-100" />
+                <motion.div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 z-10 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <motion.img
                   src={project.image}
@@ -183,7 +159,7 @@ const Projects = () => {
                   }}
                 />
                 <motion.div
-                  className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-bl-lg z-20"
+                  className="absolute top-0 right-0 bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 text-xs font-medium px-3 py-1 rounded-bl-lg z-20"
                   whileHover={{ scale: 1.05 }}
                 >
                   {project.category.join(", ")}
@@ -195,18 +171,18 @@ const Projects = () => {
                   whileHover={{ x: 2 }}
                 >
                   <motion.h3
-                    className="text-xl font-bold"
+                    className="text-xl font-bold text-neutral-900 dark:text-white group-hover:underline"
                     whileHover={{ scale: 1.02, x: 2 }}
                   >
                     {project.title}
                   </motion.h3>
-                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                  <div className="flex items-center text-neutral-500 dark:text-neutral-400 text-sm">
                     <Calendar className="h-3 w-3 mr-1" />
                     {project.yearCompleted}
                   </div>
                 </motion.div>
                 <p
-                  className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-5"
+                  className="text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-5 text-sm"
                   dangerouslySetInnerHTML={{ __html: project.description }}
                 ></p>
 
@@ -220,8 +196,8 @@ const Projects = () => {
                     <motion.span
                       key={tech}
                       variants={fadeIn("up", techIndex * 0.03)}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs"
+                      whileHover={{ scale: 1.08, y: -2 }}
+                      className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-full text-xs border border-neutral-200/80 dark:border-neutral-700/60"
                     >
                       {tech}
                     </motion.span>
@@ -231,13 +207,13 @@ const Projects = () => {
                 {project.highlights && (
                   <div className="mb-6 mt-auto">
                     <motion.h4
-                      className="text-sm font-semibold mb-2"
+                      className="text-sm font-semibold mb-2 text-neutral-900 dark:text-neutral-200"
                       whileHover={{ x: 2 }}
                     >
                       Key Features:
                     </motion.h4>
                     <motion.ul
-                      className="text-sm text-gray-600 dark:text-gray-400 list-disc pl-5 space-y-1"
+                      className="text-sm text-neutral-600 dark:text-neutral-400 list-disc pl-5 space-y-1"
                       variants={staggerContainer(0.05, 0.1)}
                       initial="hidden"
                       animate="show"
@@ -256,7 +232,7 @@ const Projects = () => {
                 )}
 
                 <motion.div
-                  className="flex gap-4 mt-auto"
+                  className="flex gap-4 mt-auto pt-2"
                   variants={fadeIn("up", 0.5)}
                 >
                   {project.demoLink && (
@@ -268,7 +244,7 @@ const Projects = () => {
                         asChild
                         size="sm"
                         variant="outline"
-                        className="relative overflow-hidden"
+                        className="relative overflow-hidden cursor-pointer"
                       >
                         <a
                           href={project.demoLink}
@@ -276,7 +252,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                         >
                           <motion.div
-                            className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                            className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 -z-10 opacity-0"
                             whileHover={{ opacity: 1 }}
                           />
                           <ExternalLink className="mr-2 h-4 w-4" /> Demo
@@ -293,7 +269,7 @@ const Projects = () => {
                         asChild
                         size="sm"
                         variant="outline"
-                        className="relative overflow-hidden"
+                        className="relative overflow-hidden cursor-pointer"
                       >
                         <a
                           href={project.githubLink}
@@ -301,7 +277,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                         >
                           <motion.div
-                            className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                            className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 -z-10 opacity-0"
                             whileHover={{ opacity: 1 }}
                           />
                           <Github className="mr-2 h-4 w-4" /> Code
@@ -321,7 +297,7 @@ const Projects = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex justify-center mt-12 gap-4"
+            className="flex justify-center mt-12 gap-4 items-center"
           >
             <motion.div
               whileHover={!isMobile ? { scale: 1.1 } : undefined}
@@ -332,12 +308,12 @@ const Projects = () => {
                 size="icon"
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="relative overflow-hidden"
+                className="relative overflow-hidden border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
             </motion.div>
-            <span className="flex items-center">
+            <span className="flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400">
               {currentPage + 1} / {totalPages}
             </span>
             <motion.div
@@ -349,7 +325,7 @@ const Projects = () => {
                 size="icon"
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages - 1}
-                className="relative overflow-hidden"
+                className="relative overflow-hidden border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
@@ -367,18 +343,18 @@ const Projects = () => {
           <AnimatedText
             tag="p"
             text="Want to see more of my work?"
-            className="text-gray-600 dark:text-gray-400 mb-4"
+            className="text-neutral-600 dark:text-neutral-400 mb-4"
             animate={false}
           />
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button asChild className="relative overflow-hidden">
+            <Button asChild className="relative overflow-hidden cursor-pointer bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 border border-neutral-900 dark:border-white shadow-md">
               <a
                 href="https://github.com/muhammadamas"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <motion.div
-                  className="absolute inset-0 bg-blue-700 -z-10 opacity-0"
+                  className="absolute inset-0 bg-white/10 dark:bg-black/10 -z-10 opacity-0"
                   whileHover={{ opacity: 1 }}
                 />
                 <Github className="mr-2 h-4 w-4" /> View All Projects on GitHub

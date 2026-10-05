@@ -13,7 +13,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-neutral-900 dark:text-neutral-100">
             About Me
           </h2>
         </motion.div>
@@ -25,7 +25,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="glass rounded-2xl p-4 overflow-hidden">
+            <div className="glass rounded-2xl p-4 overflow-hidden border border-neutral-200/60 dark:border-neutral-800">
               <img
                 src="/bwImage.jpg"
                 alt="Muhammad Amas"
@@ -41,42 +41,42 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold">Full Stack Developer</h3>
+            <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Full Stack Developer</h3>
 
-            <p className="text-gray-600 dark:text-gray-400">
-             I'm Muhammad Amas, a full-stack software engineer with <b className="font-bold text-blue-600 dark:text-blue-400">4+ years</b> building production-grade, AI-integrated systems across SaaS, marketplace, and enterprise platforms. I pair strong front-end craft in React and Next.js with backend and cloud architecture on Node.js, NestJS, Ruby on Rails, PostgreSQL, MySQL, MongoDB, AWS, Azure and GCP.
+            <p className="text-neutral-600 dark:text-neutral-400">
+             I'm Muhammad Amas, a full-stack software engineer with <b className="font-semibold text-neutral-900 dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">4+ years</b> building production-grade, AI-integrated systems across SaaS, marketplace, and enterprise platforms. I pair strong front-end craft in React and Next.js with backend and cloud architecture on Node.js, NestJS, Ruby on Rails, PostgreSQL, MySQL, MongoDB, AWS, Azure and GCP.
             </p>
 
-            <p className="text-gray-600 dark:text-gray-400">
-            I enjoy the intersection of strong front-end craft and solid backend and cloud architecture, whether that's designing secure APIs, or automating cloud account provisioning across GCP and Azure to cut onboarding time. I hold a BS in Computer Science from the University of Karachi (UBIT) and hold certifications including <b className="font-bold text-blue-600 dark:text-blue-400">Google Cloud Digital Leader</b> and the <b className="font-bold text-blue-600 dark:text-blue-400">McKinsey Forward program</b>. I'm always looking for ways to pair thoughtful engineering with measurable impact on performance, security, and user experience.
+            <p className="text-neutral-600 dark:text-neutral-400">
+             I enjoy the intersection of strong front-end craft and solid backend and cloud architecture, whether that's designing secure APIs, or automating cloud account provisioning across GCP and Azure to cut onboarding time. I hold a BS in Computer Science from the University of Karachi (UBIT) and hold certifications including <b className="font-semibold text-neutral-900 dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">Google Cloud Digital Leader</b> and the <b className="font-semibold text-neutral-900 dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">McKinsey Forward program</b>. I'm always looking for ways to pair thoughtful engineering with measurable impact on performance, security, and user experience.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <h4 className="font-semibold mb-2">Name:</h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <h4 className="font-semibold mb-2 text-neutral-900 dark:text-neutral-200">Name:</h4>
+                <p className="text-neutral-600 dark:text-neutral-400">
                   Muhammad Amas
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">Email:</h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <h4 className="font-semibold mb-2 text-neutral-900 dark:text-neutral-200">Email:</h4>
+                <p className="text-neutral-600 dark:text-neutral-400">
                   amaswaseem@gmail.com
                 </p>
               </div>
 
               <div>
-                <h4 className="font-semibold mb-2">Availability:</h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <h4 className="font-semibold mb-2 text-neutral-900 dark:text-neutral-200">Availability:</h4>
+                <p className="text-neutral-600 dark:text-neutral-400">
                   <a
                     href="https://www.upwork.com/freelancers/~01a884fcaeb317020c?mp_source=share"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cursor-pointer inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/40 text-blue-600 dark:text-blue-400 rounded-md hover:from-blue-100 hover:to-blue-200 dark:hover:from-blue-900/40 dark:hover:to-blue-800/50 transition-all duration-300 hover:shadow-md group"
+                    className="cursor-pointer inline-flex items-center px-3 py-1.5 bg-neutral-100 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-300 hover:shadow-sm group"
                   >
                     <span className="relative inline-flex h-2 w-2 mr-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 dark:bg-neutral-500 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-900 dark:bg-white"></span>
                     </span>
                     Available for Freelance
                     <svg
@@ -98,11 +98,10 @@ const About = () => {
               </div>
             </div>
 
-            <Button asChild className="cursor-pointer">
+            <Button asChild className="cursor-pointer bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:bg-black dark:hover:bg-neutral-200 shadow-sm border border-neutral-900 dark:border-white">
               <a
                 href="/Muhammad Amas Resume.pdf"
                 target="_blank"
-                // rel="noopener noreferrer"
               >
                 <FileText className="mr-2 h-4 w-4" /> Download Resume
               </a>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Calendar, Eye, Code, Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Calendar, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { trackProjectView, trackExternalLink } from "../lib/analytics";
 
@@ -42,31 +42,6 @@ const EnhancedProjectCard = ({ project, index }) => {
     },
   };
 
-  const contentVariants = {
-    initial: { y: 20, opacity: 0 },
-    hover: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        delay: 0.1,
-      },
-    },
-  };
-
-  const iconVariants = {
-    initial: { scale: 1, rotate: 0 },
-    hover: {
-      scale: 1.1,
-      rotate: 5,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-  };
-
   const shimmerVariants = {
     initial: { x: "-100%" },
     hover: {
@@ -91,7 +66,7 @@ const EnhancedProjectCard = ({ project, index }) => {
     >
       <motion.div
         variants={cardVariants}
-        className="glass rounded-xl overflow-hidden h-full flex flex-col relative"
+        className="glass rounded-xl overflow-hidden h-full flex flex-col relative border border-neutral-200/80 dark:border-neutral-800"
         style={{
           transformStyle: "preserve-3d",
         }}
@@ -130,7 +105,7 @@ const EnhancedProjectCard = ({ project, index }) => {
           {/* Project type badge */}
           <div className="absolute bottom-4 left-4 z-30">
             <motion.span
-              className="px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-100 rounded-full backdrop-blur-sm border border-blue-400/30"
+              className="px-2.5 py-1 text-xs font-medium bg-black/75 dark:bg-white/15 text-white dark:text-neutral-100 rounded-full backdrop-blur-md border border-white/20 dark:border-white/10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -144,22 +119,22 @@ const EnhancedProjectCard = ({ project, index }) => {
         <div className="p-6 flex-1 flex flex-col relative">
           {/* Animated background gradient */}
           <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
+            className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
             style={{
-              background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.3), transparent 50%)`,
+              background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(128, 128, 128, 0.2), transparent 50%)`,
             }}
           />
 
           <div className="relative z-10">
             <motion.h3
-              className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+              className="text-xl font-bold mb-2 text-neutral-900 dark:text-white group-hover:underline transition-colors"
               layout
             >
               {project.title}
             </motion.h3>
 
             <motion.p
-              className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-1"
+              className="text-neutral-600 dark:text-neutral-400 mb-4 text-sm line-clamp-3 flex-1"
               layout
             >
               {project.description}
@@ -170,7 +145,7 @@ const EnhancedProjectCard = ({ project, index }) => {
               {project.technologies?.slice(0, 4).map((tech, techIndex) => (
                 <motion.span
                   key={tech}
-                  className="px-2 py-1 text-xs bg-blue-100/80 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-md"
+                  className="px-2.5 py-1 text-xs bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-md border border-neutral-200/80 dark:border-neutral-700/60"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 + techIndex * 0.05 }}
@@ -181,7 +156,7 @@ const EnhancedProjectCard = ({ project, index }) => {
               ))}
               {project.technologies?.length > 4 && (
                 <motion.span
-                  className="px-2 py-1 text-xs bg-gray-100/80 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 rounded-md"
+                  className="px-2.5 py-1 text-xs bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-md border border-neutral-200/80 dark:border-neutral-700/60"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 + 0.2 }}
@@ -198,7 +173,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                   asChild
                   size="sm"
                   variant="outline"
-                  className="relative overflow-hidden"
+                  className="relative overflow-hidden cursor-pointer"
                 >
                   <a
                     href={project.demoLink}
@@ -213,7 +188,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                     }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                      className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 -z-10 opacity-0"
                       whileHover={{ opacity: 1 }}
                     />
                     <ExternalLink className="mr-2 h-4 w-4" /> Demo
@@ -225,7 +200,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                   asChild
                   size="sm"
                   variant="outline"
-                  className="relative overflow-hidden"
+                  className="relative overflow-hidden cursor-pointer"
                 >
                   <a
                     href={project.githubLink}
@@ -240,19 +215,19 @@ const EnhancedProjectCard = ({ project, index }) => {
                     }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-blue-600/10 -z-10 opacity-0"
+                      className="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 -z-10 opacity-0"
                       whileHover={{ opacity: 1 }}
                     />
-                    <ExternalLink className="mr-2 h-4 w-4" /> Code
+                    <Github className="mr-2 h-4 w-4" /> Code
                   </a>
                 </Button>
               )}
             </div>
 
             {/* Footer with date and featured star */}
-            <div className="flex items-center justify-between pt-2 dark:border-gray-700/50">
+            <div className="flex items-center justify-between pt-2 border-t border-neutral-200/60 dark:border-neutral-800">
               {project.date && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
                   <Calendar className="w-4 h-4" />
                   {project.date}
                 </div>
@@ -269,7 +244,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                       repeatDelay: 3,
                     }}
                   >
-                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                    <Star className="w-4 h-4 text-neutral-900 dark:text-white fill-neutral-900 dark:fill-white" />
                   </motion.div>
                 )}
               </div>
@@ -282,14 +257,14 @@ const EnhancedProjectCard = ({ project, index }) => {
           className="absolute inset-0 rounded-xl pointer-events-none"
           style={{
             background:
-              "linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.2), transparent)",
+              "linear-gradient(45deg, transparent, rgba(128, 128, 128, 0.2), transparent)",
             padding: "1px",
           }}
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="w-full h-full bg-background dark:bg-gray-900 rounded-xl" />
+          <div className="w-full h-full bg-background dark:bg-neutral-950 rounded-xl" />
         </motion.div>
       </motion.div>
     </motion.div>

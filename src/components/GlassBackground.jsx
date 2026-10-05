@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-// The animated orbs use blur(40px) on 300-500px elements driven by JS on
-// the main thread. On mobile GPUs that repaints during every scroll frame
-// and makes scrolling feel sluggish, so render them static there (and for
-// anyone who prefers reduced motion).
 const useLiteBackground = () => {
   const [lite, setLite] = useState(false);
 
@@ -30,7 +26,7 @@ const ORBS = [
     className: "w-[500px] h-[500px]",
     style: {
       background:
-        "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)",
+        "radial-gradient(circle, rgba(120, 120, 120, 0.07) 0%, transparent 70%)",
       top: "5%",
       left: "10%",
       filter: "blur(40px)",
@@ -46,7 +42,7 @@ const ORBS = [
     className: "w-[400px] h-[400px]",
     style: {
       background:
-        "radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, transparent 70%)",
+        "radial-gradient(circle, rgba(160, 160, 160, 0.05) 0%, transparent 70%)",
       top: "50%",
       right: "5%",
       filter: "blur(40px)",
@@ -62,7 +58,7 @@ const ORBS = [
     className: "w-[350px] h-[350px]",
     style: {
       background:
-        "radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%)",
+        "radial-gradient(circle, rgba(100, 100, 100, 0.05) 0%, transparent 70%)",
       bottom: "10%",
       left: "20%",
       filter: "blur(40px)",
@@ -78,7 +74,7 @@ const ORBS = [
     className: "w-[300px] h-[300px]",
     style: {
       background:
-        "radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)",
+        "radial-gradient(circle, rgba(140, 140, 140, 0.05) 0%, transparent 70%)",
       top: "30%",
       left: "50%",
       filter: "blur(40px)",
@@ -97,10 +93,10 @@ const GlassBackground = () => {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
+      {/* Base gradient background - Clean Minimal Monochrome */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-neutral-50/50 to-neutral-100/30 dark:from-neutral-950 dark:via-neutral-900/90 dark:to-neutral-950" />
 
-      {/* Gradient orbs — animated on desktop, static on mobile / reduced-motion */}
+      {/* Monochrome gradient orbs */}
       {ORBS.map((orb, i) => (
         <motion.div
           key={i}
@@ -113,11 +109,11 @@ const GlassBackground = () => {
 
       {/* Subtle grid pattern overlay */}
       <div
-        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.025] dark:opacity-[0.035]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(128, 128, 128, 0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(128, 128, 128, 0.2) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
@@ -125,7 +121,7 @@ const GlassBackground = () => {
 
       {/* Noise texture for depth */}
       <div
-        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
         }}

@@ -102,7 +102,7 @@ const Sidebar = () => {
         <div className="container flex items-center justify-between">
           <Tooltip>
             <Link to="/" className="text-2xl font-bold">
-              <span className="text-blue-600">Amas</span>
+              <span className="text-neutral-900 dark:text-white font-extrabold tracking-tight">Amas</span>
             </Link>
             <TooltipTrigger asChild>
               <Button
@@ -141,7 +141,7 @@ const Sidebar = () => {
                     {isActive && (
                       <motion.div
                         layoutId="activeNavPill"
-                        className="absolute inset-0 bg-blue-600/15 dark:bg-blue-500/20 rounded-xl"
+                        className="absolute inset-0 bg-neutral-900/10 dark:bg-white/15 rounded-xl border border-neutral-300/40 dark:border-white/10"
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                       />
                     )}
@@ -149,7 +149,7 @@ const Sidebar = () => {
                       <TooltipTrigger asChild>
                         <Link
                           to={link.path || link.href}
-                          className="relative z-10 cursor-pointer flex flex-col items-center justify-center w-16 h-16 text-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          className="relative z-10 cursor-pointer flex flex-col items-center justify-center w-16 h-16 text-center text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                           onClick={(e) => handleNavigation(e, link)}
                         >
                           <div className="mb-1">{link.icon}</div>
@@ -172,7 +172,7 @@ const Sidebar = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="mt-8 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
+                className="mt-8 text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (

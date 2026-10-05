@@ -230,7 +230,7 @@ export const AnimatedImage = ({ src, alt, className = "", ...props }) => {
         {...props}
       />
       <motion.div
-        className="absolute inset-0 bg-blue-600"
+        className="absolute inset-0 bg-neutral-900 dark:bg-white"
         initial={{ x: 0 }}
         whileInView={{ x: "100%" }}
         viewport={{ once: true }}

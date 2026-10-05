@@ -11,12 +11,12 @@ const Skills = () => {
       name: "Frontend",
       icon: <Monitor className="h-6 w-6" />,
       colSpan: "md:col-span-4",
-      headerColor: "text-blue-500 dark:text-blue-400",
-      iconBg: "bg-blue-500/10 text-blue-500 dark:text-blue-400",
-      chipBase: "border-blue-500/20 bg-blue-500/5",
-      chipHover: "hover:border-blue-500/55 hover:bg-blue-500/12",
-      separator: "from-blue-500/50",
-      glowColor: "rgba(59, 130, 246, 0.22)",
+      headerColor: "text-neutral-900 dark:text-neutral-100",
+      iconBg: "bg-neutral-900/10 dark:bg-white/10 text-neutral-900 dark:text-white border border-neutral-200/80 dark:border-neutral-800",
+      chipBase: "border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-900 dark:text-neutral-100",
+      chipHover: "hover:border-neutral-900/40 dark:hover:border-white/40 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/80",
+      separator: "from-neutral-300 dark:from-neutral-700",
+      glowColor: "rgba(128, 128, 128, 0.08)",
       skills: [
         { name: "JavaScript", icon: "/skills-logo/javascript-logo.png" },
         { name: "TypeScript", icon: "/skills-logo/typescript-logo.png" },
@@ -35,12 +35,12 @@ const Skills = () => {
       name: "Backend",
       icon: <Server className="h-6 w-6" />,
       colSpan: "md:col-span-2",
-      headerColor: "text-emerald-500 dark:text-emerald-400",
-      iconBg: "bg-emerald-500/10 text-emerald-500 dark:text-emerald-400",
-      chipBase: "border-emerald-500/20 bg-emerald-500/5",
-      chipHover: "hover:border-emerald-500/55 hover:bg-emerald-500/12",
-      separator: "from-emerald-500/50",
-      glowColor: "rgba(16, 185, 129, 0.2)",
+      headerColor: "text-neutral-900 dark:text-neutral-100",
+      iconBg: "bg-neutral-900/10 dark:bg-white/10 text-neutral-900 dark:text-white border border-neutral-200/80 dark:border-neutral-800",
+      chipBase: "border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-900 dark:text-neutral-100",
+      chipHover: "hover:border-neutral-900/40 dark:hover:border-white/40 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/80",
+      separator: "from-neutral-300 dark:from-neutral-700",
+      glowColor: "rgba(128, 128, 128, 0.08)",
       skills: [
         { name: "Node.js", icon: "/skills-logo/nodejs-logo.png" },
         { name: "Express.js", icon: "/skills-logo/expressjs-logo.png" },
@@ -53,12 +53,12 @@ const Skills = () => {
       name: "Database",
       icon: <Database className="h-6 w-6" />,
       colSpan: "md:col-span-3",
-      headerColor: "text-amber-500 dark:text-amber-400",
-      iconBg: "bg-amber-500/10 text-amber-500 dark:text-amber-400",
-      chipBase: "border-amber-500/20 bg-amber-500/5",
-      chipHover: "hover:border-amber-500/55 hover:bg-amber-500/12",
-      separator: "from-amber-500/50",
-      glowColor: "rgba(245, 158, 11, 0.2)",
+      headerColor: "text-neutral-900 dark:text-neutral-100",
+      iconBg: "bg-neutral-900/10 dark:bg-white/10 text-neutral-900 dark:text-white border border-neutral-200/80 dark:border-neutral-800",
+      chipBase: "border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-900 dark:text-neutral-100",
+      chipHover: "hover:border-neutral-900/40 dark:hover:border-white/40 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/80",
+      separator: "from-neutral-300 dark:from-neutral-700",
+      glowColor: "rgba(128, 128, 128, 0.08)",
       skills: [
         { name: "MongoDB", icon: "/skills-logo/MongoDB-logo.png" },
         { name: "Firestore", icon: "/skills-logo/firestore.png" },
@@ -72,12 +72,12 @@ const Skills = () => {
       name: "Cloud & Tools",
       icon: <Cloud className="h-6 w-6" />,
       colSpan: "md:col-span-3",
-      headerColor: "text-violet-500 dark:text-violet-400",
-      iconBg: "bg-violet-500/10 text-violet-500 dark:text-violet-400",
-      chipBase: "border-violet-500/20 bg-violet-500/5",
-      chipHover: "hover:border-violet-500/55 hover:bg-violet-500/12",
-      separator: "from-violet-500/50",
-      glowColor: "rgba(139, 92, 246, 0.2)",
+      headerColor: "text-neutral-900 dark:text-neutral-100",
+      iconBg: "bg-neutral-900/10 dark:bg-white/10 text-neutral-900 dark:text-white border border-neutral-200/80 dark:border-neutral-800",
+      chipBase: "border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-900 dark:text-neutral-100",
+      chipHover: "hover:border-neutral-900/40 dark:hover:border-white/40 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/80",
+      separator: "from-neutral-300 dark:from-neutral-700",
+      glowColor: "rgba(128, 128, 128, 0.08)",
       skills: [
         { name: "AWS", icon: "/skills-logo/AWS.png" },
         { name: "GCP", icon: "/skills-logo/Google Cloud.png" },
@@ -102,13 +102,13 @@ const Skills = () => {
             variants={fadeIn("down", 0.2)}
             className="text-center mb-10 md:mb-16"
           >
-            <p className="text-xs font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-[0.2em] mb-3">
+            <p className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-[0.2em] mb-3">
               What I build with
             </p>
-            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl mb-4 text-neutral-900 dark:text-neutral-100">
               My Skills
             </h2>
-            <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto text-sm leading-relaxed">
               A cross-stack toolkit spanning UI to infrastructure — the technologies I reach for daily.
             </p>
           </AnimatedElement>
@@ -125,11 +125,11 @@ const Skills = () => {
               <AnimatedElement
                 key={category.name}
                 variants={fadeIn(index % 2 === 0 ? "right" : "left", index * 0.1)}
-                className={`glass rounded-2xl p-5 md:p-7 relative overflow-hidden group ${category.colSpan}`}
+                className={`glass rounded-2xl p-5 md:p-7 relative overflow-hidden group border border-neutral-200/80 dark:border-neutral-800 ${category.colSpan}`}
               >
-                {/* Ambient corner glow — brightens on card hover */}
+                {/* Ambient corner glow */}
                 <div
-                  className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none opacity-50 group-hover:opacity-90 transition-opacity duration-500"
+                  className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-500"
                   style={{ background: category.glowColor }}
                 />
 
@@ -143,7 +143,7 @@ const Skills = () => {
                   </h3>
                 </div>
 
-                {/* Colored separator */}
+                {/* Separator */}
                 <div className={`h-px bg-gradient-to-r ${category.separator} to-transparent mb-4 md:mb-5`} />
 
                 {/* Skill chips */}
@@ -158,7 +158,7 @@ const Skills = () => {
                         delay: skillIndex * 0.035 + index * 0.05,
                         duration: 0.25,
                       }}
-                      whileHover={{ scale: 1.08, y: -2 }}
+                      whileHover={{ scale: 1.06, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <img

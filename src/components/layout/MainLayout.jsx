@@ -19,7 +19,7 @@ const MainLayout = () => {
       {/* Scroll progress bar */}
       <motion.div
         style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-[100] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-neutral-900 dark:bg-white z-[100] pointer-events-none"
       />
 
       {/* Mesh gradient background */}
