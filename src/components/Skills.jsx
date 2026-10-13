@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+ 
 import { motion, useInView } from "framer-motion";
 import { Monitor, Database, Server, Cloud } from "lucide-react";
 import { useRef } from "react";
@@ -162,10 +162,12 @@ const Skills = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <img
+                        loading="lazy"
+                        decoding="async"
                         src={skill.icon}
                         alt={skill.name}
                         className="w-5 h-5 md:w-7 md:h-7 object-contain"
-                        onError={(e) => { e.target.src = "/skills-logo/placeholder.svg"; }}
+                        onError={(e) => { e.currentTarget.style.display = "none"; }}
                       />
                       <span className="text-xs md:text-sm font-semibold whitespace-nowrap">
                         {skill.name}

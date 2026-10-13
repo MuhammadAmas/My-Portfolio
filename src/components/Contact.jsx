@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-// eslint-disable-next-line no-unused-vars
+ 
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import {
@@ -11,6 +11,7 @@ import {
 } from "./ui/card";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { trackContactFormEvent } from "../lib/analytics";
+import { submitForm } from "../lib/formSubmit";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
   const formRef = useRef(null);
 
   const handleChange = (e) => {
@@ -31,48 +33,32 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
 
     try {
-      // Using FormSubmit.co AJAX endpoint
-      const formSubmitUrl = "https://formsubmit.co/ajax/amaswaseem@gmail.com";
-
-      const submitData = {
+      await submitForm({
         name: formData.name,
         email: formData.email,
         subject: formData.subject,
         message: formData.message,
         _subject: `New portfolio message from ${formData.name}`,
-        _captcha: "false",
-        _template: "table",
-      };
-
-      const response = await fetch(formSubmitUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(submitData),
+        _replyto: formData.email,
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        trackContactFormSubmit(true);
-        setSubmitted(true);
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        throw new Error("Failed to submit form");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      trackContactFormSubmit(false);
-      alert("Failed to send message. Please try again later.");
+      trackContactFormEvent("submit_success", "form");
+      setSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      trackContactFormEvent("submit_error", "form");
+      setError(
+        "Sorry, your message couldn't be sent. Please try again, or email me directly at amaswaseem@gmail.com.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -280,6 +266,14 @@ const Contact = () => {
                         placeholder="Your message"
                       />
                     </div>
+                    {error && (
+                      <p
+                        role="alert"
+                        className="text-sm text-red-600 dark:text-red-400 rounded-md border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/30 px-4 py-3"
+                      >
+                        {error}
+                      </p>
+                    )}
                     <Button
                       type="submit"
                       className="w-full relative overflow-hidden cursor-pointer bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 border border-neutral-900 dark:border-white shadow-md"

@@ -675,3 +675,16 @@ select {
     animation: none !important;
   }
 }
+
+/* Mobile header: backdrop blur is disabled on small screens, so the bar and
+   its dropdown menu need a solid fill to stay readable over content. */
+.mobile-header,
+.mobile-header:hover {
+  background: rgb(255, 255, 255);
+  transform: none;
+}
+
+.dark .mobile-header,
+.dark .mobile-header:hover {
+  background: rgb(16, 16, 18);
+}

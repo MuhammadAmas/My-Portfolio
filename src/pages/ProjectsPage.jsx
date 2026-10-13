@@ -8,9 +8,9 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
       <Projects />
-    </main>
+    </div>
   );
 };
 

@@ -22,6 +22,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { logPageView } from "../lib/analytics";
+import { submitForm } from "../lib/formSubmit";
 
 const ProblemSolverPage = () => {
   const [formData, setFormData] = useState({
@@ -36,6 +37,7 @@ const ProblemSolverPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState("website");
 
   useEffect(() => {
@@ -55,19 +57,16 @@ const ProblemSolverPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
 
     try {
-      // Using FormSubmit.co AJAX endpoint
-      const formSubmitUrl = "https://formsubmit.co/ajax/amaswaseem@gmail.com";
-
       // Build the form data object
       const submitData = {
         name: formData.name,
         email: formData.email,
         submission_type: formData.submissionType,
         _subject: `[Problem Solver] New ${formData.submissionType} review request from ${formData.name}`,
-        _captcha: "false",
-        _template: "table",
+        _replyto: formData.email,
       };
 
       // Add type-specific field
@@ -87,35 +86,24 @@ const ProblemSolverPage = () => {
         submitData.goals = formData.goals;
       }
 
-      const response = await fetch(formSubmitUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(submitData),
+      await submitForm(submitData);
+
+      setSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        submissionType: "website",
+        websiteUrl: "",
+        productDescription: "",
+        ideaDescription: "",
+        specificConcerns: "",
+        goals: "",
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitted(true);
-        setFormData({
-          name: "",
-          email: "",
-          submissionType: "website",
-          websiteUrl: "",
-          productDescription: "",
-          ideaDescription: "",
-          specificConcerns: "",
-          goals: "",
-        });
-      } else {
-        throw new Error("Failed to submit form");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Failed to send your request. Please try again later.");
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      setError(
+        "Sorry, your request couldn't be sent. Please try again, or email me directly at amaswaseem@gmail.com.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -472,6 +460,15 @@ const ProblemSolverPage = () => {
                         placeholder="What are you trying to achieve?"
                       />
                     </div>
+
+                    {error && (
+                      <p
+                        role="alert"
+                        className="text-sm text-red-600 dark:text-red-400 rounded-lg border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/30 px-4 py-3"
+                      >
+                        {error}
+                      </p>
+                    )}
 
                     {/* Submit Button */}
                     <Button

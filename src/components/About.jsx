@@ -27,6 +27,8 @@ const About = () => {
           >
             <div className="glass rounded-2xl p-4 overflow-hidden border border-neutral-200/60 dark:border-neutral-800">
               <img
+                loading="lazy"
+                decoding="async"
                 src="/bwImage.jpg"
                 alt="Muhammad Amas"
                 className="w-full h-auto rounded-xl"

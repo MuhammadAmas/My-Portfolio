@@ -92,13 +92,15 @@ const EnhancedProjectCard = ({ project, index }) => {
           />
 
           <motion.img
+            loading="lazy"
+            decoding="async"
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
             onError={(e) => {
-              e.target.src = "/api/placeholder/400/300";
+              e.currentTarget.style.visibility = "hidden";
             }}
           />
 
@@ -226,10 +228,10 @@ const EnhancedProjectCard = ({ project, index }) => {
 
             {/* Footer with date and featured star */}
             <div className="flex items-center justify-between pt-2 border-t border-neutral-200/60 dark:border-neutral-800">
-              {project.date && (
+              {(project.date || project.yearCompleted) && (
                 <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
                   <Calendar className="w-4 h-4" />
-                  {project.date}
+                  {project.date || project.yearCompleted}
                 </div>
               )}
 

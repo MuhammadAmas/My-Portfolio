@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-// eslint-disable-next-line no-unused-vars
+ 
 import { motion, useInView } from "framer-motion";
 import {
   AnimatedSection,
@@ -17,7 +17,7 @@ const testimonials = [
     position: "Project Manager, FuturConnect",
     relationship: "client",
     date: "Nov 2024",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Shahmeer+S&background=0D8ABC&color=fff",
     content:
@@ -29,7 +29,7 @@ const testimonials = [
     position: "Cloudnosys | Unity Foods limited | Szabist'23",
     relationship: "worked with Muhammad on the same team",
     date: "September 17, 2024",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Hassan+Rehman&background=0D8ABC&color=fff",
     content:
@@ -42,7 +42,7 @@ const testimonials = [
       "Engineering Lead @Cloudnosys | Cloud Security | Compliance | AWS | GCP | Azure | Cybersecurity | MERN",
     relationship: "managed Muhammad directly",
     date: "September 4, 2024",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Ahmed+Anis&background=0D8ABC&color=fff",
     content:
@@ -54,7 +54,7 @@ const testimonials = [
     position: "Full-stack Engineer",
     relationship: "worked with Muhammad on the same team",
     date: "March 18, 2024",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Muhammad+Owais+Javaid&background=0D8ABC&color=fff",
     content:
@@ -67,7 +67,7 @@ const testimonials = [
       "Infrastructure & Cloud Engineer | Multi-Cloud Certified (AWS | Azure | GCP) | Windows/Linux Servers | M365 | Monitoring | Virtualization",
     relationship: "worked with Muhammad on the same team",
     date: "February 25, 2024",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Qamar+Zeeshan&background=0D8ABC&color=fff",
     content:
@@ -80,7 +80,7 @@ const testimonials = [
       "Product @ Mahaana (YC W22) • Business Analyst • Agile (Scrum) • Project Management • Data Analysis • User Experience (UX)",
     relationship: "managed Muhammad directly",
     date: "December 11, 2023",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Daniyal+Ali+Syed&background=0D8ABC&color=fff",
     content:
@@ -93,7 +93,7 @@ const testimonials = [
       "Software Engineer @ IOMechs | Full Stack Developer | JavaScript | Typescript | MERN Stack | React Native | I help building high performing Web and Mobile Apps",
     relationship: "worked with Muhammad but on different teams",
     date: "April 25, 2023",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Syed+Zawwar+Ahmed&background=0D8ABC&color=fff",
     content:
@@ -106,7 +106,7 @@ const testimonials = [
       "I transform visions into reality with effective project management | Project Manager | Fintech | Digital Banking Transformation | Temenos | SFPCO | Debater-Gold Medallist UOK",
     relationship: "managed Muhammad directly",
     date: "March 26, 2023",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Muhammad+Omer+Khan&background=0D8ABC&color=fff",
     content:
@@ -119,7 +119,7 @@ const testimonials = [
       "Solving Everyday Problems aka Software Engineer 😉 | I love Web 🌐",
     relationship: "managed Muhammad directly",
     date: "March 8, 2023",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Muhammad+Hamza+Khan&background=0D8ABC&color=fff",
     content:
@@ -132,7 +132,7 @@ const testimonials = [
       "Employer Branding Executive - Jaffer Brothers | Software Engineer | UBIT'22 | Digital Marketing | SEO Content Writer | Social Media Marketing| Affiliate Marketing",
     relationship: "worked with Muhammad on the same team",
     date: "February 12, 2023",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "",
     image:
       "https://ui-avatars.com/api/?name=Hafsa+Ahmed+Siddiqu&background=0D8ABC&color=fff",
     content:
@@ -204,6 +204,8 @@ const Testimonials = () => {
               >
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-neutral-300 dark:border-neutral-700">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={currentTestimonial.image}
                     alt={currentTestimonial.name}
                     className="w-full h-full object-cover"
@@ -220,14 +222,17 @@ const Testimonials = () => {
                 >
                   <h3 className="text-lg md:text-xl font-bold mb-1 flex items-center text-neutral-900 dark:text-white">
                     {currentTestimonial.name}
-                    <a
-                      href={currentTestimonial.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex ml-2 text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </a>
+                    {currentTestimonial.linkedin && (
+                      <a
+                        href={currentTestimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${currentTestimonial.name} on LinkedIn`}
+                        className="inline-flex ml-2 text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </a>
+                    )}
                   </h3>
                   <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                     {currentTestimonial.position}
@@ -260,6 +265,7 @@ const Testimonials = () => {
                 variant="outline"
                 size="icon"
                 onClick={handlePrev}
+                aria-label="Previous testimonial"
                 className="relative overflow-hidden rounded-full h-10 w-10 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 <motion.div
@@ -290,6 +296,7 @@ const Testimonials = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleNext}
+                aria-label="Next testimonial"
                 className="relative overflow-hidden rounded-full h-10 w-10 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 <motion.div

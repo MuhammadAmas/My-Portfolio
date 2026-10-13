@@ -37,23 +37,23 @@ const projects = [
     title: "MailSpend",
     description:
       "An AI-powered expense tracker that categorizes spending and provides personalized financial management insights, all wrapped in a user-friendly interface designed for maximum accessibility.",
-    image: "/projects-images/mailSpend.png",
+    image: "/projects-images/mailSpend.jpg",
     technologies: ["React.js", "Ant Design", "Charts.js", "Vite"],
     category: ["Frontend"],
     demoLink: "https://mail-spend.vercel.app",
     githubLink: "https://github.com/MuhammadAmas/MailSpend",
     highlights: [
-      "Implemented a queueing system using mathematical models",
-      "Minimized wait times and improved overall efficiency and customer satisfaction",
+      "AI-powered categorization of spending",
+      "Personalized financial insights with interactive charts",
     ],
     yearCompleted: 2024,
   },
-    {
-    id: "4",
+  {
+    id: "7",
     title: "PartyGo",
     description:
       "Event-services marketplace connecting customers with vendors for bookings, payments, and event management. Includes vendor dashboards, secure payments, messaging, disputes, scheduling, and analytics.",
-    image: "/projects-images/partygo.png",
+    image: "/projects-images/partygo.jpg",
     technologies: ["React.js", "Nest.js", "Tailwind CSS", "MongoDB", "AWS"],
     category: ["Full Stack"],
     demoLink: "https://partygo.app",
@@ -68,7 +68,7 @@ const projects = [
     title: "FuturConnect",
     description:
       "Effortlessly manage your meeting rooms with a streamlined platform designed for maximum efficiency and convenience. Ideal for businesses looking to optimize their space and reduce scheduling conflicts.",
-    image: "/projects-images/futurConnect.png",
+    image: "/projects-images/futurConnect.jpg",
     technologies: [
       "React",
       "Node.js",
@@ -78,7 +78,7 @@ const projects = [
     ],
     category: ["Full Stack"],
     demoLink: "https://futur-connect.vercel.app",
-    githubLink: "https://github.com/MuhammadAmas/FExpressuturConnect",
+    githubLink: "https://github.com/MuhammadAmas/FuturConnect",
     highlights: [
       "Clean and easy-to-use frontend design with responsive layouts",
       "Integrated Firebase Authentication with efficient room handling",
@@ -91,9 +91,7 @@ const projects = [
     description:
       "Developed a real-time chatbot system using NestJS with GraphQL subscriptions to handle live, bidirectional communication. Integrated Supabase Auth for secure user authentication and access control, managing user-specific conversations within Supabase. Leveraged Supabase Realtime events to provide dynamic message updates, ensuring smooth, real-time interactions across multiple users. Designed efficient data models, optimized queries, and implemented best practices for scalability and reliability.",
     image: "/projects-images/chatbotandauthapis.png",
-    technologies: [
-      "NestJS", "GraphQL", "Supabase"
-    ],
+    technologies: ["NestJS", "GraphQL", "Supabase"],
     category: ["Backend"],
     demoLink: "https://github.com/MuhammadAmas/nestjs-graphql-chatbot",
     githubLink: "https://github.com/MuhammadAmas/nestjs-graphql-chatbot",
@@ -108,9 +106,15 @@ const projects = [
     title: "InsightEdu: AI-Powered EdTech Platform",
     description:
       "Firebase, Redis, and AgoraRTC, it supports secure authentication, live engagement insights, and automated analytics. Hosted on Vercel and Railway, it ensures scalability, accessibility, and a seamless user experience across devices.",
-    image: "/projects-images/acadist1.png",
+    image: "/projects-images/acadist1.jpg",
     technologies: [
-      "React.js", "Node.js", "Tailwind CSS", "TensorFlow", "Firebase", "Redis", "Agora.io"
+      "React.js",
+      "Node.js",
+      "Tailwind CSS",
+      "TensorFlow",
+      "Firebase",
+      "Redis",
+      "Agora.io",
     ],
     category: ["Full Stack"],
     demoLink: "https://acadist-beta.vercel.app",
@@ -143,7 +147,7 @@ const projects = [
     // description: `CLI based compiler for the Custom LangX programming language. It supports syntax and semantic analysis, lexical and parsing analysis.<br/><br/><b>#Undergraduate Project</b>`,
     description: `CLI based compiler for the custom LangX programming language. It includes robust syntax and semantic analysis, lexical scanning, and parsing logic.<br/><br/><b>#Undergraduate Project</b>`,
 
-    image: "/projects-images/langx.png",
+    image: "/projects-images/langx.jpg",
     technologies: ["Python"],
     category: ["Backend"],
     demoLink: "",

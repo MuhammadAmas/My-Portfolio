@@ -65,6 +65,8 @@ const FeaturedPublications = () => {
                 >
                   <div className="relative h-48 w-full overflow-hidden">
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src={pub.image || defaultImage}
                       alt={pub.title}
                       onError={handleImageError}

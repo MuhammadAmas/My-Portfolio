@@ -246,8 +246,6 @@ const Hero = () => {
               <Button variant="ghost" size="icon" asChild className="relative cursor-pointer">
                 <a
                   href="mailto:amaswaseem@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   aria-label="Email"
                   onClick={() =>
                     trackExternalLink(
@@ -320,16 +318,17 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <motion.div
+      <motion.button
+        type="button"
+        aria-label="Scroll to About section"
         variants={fadeIn("up", 0.7)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="absolute left-0 right-0 mx-auto mt-4 bottom-6 w-12 z-10 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full p-2 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+        className="hidden md:block absolute left-0 right-0 mx-auto mt-4 bottom-6 w-12 z-10 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full p-2 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
         onClick={(e) => handleSmoothScroll(e, "about", 100)}
       >
         <motion.div
-          aria-label="Scroll down"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
           whileHover={{ scale: 1.2 }}
@@ -337,7 +336,7 @@ const Hero = () => {
         >
           <ArrowDown className="h-6 w-6 text-neutral-900 dark:text-white" />
         </motion.div>
-      </motion.div>
+      </motion.button>
     </section>
   );
 };

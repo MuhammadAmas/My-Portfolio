@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-// eslint-disable-next-line no-unused-vars
+ 
 import { motion, useInView } from "framer-motion";
 import { Button } from "./ui/button";
 import {
@@ -150,12 +150,14 @@ const Projects = () => {
                 <motion.div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 z-10 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <motion.img
+                  loading="lazy"
+                  decoding="async"
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500"
                   whileHover={{ scale: 1.05 }}
                   onError={(e) => {
-                    e.target.src = "/projects-images/placeholder.jpg";
+                    e.currentTarget.style.visibility = "hidden";
                   }}
                 />
                 <motion.div
@@ -307,6 +309,7 @@ const Projects = () => {
                 variant="outline"
                 size="icon"
                 onClick={handlePrevPage}
+                aria-label="Previous page"
                 disabled={currentPage === 0}
                 className="relative overflow-hidden border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >
@@ -324,6 +327,7 @@ const Projects = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleNextPage}
+                aria-label="Next page"
                 disabled={currentPage === totalPages - 1}
                 className="relative overflow-hidden border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer"
               >

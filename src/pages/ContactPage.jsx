@@ -8,9 +8,9 @@ const ContactPage = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background pt-16 md:pt-24">
+    <div className="min-h-screen bg-background pt-16 md:pt-24">
       <Contact />
-    </main>
+    </div>
   );
 };
 
