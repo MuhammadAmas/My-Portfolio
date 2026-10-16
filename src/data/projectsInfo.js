@@ -126,6 +126,29 @@ const projects = [
     yearCompleted: 2024,
   },
   {
+    id: "13",
+    title: "QuickNotes",
+    description:
+      "Capture action items without leaving your meeting: press ⌘⇧N on a floating Mac bubble, type and hit Enter. Notes sync live to a web app, phone (PWA) and Chrome extension, where you tick them off, prioritize and move them to another day.",
+    image: "/projects-images/quicknotes.jpg",
+    technologies: [
+      "JavaScript",
+      "Swift",
+      "Firebase",
+      "Firestore",
+      "Chrome Extension",
+      "PWA",
+    ],
+    category: ["Full Stack", "Cloud"],
+    demoLink: "https://quicknotes-hq.web.app",
+    githubLink: "https://github.com/MuhammadAmas/QuickNotes",
+    highlights: [
+      "One account across a native macOS app, web/phone app and Chrome extension",
+      "Screenshot and voice notes, checklists, reminders and a weekly summary, all working offline",
+    ],
+    yearCompleted: 2026,
+  },
+  {
     id: "1",
     title: "Queuing Model",
     description:

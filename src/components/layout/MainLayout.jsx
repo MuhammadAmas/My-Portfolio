@@ -35,7 +35,7 @@ const MainLayout = () => {
       <Sidebar />
 
       {/* Main content wrapper with padding to account for sidebar */}
-      <div className="px-4 md:pl-[6.5rem] md:pr-6 lg:pr-8 relative z-0 pt-20 md:pt-0">
+      <div className="px-4 md:pl-32 md:pr-6 lg:pr-8 relative z-0 pt-20 md:pt-0">
         <main className="max-w-7xl mx-auto">
           <Outlet />
         </main>

@@ -200,7 +200,7 @@ const Sidebar = () => {
                         <Link
                           to={link.path || link.href}
                           aria-current={isActive ? "page" : undefined}
-                          className="relative z-10 cursor-pointer flex flex-col items-center justify-center w-16 h-16 text-center text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                          className="relative z-10 cursor-pointer flex flex-col items-center justify-center w-[4.5rem] h-16 text-center text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                           onClick={(e) => handleNavigation(e, link)}
                         >
                           <div className="mb-1">{link.icon}</div>
