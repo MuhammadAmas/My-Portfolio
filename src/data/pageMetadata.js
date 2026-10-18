@@ -43,6 +43,20 @@ export const pageMetadata = {
     imageAlt: "LangX Compiler case study — lexical analysis, parsing, and semantic diagnostics in Python",
     type: "article",
   },
+  "/projects/chatbot-authentication": {
+    title: "Chatbot & Authentication APIs Case Study — Muhammad Amas",
+    description: "Inside a NestJS backend combining Supabase authentication, persistent conversation history, Gemini replies, and GraphQL subscriptions for live chat events.",
+    image: "/social/chatbot-authentication.jpg",
+    imageAlt: "Chatbot and Authentication APIs — NestJS, Supabase, Gemini, and GraphQL subscriptions",
+    type: "article",
+  },
+  "/projects/insightedu": {
+    title: "InsightEdu Case Study — Muhammad Amas",
+    description: "Explore InsightEdu's Agora video classrooms, MediaPipe engagement estimates, and Node.js activity-reporting pipeline with Firebase and Redis.",
+    image: "/social/insightedu.jpg",
+    imageAlt: "InsightEdu — video classrooms, engagement estimates, and activity reports",
+    type: "article",
+  },
   "/publications": {
     title: "Publications — Muhammad Amas",
     description: "Read Muhammad Amas's articles on software development, cloud computing, and technology.",

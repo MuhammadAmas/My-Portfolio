@@ -11,6 +11,8 @@ import CloudnosysCaseStudyPage from "./pages/CloudnosysCaseStudyPage";
 import QuickNotesCaseStudyPage from "./pages/QuickNotesCaseStudyPage";
 import MailSpendCaseStudyPage from "./pages/MailSpendCaseStudyPage";
 import LangXCaseStudyPage from "./pages/LangXCaseStudyPage";
+import ChatbotCaseStudyPage from "./pages/ChatbotCaseStudyPage";
+import InsightEduCaseStudyPage from "./pages/InsightEduCaseStudyPage";
 import ContactPage from "./pages/ContactPage";
 import ProblemSolverPage from "./pages/ProblemSolverPage";
 // Initialize Firebase Analytics
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
           {
             path: "projects/langx",
             element: <LangXCaseStudyPage />,
+          },
+          {
+            path: "projects/chatbot-authentication",
+            element: <ChatbotCaseStudyPage />,
+          },
+          {
+            path: "projects/insightedu",
+            element: <InsightEduCaseStudyPage />,
           },
           {
             path: "contact",

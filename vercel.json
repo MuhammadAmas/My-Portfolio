@@ -1,6 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
+    { "source": "/projects/chatbot-authentication", "destination": "/projects/chatbot-authentication/index.html" },
+    { "source": "/projects/insightedu", "destination": "/projects/insightedu/index.html" },
     { "source": "/projects/langx", "destination": "/projects/langx/index.html" },
     { "source": "/projects/cloudnosys", "destination": "/projects/cloudnosys/index.html" },
     { "source": "/projects/quicknotes", "destination": "/projects/quicknotes/index.html" },
