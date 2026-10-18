@@ -1,36 +1,26 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { logPageView } from "../lib/analytics";
-
-const pageNames = {
-  "/": { name: "home", title: "Muhammad Amas · Full Stack Software Engineer" },
-  "/projects": {
-    name: "projects",
-    title: "Projects - Muhammad Amas Portfolio",
-  },
-  "/publications": {
-    name: "publications",
-    title: "Publications - Muhammad Amas Portfolio",
-  },
-  "/contact": { name: "contact", title: "Contact - Muhammad Amas Portfolio" },
-  "/improve": {
-    name: "improve",
-    title: "Free Website Feedback - Muhammad Amas Portfolio",
-  },
-};
+import { getPageMetadata, getMetadataTags } from "../data/pageMetadata";
 
 const AnalyticsTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const pageInfo = pageNames[location.pathname] || {
-      name: location.pathname,
-      title: `${location.pathname} - Muhammad Amas Portfolio`,
-    };
-
-    document.title = pageInfo.title;
-    logPageView(pageInfo.name, pageInfo.title);
-  }, [location]);
+    const meta = getPageMetadata(location.pathname);
+    document.title = meta.title;
+    for (const [attr, key, value] of getMetadataTags(meta)) {
+      let tag = document.head.querySelector(`meta[${attr}="${key}"]`);
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attr, key);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute("content", value);
+    }
+    document.head.querySelector('link[rel="canonical"]').setAttribute("href", meta.url);
+    logPageView(location.pathname === "/" ? "home" : location.pathname.slice(1), meta.title);
+  }, [location.pathname]);
 
   return null;
 };

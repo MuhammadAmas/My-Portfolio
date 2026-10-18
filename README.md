@@ -64,6 +64,24 @@ yarn build
 
 The build will be generated in the `dist` directory.
 
+## Sharing previews
+
+Page titles, descriptions, canonical URLs, and social images are defined in
+`src/data/pageMetadata.js`. The production domain is `https://muhammadamas.vercel.app`.
+The 1200 × 630 JPEG preview images live in `public/social`; QuickNotes uses demo
+notes and Cloudnosys uses the reviewed dashboard screenshot.
+
+`npm run build` generates an HTML entry for each known route, including its
+Open Graph and X card tags, so social crawlers do not need to execute React.
+`vercel.json` maps direct links to those entries. Keep its explicit page rewrites
+in sync when adding a route. The SPA fallback remains available for other paths.
+The same metadata updates during client-side navigation.
+
+After building, run `npm run check:sharing` to verify the generated tags,
+Vercel destinations, image files, and their dimensions. Deploy the new build
+before checking previews on public links; previously shared URLs may retain
+a platform's cached preview until it is refreshed.
+
 ## Customization
 
 - Update personal information in the components

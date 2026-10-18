@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, ShieldCheck, Layers, Sparkles, Network, Route } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { projects } from "../data/projectsInfo";
-import { logPageView, trackExternalLink } from "../lib/analytics";
+import { trackExternalLink } from "../lib/analytics";
 
 const project = projects.find(({ id }) => id === "5");
 
@@ -47,13 +46,6 @@ function ProductScreenshot({ src, alt, caption, height = 1010 }) {
 }
 
 export default function CloudnosysCaseStudyPage() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = "Cloudnosys Case Study — Muhammad Amas";
-    logPageView("cloudnosys-case-study", document.title);
-    return () => { document.title = previousTitle; };
-  }, []);
-
   return (
     <article className="mx-auto max-w-6xl py-8 md:py-16 text-neutral-900 dark:text-neutral-100">
       <Link to="/projects" className="inline-flex items-center gap-2 py-3 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">

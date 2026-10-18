@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Command, Camera, CalendarDays, Cloud, ListChecks, Bot, Github } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { projects } from "../data/projectsInfo";
-import { logPageView, trackExternalLink } from "../lib/analytics";
+import { trackExternalLink } from "../lib/analytics";
 
 const project = projects.find(({ id }) => id === "13");
 const features = [
@@ -28,13 +27,6 @@ function Screenshot({ name, alt, width, height, caption, className = "" }) {
 }
 
 export default function QuickNotesCaseStudyPage() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = "QuickNotes Case Study — Muhammad Amas";
-    logPageView("quicknotes-case-study", document.title);
-    return () => { document.title = previousTitle; };
-  }, []);
-
   return (
     <article className="mx-auto max-w-6xl py-8 text-neutral-900 dark:text-neutral-100 md:py-16">
       <Link to="/projects" className="inline-flex items-center gap-2 py-3 text-sm text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white"><ArrowLeft className="h-4 w-4" /> All projects</Link>
