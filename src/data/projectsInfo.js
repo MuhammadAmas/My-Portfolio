@@ -132,6 +132,7 @@ const projects = [
     description:
       "Capture action items without leaving your meeting: press ⌘⇧N on a floating Mac bubble, type and hit Enter. Notes sync live to a web app, phone (PWA) and Chrome extension, where you tick them off, prioritize and move them to another day.",
     image: "/projects-images/quicknotes.jpg",
+    caseStudyLink: "/projects/quicknotes",
     technologies: [
       "JavaScript",
       "Swift",
@@ -139,6 +140,8 @@ const projects = [
       "Firestore",
       "Chrome Extension",
       "PWA",
+      "Go",
+      "MCP",
     ],
     category: ["Full Stack", "Cloud"],
     demoLink: "https://quicknotes-hq.web.app",
