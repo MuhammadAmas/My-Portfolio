@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Calendar, Star } from "lucide-react";
+import { ExternalLink, Github, Calendar, Star, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { trackProjectView, trackExternalLink } from "../lib/analytics";
 
@@ -132,7 +133,11 @@ const EnhancedProjectCard = ({ project, index }) => {
               className="text-xl font-bold mb-2 text-neutral-900 dark:text-white group-hover:underline transition-colors"
               layout
             >
-              {project.title}
+              {project.caseStudyLink ? (
+                <Link to={project.caseStudyLink} onClick={() => trackProjectView(project.title)}>
+                  {project.title}
+                </Link>
+              ) : project.title}
             </motion.h3>
 
             <motion.p
@@ -169,7 +174,14 @@ const EnhancedProjectCard = ({ project, index }) => {
             </motion.div>
 
             {/* Action Buttons */}
-            <div className="flex gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.caseStudyLink && (
+                <Button asChild size="sm">
+                  <Link to={project.caseStudyLink} onClick={() => trackProjectView(project.title)}>
+                    Case study <ArrowUpRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
               {project.demoLink && (
                 <Button
                   asChild

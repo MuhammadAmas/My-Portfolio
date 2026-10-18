@@ -10,8 +10,9 @@ const projects = [
     id: "5",
     title: "Cloudnosys",
     description:
-      "Full stack SaaS platform coverage with risk prioritization, compliance, SOAR remediation, misconfigurations, OS vulnerabilities, malware, context-aware alerts, and third-party integrations.",
+      "Cloud security SaaS platform that detects misconfigurations, CVEs, and malware. An interactive resource graph and attack path analysis connect infrastructure risks, with compliance visibility and remediation workflows.",
     image: "/projects-images/cloudnosys.png",
+    caseStudyLink: "/projects/cloudnosys",
     demoLink: "https://cloudnosys.com",
     technologies: [
       "React.js",
@@ -27,8 +28,8 @@ const projects = [
     category: ["Full Stack", "SaaS", "Cloud", "AI"],
     githubLink: "",
     highlights: [
-      "Threat Detection, Risk Management and Response",
-      "Compliance and SOAR Remediation",
+      "Interactive resource graph and attack path analysis",
+      "Misconfiguration, CVE, and malware detection",
     ],
     yearCompleted: "In Progress",
   },
