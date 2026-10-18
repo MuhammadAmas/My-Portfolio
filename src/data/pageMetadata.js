@@ -36,6 +36,13 @@ export const pageMetadata = {
     imageAlt: "MailSpend case study — spending insights, charts, and conversation with React and Node.js",
     type: "article",
   },
+  "/projects/langx": {
+    title: "LangX Compiler Case Study — Muhammad Amas",
+    description: "Inside a Python compiler front end for a custom language: tokenization, recursive-descent parsing, scope-aware symbol tables, and semantic diagnostics.",
+    image: "/social/langx.jpg",
+    imageAlt: "LangX Compiler case study — lexical analysis, parsing, and semantic diagnostics in Python",
+    type: "article",
+  },
   "/publications": {
     title: "Publications — Muhammad Amas",
     description: "Read Muhammad Amas's articles on software development, cloud computing, and technology.",

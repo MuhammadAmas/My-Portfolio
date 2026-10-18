@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
+    { "source": "/projects/langx", "destination": "/projects/langx/index.html" },
     { "source": "/projects/cloudnosys", "destination": "/projects/cloudnosys/index.html" },
     { "source": "/projects/quicknotes", "destination": "/projects/quicknotes/index.html" },
     { "source": "/projects/mailspend", "destination": "/projects/mailspend/index.html" },

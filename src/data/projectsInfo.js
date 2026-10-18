@@ -172,17 +172,17 @@ const projects = [
   {
     id: "6",
     title: "LangX Compiler",
-    // description: `CLI based compiler for the Custom LangX programming language. It supports syntax and semantic analysis, lexical and parsing analysis.<br/><br/><b>#Undergraduate Project</b>`,
-    description: `CLI based compiler for the custom LangX programming language. It includes robust syntax and semantic analysis, lexical scanning, and parsing logic.<br/><br/><b>#Undergraduate Project</b>`,
+    description: "A Python compiler front end for LangX, a custom language inspired by Python and C++. A collaborative university project covering tokenization, recursive-descent parsing, symbol tables, and semantic diagnostics.",
 
     image: "/projects-images/langx.jpg",
+    caseStudyLink: "/projects/langx",
     technologies: ["Python"],
     category: ["Backend"],
     demoLink: "",
     githubLink: "https://github.com/MuhammadAmas/LangX-Compiler",
     highlights: [
-      "Complete syntax and semantic analysis, including custom grammar rules",
-      "Lexical scanning and parsing logic for efficient code interpretation",
+      "Lexical analysis and recursive-descent parsing for a custom language",
+      "Scope-aware symbol tables and semantic diagnostics",
     ],
     yearCompleted: 2023,
   },
