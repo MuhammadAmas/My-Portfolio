@@ -11,7 +11,7 @@ const projects = [
     title: "Cloudnosys",
     description:
       "Cloud security SaaS platform that detects misconfigurations, CVEs, and malware. An interactive resource graph and attack path analysis connect infrastructure risks, with compliance visibility and remediation workflows.",
-    image: "/projects-images/cloudnosys.png",
+    image: "/projects-images/cloudnosys/overview.jpg",
     caseStudyLink: "/projects/cloudnosys",
     demoLink: "https://cloudnosys.com",
     technologies: [
