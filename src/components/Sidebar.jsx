@@ -13,6 +13,7 @@ import {
   Lightbulb,
   Menu,
   X,
+  Monitor,
 } from "lucide-react";
 import {
   Tooltip,
@@ -23,17 +24,23 @@ import {
 import { handleSmoothScroll } from "../lib/smoothScroll";
 
 const Sidebar = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // "system" resolves to light or dark; the toggle must flip what's on screen.
-  const isDark =
-    theme === "dark" ||
-    (theme === "system" &&
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
+  // The toggle cycles System -> the opposite of what's showing -> the other
+  // -> System, so every click changes something and visitors can always
+  // return to following their device setting.
+  const nextTheme =
+    theme === "system"
+      ? resolvedTheme === "dark" ? "light" : "dark"
+      : theme === "light"
+        ? "dark"
+        : "system";
+  const themeNames = { light: "light", dark: "dark", system: "system" };
+  const themeLabel = `Theme: ${themeNames[theme] ?? "system"}. Switch to ${themeNames[nextTheme]}`;
+  const ThemeIcon = theme === "light" ? Sun : theme === "dark" ? Moon : Monitor;
 
   // Close the mobile menu whenever the route changes.
   useEffect(() => {
@@ -77,7 +84,7 @@ const Sidebar = () => {
       icon: <BookOpen className="h-5 w-5" />,
     },
     {
-      name: "Improve",
+      name: "Free Review",
       href: "#improve",
       id: "improve",
       path: "/improve",
@@ -117,19 +124,20 @@ const Sidebar = () => {
   return (
     <TooltipProvider delayDuration={100}>
       {/* Mobile horizontal navbar */}
-      <header className="mobile-header fixed top-0 left-0 right-0 z-50 glass py-3 px-3 md:hidden mx-4 mt-4 border-2 rounded-2xl">
+      <header className="mobile-header fixed top-0 left-0 right-0 z-50 glass py-2 px-3 md:hidden mx-4 mt-4 border-2 rounded-2xl">
         <div className="container flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold">
+          <Link to="/" className="inline-flex items-center min-h-11 text-2xl font-bold">
             <span className="text-neutral-900 dark:text-white font-extrabold tracking-tight">Amas</span>
           </Link>
           <div className="flex items-center gap-1">
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              onClick={() => setTheme(nextTheme)}
+              aria-label={themeLabel}
+              title={themeLabel}
             >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <ThemeIcon className="h-5 w-5" aria-hidden="true" />
             </Button>
             <Button
               variant="ghost"
@@ -200,7 +208,7 @@ const Sidebar = () => {
                         <Link
                           to={link.path || link.href}
                           aria-current={isActive ? "page" : undefined}
-                          className="relative z-10 cursor-pointer flex flex-col items-center justify-center w-[4.5rem] h-16 text-center text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                          className="relative z-10 cursor-pointer flex flex-col items-center justify-center w-[4.5rem] h-16 text-center text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                           onClick={(e) => handleNavigation(e, link)}
                         >
                           <div className="mb-1">{link.icon}</div>
@@ -222,15 +230,15 @@ const Sidebar = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setTheme(isDark ? "light" : "dark")}
-                className="mt-8 text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                onClick={() => setTheme(nextTheme)}
+                className="mt-8 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
+                aria-label={themeLabel}
               >
-                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                <ThemeIcon className="h-5 w-5" aria-hidden="true" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
-              {isDark ? "Light mode" : "Dark mode"}
+              {themeLabel}
             </TooltipContent>
           </Tooltip>
         </div>

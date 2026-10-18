@@ -54,6 +54,16 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   }
+
+  /* A clear keyboard focus ring everywhere (buttons draw their own ring) */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
 }
 
 /* ========================================
@@ -80,22 +90,21 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-.glass:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(20, 20, 24, 0.14);
-  box-shadow:
-    0 16px 40px 0 rgba(20, 20, 24, 0.08),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-  transform: translateY(-3px);
+/* Glass is reserved for the floating navigation layer (sidebar, mobile
+   header). Content cards use .surface instead, and nothing lifts on hover
+   unless it is clickable. */
+
+/* Solid surface for content: cards, code panel, photos */
+.surface {
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(229, 229, 229);
+  box-shadow: 0 1px 2px 0 rgba(20, 20, 24, 0.04);
 }
 
-.dark .glass:hover {
-  background: rgba(22, 22, 26, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow:
-    0 16px 48px 0 rgba(20, 20, 24, 0.75),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
+.dark .surface {
+  background: rgb(23, 23, 23);
+  border-color: rgb(38, 38, 38);
+  box-shadow: none;
 }
 
 /* Glass Card */
@@ -667,12 +676,45 @@ select {
   }
 }
 
+/* Reduce Motion: stop every looping or decorative CSS animation and make
+   transitions instant. Framer Motion animations are handled by
+   <MotionConfig reducedMotion="user"> in App.jsx. */
 @media (prefers-reduced-motion: reduce) {
-  .glass-orb,
-  .float-animation,
-  .marquee-track,
-  .blur-in {
-    animation: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reduce Transparency: the glass navigation becomes opaque */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .sidebar-glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgb(255, 255, 255) !important;
+  }
+  .dark .glass,
+  .dark .sidebar-glass {
+    background: rgb(16, 16, 18) !important;
+  }
+}
+
+/* Increase Contrast: stronger borders on surfaces and navigation */
+@media (prefers-contrast: more) {
+  .surface,
+  .glass,
+  .sidebar-glass {
+    border-color: rgb(115, 115, 115) !important;
+  }
+  .dark .surface,
+  .dark .glass,
+  .dark .sidebar-glass {
+    border-color: rgb(163, 163, 163) !important;
   }
 }
 
