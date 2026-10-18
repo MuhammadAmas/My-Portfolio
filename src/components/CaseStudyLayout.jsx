@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import { Button } from "./ui/button";
 import { trackExternalLink } from "../lib/analytics";
+import { hasDistinctDemoLink } from "../lib/projectLinks";
 
 export default function CaseStudyLayout({ project, name, eyebrow, subtitle, description, facts, repositories, children }) {
   return (
@@ -13,7 +14,7 @@ export default function CaseStudyLayout({ project, name, eyebrow, subtitle, desc
         <p className="mt-6 max-w-3xl text-2xl font-medium leading-snug md:text-3xl">{subtitle}</p>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 dark:text-neutral-400">{description}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          {project.demoLink && <Button asChild><a href={project.demoLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.demoLink, `${project.title} demo`)}>Explore the demo <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>}
+          {hasDistinctDemoLink(project, repositories.map(([, href]) => href)) && <Button asChild><a href={project.demoLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.demoLink, `${project.title} demo`)}>Explore the demo <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>}
           {repositories.map(([label, href]) => <Button key={href} asChild variant="outline"><a href={href} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(href, `${project.title} ${label}`)}><Github className="mr-2 h-4 w-4" />{label}</a></Button>)}
         </div>
       </header>

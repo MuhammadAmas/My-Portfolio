@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight, Github, ChartNoAxesCombined, MessageCircle, Ta
 import { Button } from "../components/ui/button";
 import { projects } from "../data/projectsInfo";
 import { trackExternalLink } from "../lib/analytics";
+import { hasDistinctDemoLink } from "../lib/projectLinks";
 
 const project = projects.find(({ id }) => id === "4");
 const features = [
@@ -33,7 +34,7 @@ export default function MailSpendCaseStudyPage() {
         <p className="mt-6 max-w-3xl text-2xl font-medium leading-snug md:text-3xl">Turn spending data into a conversation you can understand.</p>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 dark:text-neutral-400">An expense-tracking application with AI-powered categorization, visual spending summaries, and personalized insights. A React frontend and Node.js backend support the full stack product.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild><a href={project.demoLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.demoLink, "MailSpend demo")}>Explore MailSpend <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>
+          {hasDistinctDemoLink(project) && <Button asChild><a href={project.demoLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.demoLink, "MailSpend demo")}>Explore MailSpend <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>}
           <Button asChild variant="outline"><a href={project.githubLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.githubLink, "MailSpend source")}><Github className="mr-2 h-4 w-4" /> View source</a></Button>
         </div>
       </header>

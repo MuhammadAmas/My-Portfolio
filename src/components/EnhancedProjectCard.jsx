@@ -4,6 +4,7 @@ import { ExternalLink, Github, Calendar, Star, ArrowUpRight } from "lucide-react
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { trackProjectView, trackExternalLink } from "../lib/analytics";
+import { hasDistinctDemoLink } from "../lib/projectLinks";
 
 const EnhancedProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -182,7 +183,7 @@ const EnhancedProjectCard = ({ project, index }) => {
                   </Link>
                 </Button>
               )}
-              {project.demoLink && (
+              {hasDistinctDemoLink(project) && (
                 <Button
                   asChild
                   size="sm"

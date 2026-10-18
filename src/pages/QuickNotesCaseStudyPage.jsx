@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight, Command, Camera, CalendarDays, Cloud, ListChec
 import { Button } from "../components/ui/button";
 import { projects } from "../data/projectsInfo";
 import { trackExternalLink } from "../lib/analytics";
+import { hasDistinctDemoLink } from "../lib/projectLinks";
 
 const project = projects.find(({ id }) => id === "13");
 const features = [
@@ -36,7 +37,7 @@ export default function QuickNotesCaseStudyPage() {
         <p className="mt-6 max-w-3xl text-2xl font-medium leading-snug md:text-3xl">Capture the thought. Stay in the conversation.</p>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 dark:text-neutral-400">A connected note-taking system for macOS, the web, your phone, and Chrome. Capture an action item in seconds, then return to the same notes wherever you plan your day.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild><a href={project.demoLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.demoLink, "QuickNotes app")}>Open QuickNotes <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>
+          {hasDistinctDemoLink(project) && <Button asChild><a href={project.demoLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.demoLink, "QuickNotes app")}>Open QuickNotes <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>}
           <Button asChild variant="outline"><a href={project.githubLink} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink(project.githubLink, "QuickNotes source")}><Github className="mr-2 h-4 w-4" /> View source</a></Button>
         </div>
       </header>

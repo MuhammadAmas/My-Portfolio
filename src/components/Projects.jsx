@@ -19,6 +19,7 @@ import {
   AnimatedText,
 } from "./ui/animated-section";
 import { fadeIn, staggerContainer } from "../lib/animations";
+import { hasDistinctDemoLink } from "../lib/projectLinks";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -248,7 +249,7 @@ const Projects = () => {
                       </Link>
                     </Button>
                   )}
-                  {project.demoLink && (
+                  {hasDistinctDemoLink(project) && (
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
