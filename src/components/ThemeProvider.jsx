@@ -15,6 +15,19 @@ export function ThemeProvider({
 }) {
   const [theme, setTheme] = useState(defaultTheme);
   const [mounted, setMounted] = useState(false);
+  const [systemDark, setSystemDark] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches,
+  );
+
+  // Track the system appearance live, so "system" follows it while open
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-color-scheme: dark)");
+    const update = () => setSystemDark(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   // Initialize theme from localStorage after component mounts
   useEffect(() => {
@@ -32,20 +45,19 @@ export function ThemeProvider({
     root.classList.remove("light", "dark");
 
     if (theme === "system" && enableSystem) {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
-
-      root.classList.add(systemTheme);
+      root.classList.add(systemDark ? "dark" : "light");
       return;
     }
 
     root.classList.add(theme);
-  }, [theme, enableSystem, mounted]);
+  }, [theme, enableSystem, mounted, systemDark]);
+
+  const resolvedTheme =
+    theme === "system" ? (systemDark ? "dark" : "light") : theme;
 
   const value = {
     theme,
+    resolvedTheme,
     setTheme: (newTheme) => {
       localStorage.setItem("theme", newTheme);
       setTheme(newTheme);
