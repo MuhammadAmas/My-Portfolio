@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
  
 import { motion, useInView } from "framer-motion";
 import { Button } from "./ui/button";
@@ -8,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Calendar,
+  ArrowUpRight,
 } from "lucide-react";
 import { projects, categories } from "../data/projectsInfo";
 import {
@@ -176,7 +178,9 @@ const Projects = () => {
                     className="text-xl font-bold text-neutral-900 dark:text-white group-hover:underline"
                     whileHover={{ scale: 1.02, x: 2 }}
                   >
-                    {project.title}
+                    {project.caseStudyLink ? (
+                      <Link to={project.caseStudyLink}>{project.title}</Link>
+                    ) : project.title}
                   </motion.h3>
                   <div className="flex items-center text-neutral-500 dark:text-neutral-400 text-sm">
                     <Calendar className="h-3 w-3 mr-1" />
@@ -234,9 +238,16 @@ const Projects = () => {
                 )}
 
                 <motion.div
-                  className="flex gap-4 mt-auto pt-2"
+                  className="flex flex-wrap gap-3 mt-auto pt-2"
                   variants={fadeIn("up", 0.5)}
                 >
+                  {project.caseStudyLink && (
+                    <Button asChild size="sm">
+                      <Link to={project.caseStudyLink}>
+                        Case study <ArrowUpRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  )}
                   {project.demoLink && (
                     <motion.div
                       whileHover={{ scale: 1.05 }}

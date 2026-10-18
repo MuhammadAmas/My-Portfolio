@@ -7,6 +7,7 @@ import MainLayout from "./components/layout/MainLayout";
 import HomePage from "./pages/HomePage";
 import PublicationsPage from "./pages/PublicationsPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import CloudnosysCaseStudyPage from "./pages/CloudnosysCaseStudyPage";
 import ContactPage from "./pages/ContactPage";
 import ProblemSolverPage from "./pages/ProblemSolverPage";
 // Initialize Firebase Analytics
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
           {
             path: "projects",
             element: <ProjectsPage />,
+          },
+          {
+            path: "projects/cloudnosys",
+            element: <CloudnosysCaseStudyPage />,
           },
           {
             path: "contact",
