@@ -39,8 +39,9 @@ const projects = [
     description:
       "An AI-powered expense tracker that categorizes spending and provides personalized financial management insights, all wrapped in a user-friendly interface designed for maximum accessibility.",
     image: "/projects-images/mailSpend.jpg",
-    technologies: ["React.js", "Ant Design", "Charts.js", "Vite"],
-    category: ["Frontend"],
+    caseStudyLink: "/projects/mailspend",
+    technologies: ["React.js", "Node.js", "Ant Design", "Charts.js", "Vite"],
+    category: ["Full Stack"],
     demoLink: "https://mail-spend.vercel.app",
     githubLink: "https://github.com/MuhammadAmas/MailSpend",
     highlights: [

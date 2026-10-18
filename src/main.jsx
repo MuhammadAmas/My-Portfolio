@@ -9,6 +9,7 @@ import PublicationsPage from "./pages/PublicationsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import CloudnosysCaseStudyPage from "./pages/CloudnosysCaseStudyPage";
 import QuickNotesCaseStudyPage from "./pages/QuickNotesCaseStudyPage";
+import MailSpendCaseStudyPage from "./pages/MailSpendCaseStudyPage";
 import ContactPage from "./pages/ContactPage";
 import ProblemSolverPage from "./pages/ProblemSolverPage";
 // Initialize Firebase Analytics
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           {
             path: "projects/quicknotes",
             element: <QuickNotesCaseStudyPage />,
+          },
+          {
+            path: "projects/mailspend",
+            element: <MailSpendCaseStudyPage />,
           },
           {
             path: "contact",
