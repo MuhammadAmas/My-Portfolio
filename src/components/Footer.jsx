@@ -58,11 +58,11 @@ const Footer = () => {
 
           <div>
             <h3 className="font-semibold text-lg mb-4 text-neutral-900 dark:text-white">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="md:space-y-2">
               <li>
                 <Link
                   to="/"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   Home
                 </Link>
@@ -71,7 +71,7 @@ const Footer = () => {
                 <Link
                   to="/#about"
                   onClick={(e) => handleNavigation(e, "about")}
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   About
                 </Link>
@@ -79,16 +79,16 @@ const Footer = () => {
               <li>
                 <Link
                   to="/improve"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
-                  Improve
+                  Free Review
                 </Link>
               </li>
               <li>
                 <Link
                   to="/#skills"
                   onClick={(e) => handleNavigation(e, "skills")}
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   Skills
                 </Link>
@@ -96,7 +96,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/projects"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   Projects
                 </Link>
@@ -104,7 +104,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/publications"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   Publications
                 </Link>
@@ -112,7 +112,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 md:min-h-0 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   Contact
                 </Link>
@@ -124,20 +124,20 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4 text-neutral-900 dark:text-white">Contact</h3>
             <div className="space-y-2">
               <p className="text-neutral-600 dark:text-neutral-400">
-                <a href="mailto:amaswaseem@gmail.com" className="hover:text-black dark:hover:text-white transition-colors">
+                <a href="mailto:amaswaseem@gmail.com" className="inline-flex items-center min-h-11 md:min-h-0 hover:text-black dark:hover:text-white transition-colors">
                   amaswaseem@gmail.com
                 </a>
               </p>
               <p className="text-neutral-600 dark:text-neutral-400">
-                <a href="tel:+923233263278" className="hover:text-black dark:hover:text-white transition-colors">
+                <a href="tel:+923233263278" className="inline-flex items-center min-h-11 md:min-h-0 hover:text-black dark:hover:text-white transition-colors">
                   +92 323 3263278
                 </a>
               </p>
             </div>
           </div>
         </div>
-        <div className="pt-6 border-t border-neutral-200 dark:border-neutral-800 text-center text-neutral-500 dark:text-neutral-500 text-sm">
-          © {currentYear} Muhammad Amas. Designed with minimal craft. ✨
+        <div className="pt-6 border-t border-neutral-200 dark:border-neutral-800 text-center text-neutral-600 dark:text-neutral-400 text-sm">
+          © {currentYear} Muhammad Amas
         </div>
       </div>
     </footer>

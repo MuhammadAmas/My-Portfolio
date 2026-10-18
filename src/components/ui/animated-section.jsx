@@ -7,6 +7,7 @@ export const AnimatedSection = ({
   staggerDelay = 0.05,
   initialDelay = 0.2,
   effect = "fade",
+  ...props
 }) => {
   const getVariants = () => {
     switch (effect) {
@@ -78,6 +79,7 @@ export const AnimatedSection = ({
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
       className={className}
+      {...props}
     >
       {children}
     </motion.section>
@@ -169,7 +171,8 @@ export const AnimatedElement = ({
   );
 };
 
-// Export a reusable component for card-like elements with hover animations
+// Card entrance animation. No hover/press motion: these cards are not
+// clickable, and a press gesture would make them keyboard tab stops.
 export const AnimatedCard = ({ children, className = "", onClick }) => {
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
@@ -193,11 +196,6 @@ export const AnimatedCard = ({ children, className = "", onClick }) => {
   return (
     <motion.div
       className={className}
-      whileHover={{
-        y: -10,
-        transition: { duration: 0.3, ease: "easeOut" },
-      }}
-      whileTap={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

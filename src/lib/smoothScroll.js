@@ -1,4 +1,9 @@
-// Utility function to handle smooth scrolling
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Scroll to a section, leaving room for the fixed header. Smooth unless the
+// person has Reduce Motion turned on.
 export const scrollToElement = (elementId, offset = 0) => {
   const element = document.getElementById(elementId);
 
@@ -8,101 +13,48 @@ export const scrollToElement = (elementId, offset = 0) => {
 
     window.scrollTo({
       top: offsetPosition,
-      behavior: "smooth",
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
     });
   }
 };
 
-// Get all section IDs in order
-const getSectionIds = () => {
-  const sections = Array.from(document.querySelectorAll("section[id]"));
-  return sections
-    .sort((a, b) => a.offsetTop - b.offsetTop)
-    .map((section) => section.id);
-};
-
-// Find the current section based on scroll position
-const getCurrentSectionIndex = () => {
-  const sectionIds = getSectionIds();
-  const scrollPosition = window.scrollY + window.innerHeight / 2;
-  const sections = sectionIds.map((id) => document.getElementById(id));
-
-  for (let i = sections.length - 1; i >= 0; i--) {
-    const section = sections[i];
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-
-    if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-      return i;
-    }
-  }
-
-  // If we're before the first section
-  if (scrollPosition < sections[0].offsetTop) {
-    return 0;
-  }
-
-  // If we're after the last section
-  return sections.length - 1;
-};
-
-// Custom hook to intercept anchor clicks and apply smooth scrolling
+// Smooth-scroll same-page anchor links. The arrow keys are deliberately left
+// alone so they keep their standard scrolling behavior, and the URL is
+// replaced rather than pushed so Back still leaves the page.
+// Returns a cleanup function for use in an effect.
 export const initSmoothScrolling = () => {
-  // Don't run during SSR
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") return undefined;
 
-  // Handle arrow key navigation
-  document.addEventListener("keydown", (e) => {
-    // Only handle arrow keys if we're not in an input or textarea
-    if (
-      e.target.tagName === "INPUT" ||
-      e.target.tagName === "TEXTAREA" ||
-      e.target.isContentEditable
-    ) {
-      return;
-    }
-
-    const sectionIds = getSectionIds();
-    const currentIndex = getCurrentSectionIndex();
-
-    if (e.key === "ArrowDown" && currentIndex < sectionIds.length - 1) {
-      e.preventDefault();
-      const nextSection = sectionIds[currentIndex + 1];
-      scrollToElement(nextSection, 80);
-      window.history.pushState(null, null, `#${nextSection}`);
-    } else if (e.key === "ArrowUp" && currentIndex > 0) {
-      e.preventDefault();
-      const prevSection = sectionIds[currentIndex - 1];
-      scrollToElement(prevSection, 80);
-      window.history.pushState(null, null, `#${prevSection}`);
-    }
-  });
-
-  document.addEventListener("click", (e) => {
-    // Find closest anchor element
+  const onClick = (e) => {
     const anchor = e.target.closest("a");
 
-    // If it's an anchor and it links to an ID on the current page
     if (
       anchor &&
       anchor.href &&
       anchor.href.includes(window.location.origin) &&
+      anchor.pathname === window.location.pathname &&
       anchor.hash
     ) {
-      const targetId = anchor.hash.substring(1); // Remove the # character
-      const targetElement = document.getElementById(targetId);
+      const targetId = anchor.hash.substring(1);
+      const target = document.getElementById(targetId);
 
-      // If the target element exists on the page
-      if (targetElement) {
+      if (target) {
         e.preventDefault();
         scrollToElement(targetId, 80);
-        window.history.pushState(null, null, anchor.hash);
+        window.history.replaceState(null, "", anchor.hash);
+        // Move keyboard focus too (e.g. "Skip to content"), when focusable
+        if (target.tabIndex >= 0 || target.hasAttribute("tabindex")) {
+          target.focus({ preventScroll: true });
+        }
       }
     }
-  });
+  };
+
+  document.addEventListener("click", onClick);
+  return () => document.removeEventListener("click", onClick);
 };
 
-// Function to handle smooth scrolling for buttons
+// Smooth scrolling for buttons
 export const handleSmoothScroll = (e, targetId, offset = 80) => {
   e.preventDefault();
   scrollToElement(targetId, offset);
