@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
  
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   AnimatedSection,
   AnimatedElement,
@@ -144,8 +144,6 @@ const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(null);
   const sectionRef = useRef(null);
-  // eslint-disable-next-line no-unused-vars
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   const handleNext = () => {
     setDirection("right");

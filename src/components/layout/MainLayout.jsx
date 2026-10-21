@@ -16,25 +16,21 @@ const MainLayout = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Scroll progress bar */}
       <motion.div
         style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
         className="fixed top-0 left-0 right-0 h-[2px] bg-neutral-900 dark:bg-white z-[100] pointer-events-none"
       />
 
-      {/* Mesh gradient background */}
       <div
         aria-hidden="true"
         className="mesh-bg fixed inset-0 -z-10 pointer-events-none"
       />
 
-      {/* Background effects */}
       <FloatingParticles density={12} speed={0.5} />
 
       <ScrollToTop />
       <Sidebar />
 
-      {/* Main content wrapper with padding to account for sidebar */}
       <div className="px-4 md:pl-32 md:pr-6 lg:pr-8 relative z-0 pt-20 md:pt-0">
         <main className="max-w-7xl mx-auto">
           <Outlet />

@@ -1,9 +1,3 @@
-/**
- * Projects Information Document
- *
- * This file contains all project information for the portfolio.
- * When adding a new project or updating existing ones, modify this file.
- */
 
 const projects = [
   {
@@ -191,7 +185,6 @@ const projects = [
   },
 ];
 
-// Categories derived from projects
 const categories = [
   "All",
   ...new Set(projects.flatMap((project) => project.category)),

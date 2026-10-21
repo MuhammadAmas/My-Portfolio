@@ -102,8 +102,6 @@ export function getPageMetadata(pathname) {
   };
 }
 
-// Shared by the static HTML build and React navigation, so previews and the
-// browser stay in sync. Crawlers receive these tags in the initial response.
 export function getMetadataTags(meta) {
   return [
     ["name", "description", meta.description],

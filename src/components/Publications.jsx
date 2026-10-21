@@ -51,7 +51,6 @@ const Publications = () => {
             insights
           </p>
 
-          {/* Search Bar */}
           <div className="relative max-w-xl mx-auto group">
             <div className="relative">
               <input
@@ -162,7 +161,6 @@ const Publications = () => {
           )}
         </AnimatePresence>
 
-        {/* Medium Follow Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -174,7 +174,6 @@ export const AnimatedElement = ({
 export const AnimatedCard = ({ children, className = "", onClick }) => {
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
-  // Simplified animation for mobile
   if (isMobile) {
     return (
       <motion.div
@@ -190,7 +189,6 @@ export const AnimatedCard = ({ children, className = "", onClick }) => {
     );
   }
 
-  // Full animations for desktop
   return (
     <motion.div
       className={className}
@@ -205,7 +203,6 @@ export const AnimatedCard = ({ children, className = "", onClick }) => {
   );
 };
 
-// Animated reveal for images
 export const AnimatedImage = ({ src, alt, className = "", ...props }) => {
   return (
     <motion.div
@@ -236,10 +233,9 @@ export const AnimatedImage = ({ src, alt, className = "", ...props }) => {
   );
 };
 
-// For decoration elements like floating shapes, spinning logos, etc.
 export const AnimatedDecoration = ({
   children,
-  animation = "float", // float, pulse, rotate
+  animation = "float",
   className = "",
   ...props
 }) => {

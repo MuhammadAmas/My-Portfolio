@@ -93,10 +93,8 @@ const GlassBackground = () => {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base gradient background - Clean Minimal Monochrome */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-neutral-50/50 to-neutral-100/30 dark:from-neutral-950 dark:via-neutral-900/90 dark:to-neutral-950" />
 
-      {/* Monochrome gradient orbs */}
       {ORBS.map((orb, i) => (
         <motion.div
           key={i}
@@ -107,7 +105,6 @@ const GlassBackground = () => {
         />
       ))}
 
-      {/* Subtle grid pattern overlay */}
       <div
         className="absolute inset-0 opacity-[0.025] dark:opacity-[0.035]"
         style={{
@@ -119,7 +116,6 @@ const GlassBackground = () => {
         }}
       />
 
-      {/* Noise texture for depth */}
       <div
         className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
         style={{
