@@ -7,6 +7,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const FEED_URL = "https://medium.com/feed/@muhammadamas";
 const TIME_ZONE = "Asia/Karachi";
 const MAX_IMAGE_WIDTH = 1400;
+const COFFEE_URL = "https://www.buymeacoffee.com/muhammadamas";
+const COFFEE_IMAGE = "/articles/shared/buy-me-a-coffee.png";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const articlesDir = resolve(root, "src/data/articles");
@@ -109,13 +111,43 @@ async function saveImage(url, slug, index) {
   return `/articles/${slug}/${index}${extname(file)}`;
 }
 
+const COFFEE_FIGURE = new RegExp(
+  [
+    String.raw`<figure>\s*<a [^>]*href="[^"]*buymeacoffee\.com[^"]*"[^>]*>\s*<img[^>]*>\s*</a>\s*</figure>`,
+    String.raw`<figure>\s*<img[^>]*>\s*</figure>(?=\s*<p>(?:(?!</p>)[\s\S])*buymeacoffee\.com)`,
+  ].join("|"),
+  "g",
+);
+
+async function useSharedCoffeeImage(html) {
+  const coffee = html.match(COFFEE_FIGURE);
+  if (!coffee) return html;
+  const shared = resolve(root, "public", COFFEE_IMAGE.slice(1));
+  if (!existsSync(shared)) {
+    const source = coffee[0].match(/<img[^>]*src="([^"]+)"/)[1];
+    const response = await fetch(source);
+    if (!response.ok) throw new Error(`Image ${source} returned ${response.status}`);
+    await mkdir(dirname(shared), { recursive: true });
+    await writeFile(shared, Buffer.from(await response.arrayBuffer()));
+  }
+  return html.replace(
+    COFFEE_FIGURE,
+    `<figure><a href="${COFFEE_URL}"><img alt="Buy me a coffee" src="${COFFEE_IMAGE}" /></a></figure>`,
+  );
+}
+
 async function importArticle(item, existing) {
   const { slug, id } = parseMediumUrl(field(item, "link"));
   const raw = field(item, "content:encoded");
   const tags = [...item.matchAll(/<category><!\[CDATA\[(.*?)\]\]><\/category>/g)].map((m) => m[1]);
 
-  let html = raw.replace(/<img[^>]*src="https:\/\/medium\.com\/_\/stat[^"]*"[^>]*>/g, "");
-  const images = [...new Set([...html.matchAll(/<img[^>]*src="([^"]+)"/g)].map((m) => m[1]))];
+  let html = await useSharedCoffeeImage(
+    raw.replace(/<img[^>]*src="https:\/\/medium\.com\/_\/stat[^"]*"[^>]*>/g, ""),
+  );
+  await rm(resolve(root, "public/articles", slug), { recursive: true, force: true });
+  const images = [
+    ...new Set([...html.matchAll(/<img[^>]*src="([^"]+)"/g)].map((m) => m[1]).filter((src) => src !== COFFEE_IMAGE)),
+  ];
   const localImages = [];
   for (const [index, url] of images.entries()) {
     const local = await saveImage(url, slug, index + 1);
