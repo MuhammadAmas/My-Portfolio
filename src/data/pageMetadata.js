@@ -1,3 +1,5 @@
+import { articles } from "./articles/index.js";
+
 export const SITE_URL = "https://muhammadamas.vercel.app";
 
 const portfolioImage = "/social/portfolio.jpg";
@@ -63,6 +65,18 @@ export const pageMetadata = {
     image: portfolioImage,
     imageAlt: "Technical writing by Muhammad Amas",
   },
+  ...Object.fromEntries(
+    articles.map((article) => [
+      `/publications/${article.slug}`,
+      {
+        title: `${article.title} — Muhammad Amas`,
+        description: article.description,
+        image: `/social/articles/${article.slug}.jpg`,
+        imageAlt: `${article.title} — an article by Muhammad Amas`,
+        type: "article",
+      },
+    ]),
+  ),
   "/contact": {
     title: "Contact — Muhammad Amas",
     description: "Get in touch with Muhammad Amas to discuss full stack development, SaaS products, cloud platforms, and your next project.",

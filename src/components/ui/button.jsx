@@ -21,8 +21,6 @@ const buttonVariants = cva(
         link: "text-neutral-900 dark:text-neutral-100 underline-offset-4 hover:underline font-semibold",
         glass: "glass text-current hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50",
       },
-      // 44px tall on phones (touch); compact from md up, where a pointer
-      // is the likely input and the desktop minimum is smaller.
       size: {
         default: "h-11 md:h-9 px-4 py-2",
         sm: "h-11 md:h-8 rounded-md px-3 text-xs",

@@ -21,7 +21,6 @@ export function ThemeProvider({
       window.matchMedia("(prefers-color-scheme: dark)").matches,
   );
 
-  // Track the system appearance live, so "system" follows it while open
   useEffect(() => {
     const query = window.matchMedia("(prefers-color-scheme: dark)");
     const update = () => setSystemDark(query.matches);

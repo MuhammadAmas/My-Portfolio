@@ -29,9 +29,6 @@ const Sidebar = () => {
   const isHomePage = location.pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // The toggle cycles System -> the opposite of what's showing -> the other
-  // -> System, so every click changes something and visitors can always
-  // return to following their device setting.
   const nextTheme =
     theme === "system"
       ? resolvedTheme === "dark" ? "light" : "dark"
@@ -42,7 +39,6 @@ const Sidebar = () => {
   const themeLabel = `Theme: ${themeNames[theme] ?? "system"}. Switch to ${themeNames[nextTheme]}`;
   const ThemeIcon = theme === "light" ? Sun : theme === "dark" ? Moon : Monitor;
 
-  // Close the mobile menu whenever the route changes.
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);

@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import MainLayout from "./components/layout/MainLayout";
 import HomePage from "./pages/HomePage";
 import PublicationsPage from "./pages/PublicationsPage";
+import ArticlePage from "./pages/ArticlePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import CloudnosysCaseStudyPage from "./pages/CloudnosysCaseStudyPage";
 import QuickNotesCaseStudyPage from "./pages/QuickNotesCaseStudyPage";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
           {
             path: "publications",
             element: <PublicationsPage />,
+          },
+          {
+            path: "publications/:slug",
+            element: <ArticlePage />,
           },
           {
             path: "projects",
