@@ -1,7 +1,5 @@
-// Cached once at module load — viewport doesn't meaningfully change during a session
 const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
-// Easing curves
 const EASE_OUT_QUART = [0.25, 0.46, 0.45, 0.94];
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 

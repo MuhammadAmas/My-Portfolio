@@ -39,7 +39,6 @@ for (const [path, expected] of Object.entries(pageMetadata)) {
   });
 }
 
-// Read the actual JPEG frame header, rather than trusting the declared tags.
 for (const image of new Set(Object.values(pageMetadata).map((page) => page.image))) {
   test(`${image}: preview is a real 1200 × 630 JPEG`, async () => {
     const buffer = await readFile(resolve(root, "dist", image.slice(1)));

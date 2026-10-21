@@ -28,7 +28,6 @@ export function ThemeProvider({
     return () => query.removeEventListener("change", update);
   }, []);
 
-  // Initialize theme from localStorage after component mounts
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") || defaultTheme;
     setTheme(storedTheme);
@@ -40,7 +39,6 @@ export function ThemeProvider({
 
     const root = window.document.documentElement;
     
-    // Clear existing theme classes
     root.classList.remove("light", "dark");
 
     if (theme === "system" && enableSystem) {

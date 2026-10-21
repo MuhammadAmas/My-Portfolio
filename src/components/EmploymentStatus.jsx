@@ -7,12 +7,10 @@ const EmploymentStatus = () => {
       id="employment-status"
       className="py-24 md:py-32 relative overflow-hidden"
     >
-      {/* Decorative Elements */}
       <div className="absolute inset-0 opacity-5 -z-10 bg-[radial-gradient(#000000_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-[size:24px_24px]" />
       <div className="absolute top-20 left-10 md:left-40 w-80 h-80 bg-neutral-200/50 dark:bg-neutral-800/20 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-20 right-10 md:right-40 w-60 h-60 bg-neutral-200/50 dark:bg-neutral-800/20 rounded-full blur-3xl -z-10" />
 
-      {/* Code-like decorative elements */}
       <div className="absolute top-10 right-20 text-neutral-200 dark:text-neutral-800/40 text-6xl font-mono">
         {"{"}
       </div>

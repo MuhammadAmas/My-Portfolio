@@ -7,7 +7,6 @@ import EnhancedProjectCard from "./EnhancedProjectCard";
 import { AnimatedSection } from "./ui/animated-section";
 
 const FeaturedProjects = () => {
-  // Get the first 3 projects
   const featuredProjects = projects.slice(0, 3);
 
   return (

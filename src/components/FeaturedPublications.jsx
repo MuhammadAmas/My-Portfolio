@@ -14,7 +14,6 @@ import { formatArticleDate } from "../lib/articles";
 import { fadeIn } from "../lib/animations";
 
 const FeaturedPublications = () => {
-  // Get the 3 most recent publications
   const featuredPublications = articles.slice(0, 3);
   const defaultImage = "/publications/default-article.svg";
 
