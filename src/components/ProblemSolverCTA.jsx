@@ -14,12 +14,10 @@ const ProblemSolverCTA = () => {
           transition={{ duration: 0.6 }}
           className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-neutral-950 text-white border border-neutral-800 p-5 sm:p-8 md:p-12 lg:p-16 shadow-2xl"
         >
-          {/* Subtle background decorations */}
           <div className="absolute top-0 right-0 w-40 md:w-64 h-40 md:h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-32 md:w-48 h-32 md:h-48 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center gap-6 md:gap-8 lg:flex-row lg:gap-12">
-            {/* Icon */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
@@ -32,7 +30,6 @@ const ProblemSolverCTA = () => {
               </div>
             </motion.div>
 
-            {/* Content */}
             <div className="flex-grow text-center lg:text-left">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -89,7 +86,6 @@ const ProblemSolverCTA = () => {
               </motion.div>
             </div>
 
-            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}

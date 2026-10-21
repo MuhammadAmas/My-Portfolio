@@ -51,20 +51,6 @@ const Sidebar = () => {
       path: "/",
       icon: <Home className="h-5 w-5" />,
     },
-    // {
-    //   name: "About",
-    //   href: "#about",
-    //   id: "about",
-    //   path: "/#about",
-    //   icon: <User className="h-5 w-5" />,
-    // },
-    // {
-    //   name: "Skills",
-    //   href: "#skills",
-    //   id: "skills",
-    //   path: "/#skills",
-    //   icon: <Code className="h-5 w-5" />,
-    // },
     {
       name: "Projects",
       href: "#projects",
@@ -95,7 +81,6 @@ const Sidebar = () => {
     },
   ];
 
-  // Combined links for display
   const navLinks = [...mainNavLinks];
 
   const isLinkActive = (link) =>
@@ -104,13 +89,10 @@ const Sidebar = () => {
       : location.pathname.startsWith(link.path);
 
   const handleNavigation = (e, link) => {
-    // If it's a separate page (not on homepage), use router navigation
     if (link.path && !link.path.includes("#")) {
-      // Let the default Link behavior handle it
       return;
     }
 
-    // If we're on the homepage and it's a section link
     if (isHomePage && link.id) {
       e.preventDefault();
       handleSmoothScroll(e, link.id);
@@ -119,7 +101,6 @@ const Sidebar = () => {
 
   return (
     <TooltipProvider delayDuration={100}>
-      {/* Mobile horizontal navbar */}
       <header className="mobile-header fixed top-0 left-0 right-0 z-50 glass py-2 px-3 md:hidden mx-4 mt-4 border-2 rounded-2xl">
         <div className="container flex items-center justify-between">
           <Link to="/" className="inline-flex items-center min-h-11 text-2xl font-bold">
@@ -182,7 +163,6 @@ const Sidebar = () => {
         </AnimatePresence>
       </header>
 
-      {/* Desktop vertical navbar */}
       <aside className="fixed left-0 top-0 z-40 hidden md:block pl-6 h-screen pointer-events-none">
         <div className="sidebar-glass flex flex-col items-center py-6 px-2 rounded-3xl shadow-lg pointer-events-auto absolute top-1/2 -translate-y-1/2">
           <nav aria-label="Main">

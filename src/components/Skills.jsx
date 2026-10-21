@@ -97,7 +97,6 @@ const Skills = () => {
       <div className="container px-4 md:px-6 relative z-10">
         <AnimatedSection>
 
-          {/* Section heading */}
           <AnimatedElement
             variants={fadeIn("down", 0.2)}
             className="text-center mb-10 md:mb-16"
@@ -113,7 +112,6 @@ const Skills = () => {
             </p>
           </AnimatedElement>
 
-          {/* Bento cards */}
           <motion.div
             ref={containerRef}
             variants={staggerContainer(0.1, 0.2)}
@@ -127,13 +125,11 @@ const Skills = () => {
                 variants={fadeIn(index % 2 === 0 ? "right" : "left", index * 0.1)}
                 className={`glass rounded-2xl p-5 md:p-7 relative overflow-hidden group border border-neutral-200/80 dark:border-neutral-800 ${category.colSpan}`}
               >
-                {/* Ambient corner glow */}
                 <div
                   className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-500"
                   style={{ background: category.glowColor }}
                 />
 
-                {/* Header */}
                 <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-5 relative">
                   <div className={`p-2.5 md:p-3 rounded-2xl shrink-0 ${category.iconBg}`}>
                     {category.icon}
@@ -143,10 +139,8 @@ const Skills = () => {
                   </h3>
                 </div>
 
-                {/* Separator */}
                 <div className={`h-px bg-gradient-to-r ${category.separator} to-transparent mb-4 md:mb-5`} />
 
-                {/* Skill chips */}
                 <div className="flex flex-wrap gap-2 md:gap-2.5 relative">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div

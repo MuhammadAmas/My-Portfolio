@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
 
-/**
- * Floating glass decorative elements for visual interest
- * Add this component inside sections for a modern glassmorphism effect
- */
 const GlassDecorations = ({ variant = "default" }) => {
   const decorations = {
     default: [
@@ -85,9 +81,6 @@ const GlassDecorations = ({ variant = "default" }) => {
   );
 };
 
-/**
- * Glass section wrapper with built-in decorations
- */
 export const GlassSection = ({
   children,
   className = "",
@@ -102,9 +95,6 @@ export const GlassSection = ({
   );
 };
 
-/**
- * Small floating glass pill badges
- */
 export const GlassPill = ({ children, className = "" }) => {
   return (
     <motion.span
@@ -117,9 +107,6 @@ export const GlassPill = ({ children, className = "" }) => {
   );
 };
 
-/**
- * Glass container with gradient border effect
- */
 export const GlassContainer = ({ children, className = "" }) => {
   return (
     <motion.div
@@ -134,9 +121,6 @@ export const GlassContainer = ({ children, className = "" }) => {
   );
 };
 
-/**
- * Animated glass card with spotlight effect
- */
 export const SpotlightCard = ({ children, className = "" }) => {
   return (
     <motion.div
@@ -144,7 +128,6 @@ export const SpotlightCard = ({ children, className = "" }) => {
       whileHover="hover"
       initial="initial"
     >
-      {/* Spotlight effect */}
       <motion.div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{

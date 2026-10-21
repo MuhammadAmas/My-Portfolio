@@ -60,7 +60,6 @@ const ProblemSolverPage = () => {
     setError("");
 
     try {
-      // Build the form data object
       const submitData = {
         name: formData.name,
         email: formData.email,
@@ -69,7 +68,6 @@ const ProblemSolverPage = () => {
         _replyto: formData.email,
       };
 
-      // Add type-specific field
       if (formData.submissionType === "website") {
         submitData.website_url = formData.websiteUrl;
       } else if (formData.submissionType === "product") {
@@ -78,7 +76,6 @@ const ProblemSolverPage = () => {
         submitData.idea_description = formData.ideaDescription;
       }
 
-      // Add optional fields if filled
       if (formData.specificConcerns) {
         submitData.specific_concerns = formData.specificConcerns;
       }
@@ -156,7 +153,6 @@ const ProblemSolverPage = () => {
   return (
     <section className="w-full py-4 sm:py-6 md:py-16 min-h-screen">
       <div className="container px-3 sm:px-4 md:px-6 mx-auto max-w-6xl">
-        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -181,7 +177,6 @@ const ProblemSolverPage = () => {
           </p>
         </motion.div>
 
-        {/* Benefits Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -214,7 +209,6 @@ const ProblemSolverPage = () => {
           ))}
         </motion.div>
 
-        {/* Main Form Card */}
         <AnimatePresence mode="wait">
           {submitted ? (
             <motion.div
@@ -272,7 +266,6 @@ const ProblemSolverPage = () => {
                 </CardHeader>
 
                 <CardContent className="p-3 sm:p-4 md:p-8">
-                  {/* Submission Type Tabs */}
                   <div className="grid grid-cols-3 gap-1 mb-4 sm:mb-6 md:mb-8 p-1 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg sm:rounded-xl">
                     {submissionTypes.map((type) => (
                       <button
@@ -296,7 +289,6 @@ const ProblemSolverPage = () => {
                     onSubmit={handleSubmit}
                     className="space-y-4 sm:space-y-5 md:space-y-6"
                   >
-                    {/* Name & Email Row */}
                     <div className="grid grid-cols-1 gap-3 sm:gap-4">
                       <div>
                         <label
@@ -336,7 +328,6 @@ const ProblemSolverPage = () => {
                       </div>
                     </div>
 
-                    {/* Dynamic Field Based on Submission Type */}
                     <AnimatePresence mode="wait">
                       {activeTab === "website" && (
                         <motion.div
@@ -423,7 +414,6 @@ const ProblemSolverPage = () => {
                       )}
                     </AnimatePresence>
 
-                    {/* Specific Concerns */}
                     <div>
                       <label
                         htmlFor="specificConcerns"
@@ -442,7 +432,6 @@ const ProblemSolverPage = () => {
                       />
                     </div>
 
-                    {/* Goals */}
                     <div>
                       <label
                         htmlFor="goals"
@@ -470,7 +459,6 @@ const ProblemSolverPage = () => {
                       </p>
                     )}
 
-                    {/* Submit Button */}
                     <Button
                       type="submit"
                       disabled={isSubmitting}
@@ -500,7 +488,6 @@ const ProblemSolverPage = () => {
           )}
         </AnimatePresence>
 
-        {/* Trust Indicators */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

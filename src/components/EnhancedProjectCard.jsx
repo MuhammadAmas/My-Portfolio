@@ -73,7 +73,6 @@ const EnhancedProjectCard = ({ project, index }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        {/* Shimmer effect */}
         <div className="absolute inset-0 overflow-hidden rounded-xl z-10 pointer-events-none">
           <motion.div
             variants={shimmerVariants}
@@ -86,7 +85,6 @@ const EnhancedProjectCard = ({ project, index }) => {
           />
         </div>
 
-        {/* Image container */}
         <div className="aspect-video relative overflow-hidden">
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20"
@@ -106,7 +104,6 @@ const EnhancedProjectCard = ({ project, index }) => {
             }}
           />
 
-          {/* Project type badge */}
           <div className="absolute bottom-4 left-4 z-30">
             <motion.span
               className="px-2.5 py-1 text-xs font-medium bg-black/75 dark:bg-white/15 text-white dark:text-neutral-100 rounded-full backdrop-blur-md border border-white/20 dark:border-white/10"
@@ -119,9 +116,7 @@ const EnhancedProjectCard = ({ project, index }) => {
           </div>
         </div>
 
-        {/* Content section */}
         <div className="p-6 flex-1 flex flex-col relative">
-          {/* Animated background gradient */}
           <motion.div
             className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
             style={{
@@ -148,7 +143,6 @@ const EnhancedProjectCard = ({ project, index }) => {
               {project.description}
             </motion.p>
 
-            {/* Tech stack */}
             <motion.div className="flex flex-wrap gap-2 mb-4" layout>
               {project.technologies?.slice(0, 4).map((tech, techIndex) => (
                 <motion.span
@@ -174,7 +168,6 @@ const EnhancedProjectCard = ({ project, index }) => {
               )}
             </motion.div>
 
-            {/* Action Buttons */}
             <div className="flex flex-wrap gap-2 mb-4">
               {project.caseStudyLink && (
                 <Button asChild size="sm">
@@ -239,7 +232,6 @@ const EnhancedProjectCard = ({ project, index }) => {
               )}
             </div>
 
-            {/* Footer with date and featured star */}
             <div className="flex items-center justify-between pt-2 border-t border-neutral-200/60 dark:border-neutral-800">
               {(project.date || project.yearCompleted) && (
                 <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
@@ -267,7 +259,6 @@ const EnhancedProjectCard = ({ project, index }) => {
           </div>
         </div>
 
-        {/* Animated border */}
         <motion.div
           className="absolute inset-0 rounded-xl pointer-events-none"
           style={{

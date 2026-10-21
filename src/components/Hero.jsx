@@ -109,7 +109,6 @@ const Hero = () => {
             <span className="text-gradient-animate">Muhammad Amas</span>
           </h1>
 
-          {/* Typewriter */}
           <div className="h-9 mb-4 flex items-center justify-center lg:justify-start">
             <span className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
               {displayText}
@@ -128,7 +127,6 @@ const Hero = () => {
             code and exceptional user experiences.
           </motion.p>
 
-          {/* Stats row */}
           <motion.div
             variants={fadeIn("up", 0.45)}
             initial="hidden"

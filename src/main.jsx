@@ -16,7 +16,6 @@ import ChatbotCaseStudyPage from "./pages/ChatbotCaseStudyPage";
 import InsightEduCaseStudyPage from "./pages/InsightEduCaseStudyPage";
 import ContactPage from "./pages/ContactPage";
 import ProblemSolverPage from "./pages/ProblemSolverPage";
-// Initialize Firebase Analytics
 import "./lib/firebase.js";
 
 const router = createBrowserRouter([
