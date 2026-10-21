@@ -8,7 +8,9 @@ import {
   CardTitle,
 } from "./ui/card";
 import { motion, AnimatePresence } from "framer-motion";
-import publicationsData from "../data/publicationsData.json";
+import { Link } from "react-router-dom";
+import { articles } from "../data/articles/index.js";
+import { formatArticleDate } from "../lib/articles";
 import { Clock, Calendar, Search, X, ExternalLink } from "lucide-react";
 
 const defaultImage = "/publications/default-article.svg";
@@ -17,13 +19,14 @@ const Publications = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPublications = useMemo(() => {
-    if (!searchQuery.trim()) return publicationsData.publications;
+    if (!searchQuery.trim()) return articles;
 
     const query = searchQuery.toLowerCase();
-    return publicationsData.publications.filter(
+    return articles.filter(
       (pub) =>
         pub.title.toLowerCase().includes(query) ||
-        pub.description.toLowerCase().includes(query)
+        pub.description.toLowerCase().includes(query) ||
+        pub.tags.some((tag) => tag.replaceAll("-", " ").includes(query))
     );
   }, [searchQuery]);
 
@@ -56,6 +59,7 @@ const Publications = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search publications..."
+                aria-label="Search publications"
                 className="w-full px-4 py-3 rounded-full bg-white/70 dark:bg-neutral-900/70 border border-neutral-300 dark:border-neutral-700 backdrop-blur-xl
                          focus:outline-none focus:ring-2 focus:ring-neutral-400/40 focus:border-neutral-400/50
                          placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-foreground
@@ -65,6 +69,7 @@ const Publications = () => {
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
+                    aria-label="Clear search"
                     className="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full transition-colors cursor-pointer"
                   >
                     <X className="w-4 h-4 text-neutral-400 dark:text-neutral-500" />
@@ -97,7 +102,7 @@ const Publications = () => {
             >
               {filteredPublications.map((pub, index) => (
                 <motion.div
-                  key={pub.title}
+                  key={pub.slug}
                   initial="initial"
                   whileInView="animate"
                   viewport={{ once: true }}
@@ -110,10 +115,8 @@ const Publications = () => {
                     },
                   }}
                 >
-                  <a
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={`/publications/${pub.slug}`}
                     className="block h-full transform-gpu transition-all duration-300 hover:-translate-y-2"
                   >
                     <Card
@@ -126,8 +129,8 @@ const Publications = () => {
                         <img
                           loading="lazy"
                           decoding="async"
-                          src={pub.image || defaultImage}
-                          alt={pub.title}
+                          src={pub.cover || defaultImage}
+                          alt=""
                           onError={handleImageError}
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
@@ -144,7 +147,7 @@ const Publications = () => {
                       <CardFooter className="flex justify-between items-center text-sm text-neutral-500 dark:text-neutral-400 mt-auto pt-6 border-t border-neutral-200/80 dark:border-neutral-800">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
-                          <span>{pub.publishedDate}</span>
+                          <time dateTime={pub.date}>{formatArticleDate(pub.date)}</time>
                         </div>
                         <div className="flex items-center gap-2">
                           <Clock className="w-4 h-4" />
@@ -152,7 +155,7 @@ const Publications = () => {
                         </div>
                       </CardFooter>
                     </Card>
-                  </a>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

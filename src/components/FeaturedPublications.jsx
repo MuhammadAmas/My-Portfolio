@@ -9,12 +9,13 @@ import {
 } from "./ui/card";
 import { Clock, Calendar, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import publicationsData from "../data/publicationsData.json";
+import { articles } from "../data/articles/index.js";
+import { formatArticleDate } from "../lib/articles";
 import { fadeIn } from "../lib/animations";
 
 const FeaturedPublications = () => {
   // Get the 3 most recent publications
-  const featuredPublications = publicationsData.publications.slice(0, 3);
+  const featuredPublications = articles.slice(0, 3);
   const defaultImage = "/publications/default-article.svg";
 
   const handleImageError = (e) => {
@@ -45,16 +46,14 @@ const FeaturedPublications = () => {
         >
           {featuredPublications.map((pub, index) => (
             <motion.div
-              key={pub.title}
+              key={pub.slug}
               variants={fadeIn("up", index * 0.1 + 0.3)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
             >
-              <a
-                href={pub.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/publications/${pub.slug}`}
                 className="block h-full transform-gpu transition-all duration-300 hover:-translate-y-2"
               >
                 <Card
@@ -67,8 +66,8 @@ const FeaturedPublications = () => {
                     <img
                       loading="lazy"
                       decoding="async"
-                      src={pub.image || defaultImage}
-                      alt={pub.title}
+                      src={pub.cover || defaultImage}
+                      alt=""
                       onError={handleImageError}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
@@ -85,7 +84,7 @@ const FeaturedPublications = () => {
                   <CardFooter className="flex justify-between items-center text-sm text-neutral-500 dark:text-neutral-400 mt-auto pt-6 border-t border-neutral-200/80 dark:border-neutral-800">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
-                      <span>{pub.publishedDate}</span>
+                      <time dateTime={pub.date}>{formatArticleDate(pub.date)}</time>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4" />
@@ -93,7 +92,7 @@ const FeaturedPublications = () => {
                     </div>
                   </CardFooter>
                 </Card>
-              </a>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

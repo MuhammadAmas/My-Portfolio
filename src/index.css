@@ -717,3 +717,82 @@ select {
 .dark .mobile-header:hover {
   background: rgb(16, 16, 18);
 }
+
+.article-body {
+  @apply text-lg leading-8 text-neutral-700 dark:text-neutral-300;
+  overflow-wrap: break-word;
+}
+
+.article-body > * + * {
+  @apply mt-6;
+}
+
+.article-body h2 {
+  @apply mt-14 text-2xl font-bold leading-tight tracking-tight text-neutral-900 dark:text-white md:text-3xl;
+}
+
+.article-body h3 {
+  @apply mt-10 text-xl font-semibold leading-snug text-neutral-900 dark:text-white;
+}
+
+.article-body h2 + *,
+.article-body h3 + * {
+  @apply mt-4;
+}
+
+.article-body strong {
+  @apply font-semibold text-neutral-900 dark:text-white;
+}
+
+.article-body a {
+  @apply font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-4 hover:decoration-neutral-900 dark:text-white dark:decoration-neutral-500 dark:hover:decoration-white;
+}
+
+.article-body ul,
+.article-body ol {
+  @apply space-y-2 pl-6;
+}
+
+.article-body ul {
+  @apply list-disc;
+}
+
+.article-body ol {
+  @apply list-decimal;
+}
+
+.article-body li {
+  @apply pl-1;
+}
+
+.article-body blockquote {
+  @apply border-l-4 border-neutral-300 pl-5 italic text-neutral-800 dark:border-neutral-600 dark:text-neutral-200;
+}
+
+.article-body figure {
+  @apply my-10;
+}
+
+.article-body img {
+  @apply mx-auto h-auto max-w-full rounded-xl border border-neutral-200 dark:border-neutral-800;
+}
+
+.article-body figcaption {
+  @apply mt-3 text-center text-sm leading-6 text-neutral-600 dark:text-neutral-400;
+}
+
+.article-body pre {
+  @apply overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950 p-5 text-sm leading-7 text-neutral-100;
+}
+
+.article-body pre code {
+  @apply font-mono;
+}
+
+.article-body :not(pre) > code {
+  @apply rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-[0.9em] text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100;
+}
+
+.article-body hr {
+  @apply my-12 border-neutral-200 dark:border-neutral-800;
+}

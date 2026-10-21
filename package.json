@@ -10,6 +10,8 @@
     "dev": "vite --host",
     "build": "vite build && node scripts/generate-sharing-pages.mjs",
     "check:sharing": "node --test tests/sharing-previews.test.mjs",
+    "import:articles": "node scripts/import-medium-articles.mjs",
+    "render:article-previews": "node scripts/render-article-previews.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
