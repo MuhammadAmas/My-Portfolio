@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-// Analytics is optional: a missing or malformed config must never take the
-// whole site down, so failures are logged and analytics stays null.
 let app = null;
 let analytics = null;
 

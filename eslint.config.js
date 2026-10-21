@@ -29,8 +29,6 @@ export default [
       "no-unused-vars": [
         "error",
         {
-          // Without eslint-plugin-react, JSX usage of `motion.*` and
-          // components isn't seen as a use, so ignore those names.
           varsIgnorePattern: "^([A-Z_]|motion$)",
           argsIgnorePattern: "^[A-Z_]",
         },

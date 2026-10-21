@@ -55,7 +55,6 @@
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   }
 
-  /* A clear keyboard focus ring everywhere (buttons draw their own ring) */
   a:focus-visible,
   button:focus-visible,
   [tabindex]:focus-visible,
@@ -90,11 +89,6 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Glass is reserved for the floating navigation layer (sidebar, mobile
-   header). Content cards use .surface instead, and nothing lifts on hover
-   unless it is clickable. */
-
-/* Solid surface for content: cards, code panel, photos */
 .surface {
   background: rgb(255, 255, 255);
   border: 1px solid rgb(229, 229, 229);
@@ -676,9 +670,6 @@ select {
   }
 }
 
-/* Reduce Motion: stop every looping or decorative CSS animation and make
-   transitions instant. Framer Motion animations are handled by
-   <MotionConfig reducedMotion="user"> in App.jsx. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -690,7 +681,6 @@ select {
   }
 }
 
-/* Reduce Transparency: the glass navigation becomes opaque */
 @media (prefers-reduced-transparency: reduce) {
   .glass,
   .sidebar-glass {
@@ -704,7 +694,6 @@ select {
   }
 }
 
-/* Increase Contrast: stronger borders on surfaces and navigation */
 @media (prefers-contrast: more) {
   .surface,
   .glass,
@@ -718,8 +707,6 @@ select {
   }
 }
 
-/* Mobile header: backdrop blur is disabled on small screens, so the bar and
-   its dropdown menu need a solid fill to stay readable over content. */
 .mobile-header,
 .mobile-header:hover {
   background: rgb(255, 255, 255);

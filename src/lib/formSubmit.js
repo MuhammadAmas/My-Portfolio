@@ -1,6 +1,3 @@
-// Posts a form to FormSubmit's AJAX endpoint. FormSubmit reports `success`
-// as the string "true"/"false", so a plain truthiness check treats failures
-// as successes — compare explicitly and surface the server's message.
 const FORM_SUBMIT_URL = "https://formsubmit.co/ajax/amaswaseem@gmail.com";
 
 export const submitForm = async (data) => {

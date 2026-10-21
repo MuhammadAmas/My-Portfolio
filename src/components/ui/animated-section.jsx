@@ -171,8 +171,6 @@ export const AnimatedElement = ({
   );
 };
 
-// Card entrance animation. No hover/press motion: these cards are not
-// clickable, and a press gesture would make them keyboard tab stops.
 export const AnimatedCard = ({ children, className = "", onClick }) => {
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 

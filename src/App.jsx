@@ -7,7 +7,6 @@ import GlassBackground from "./components/GlassBackground";
 function App() {
   return (
     <ThemeProvider defaultTheme="system" enableSystem>
-      {/* Follow the system Reduce Motion setting for every Framer animation */}
       <MotionConfig reducedMotion="user">
         <motion.div
           className="min-h-screen bg-transparent"
