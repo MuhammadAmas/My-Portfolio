@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { logPageView } from "../lib/analytics";
 import { submitForm } from "../lib/formSubmit";
+import { useSpamGuard } from "../lib/useSpamGuard";
+import HoneypotField from "../components/HoneypotField";
 
 const ProblemSolverPage = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +41,7 @@ const ProblemSolverPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState("website");
+  const spamGuard = useSpamGuard();
 
   useEffect(() => {
     logPageView("problem-solver", "How I'd Improve Your Website");
@@ -56,11 +59,23 @@ const ProblemSolverPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError("");
+
+    const verdict = spamGuard.check();
+    if (verdict === "bot") {
+      setSubmitted(true);
+      return;
+    }
+    if (verdict === "too-fast") {
+      setError("That was quick. Please check your request, then send it again.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const submitData = {
+        _honey: spamGuard.trapValue(),
         name: formData.name,
         email: formData.email,
         submission_type: formData.submissionType,
@@ -289,6 +304,7 @@ const ProblemSolverPage = () => {
                     onSubmit={handleSubmit}
                     className="space-y-4 sm:space-y-5 md:space-y-6"
                   >
+                    <HoneypotField inputRef={spamGuard.trapRef} />
                     <div className="grid grid-cols-1 gap-3 sm:gap-4">
                       <div>
                         <label
