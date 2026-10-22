@@ -63,10 +63,28 @@ const firstParagraph = (html) => {
   return text.length > 160 ? `${text.slice(0, 157).replace(/\s+\S*$/, "")}…` : text;
 };
 
+const FETCH_TIMEOUT_MS = 30000;
+const FETCH_ATTEMPTS = 3;
+
+async function fetchWithRetry(url, options = {}) {
+  let lastError;
+  for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt++) {
+    try {
+      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+      if (response.ok) return response;
+      lastError = new Error(`${url} returned ${response.status}`);
+      if (response.status < 500 && response.status !== 429) break;
+    } catch (error) {
+      lastError = new Error(`${url} failed: ${error.cause?.code || error.name || error.message}`);
+    }
+    if (attempt < FETCH_ATTEMPTS) await new Promise((done) => setTimeout(done, attempt * 2000));
+  }
+  throw lastError;
+}
+
 async function loadFeed(source) {
   if (source) return readFile(resolve(source), "utf8");
-  const response = await fetch(FEED_URL, { headers: { "User-Agent": "Mozilla/5.0 (portfolio article import)" } });
-  if (!response.ok) throw new Error(`Medium feed returned ${response.status}`);
+  const response = await fetchWithRetry(FEED_URL, { headers: { "User-Agent": "Mozilla/5.0 (portfolio article import)" } });
   return response.text();
 }
 
@@ -78,13 +96,10 @@ async function loadExisting() {
   return [];
 }
 
-async function saveImage(url, slug, index) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Image ${url} returned ${response.status}`);
+async function saveImage(url, dir, index) {
+  const response = await fetchWithRetry(url);
   const type = response.headers.get("content-type") || "";
   const ext = type.includes("png") ? ".png" : type.includes("gif") ? ".gif" : type.includes("webp") ? ".webp" : ".jpg";
-  const dir = resolve(root, "public/articles", slug);
-  await mkdir(dir, { recursive: true });
   let file = resolve(dir, `${index}${ext}`);
   await writeFile(file, Buffer.from(await response.arrayBuffer()));
 
@@ -108,7 +123,7 @@ async function saveImage(url, slug, index) {
       }
     }
   }
-  return `/articles/${slug}/${index}${extname(file)}`;
+  return `${index}${extname(file)}`;
 }
 
 const COFFEE_FIGURE = new RegExp(
@@ -125,8 +140,7 @@ async function useSharedCoffeeImage(html) {
   const shared = resolve(root, "public", COFFEE_IMAGE.slice(1));
   if (!existsSync(shared)) {
     const source = coffee[0].match(/<img[^>]*src="([^"]+)"/)[1];
-    const response = await fetch(source);
-    if (!response.ok) throw new Error(`Image ${source} returned ${response.status}`);
+    const response = await fetchWithRetry(source);
     await mkdir(dirname(shared), { recursive: true });
     await writeFile(shared, Buffer.from(await response.arrayBuffer()));
   }
@@ -144,16 +158,28 @@ async function importArticle(item, existing) {
   let html = await useSharedCoffeeImage(
     raw.replace(/<img[^>]*src="https:\/\/medium\.com\/_\/stat[^"]*"[^>]*>/g, ""),
   );
-  await rm(resolve(root, "public/articles", slug), { recursive: true, force: true });
   const images = [
     ...new Set([...html.matchAll(/<img[^>]*src="([^"]+)"/g)].map((m) => m[1]).filter((src) => src !== COFFEE_IMAGE)),
   ];
+  const finalDir = resolve(root, "public/articles", slug);
+  const stagingDir = resolve(root, "public/articles", `.${slug}.staging`);
+  await rm(stagingDir, { recursive: true, force: true });
+  await mkdir(stagingDir, { recursive: true });
+
   const localImages = [];
-  for (const [index, url] of images.entries()) {
-    const local = await saveImage(url, slug, index + 1);
-    localImages.push(local.endsWith(".gif") && hasSips ? local.replace(/\.gif$/, ".still.jpg") : local);
-    html = html.replaceAll(`src="${url}"`, `src="${local}"`);
+  try {
+    for (const [index, url] of images.entries()) {
+      const local = `/articles/${slug}/${await saveImage(url, stagingDir, index + 1)}`;
+      localImages.push(local.endsWith(".gif") && hasSips ? local.replace(/\.gif$/, ".still.jpg") : local);
+      html = html.replaceAll(`src="${url}"`, `src="${local}"`);
+    }
+  } catch (error) {
+    await rm(stagingDir, { recursive: true, force: true });
+    throw new Error(`Kept the existing images for "${slug}": ${error.message}`);
   }
+
+  await rm(finalDir, { recursive: true, force: true });
+  await rename(stagingDir, finalDir);
 
   await writeFile(
     resolve(articlesDir, `${slug}.js`),
