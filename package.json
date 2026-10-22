@@ -7,7 +7,8 @@
     "node": "24.x"
   },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
+    "dev:lan": "vite --host",
     "build": "vite build && node scripts/generate-sharing-pages.mjs",
     "check:sharing": "node --test tests/sharing-previews.test.mjs",
     "import:articles": "node scripts/import-medium-articles.mjs",
@@ -42,6 +43,10 @@
     "globals": "^16.0.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "vite": "^6.3.1"
+    "vite": "^6.4.5"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "^1.14.6",
+    "postcss-selector-parser": "^7.1.6"
   }
 }
