@@ -47,32 +47,11 @@
       }
     </script>
 
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KX75G44Q");
-    </script>
-
+    <script src="/js/analytics.js"></script>
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-DBGYEKGHR4"
     ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-DBGYEKGHR4");
-    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -90,22 +69,7 @@
     ></noscript>
 
     <div id="root"></div>
-    <script>
-      (function () {
-        const theme = localStorage.getItem("theme") || "system";
-        const root = document.documentElement;
-
-        if (theme === "system") {
-          const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-            .matches
-            ? "dark"
-            : "light";
-          root.classList.add(systemTheme);
-        } else {
-          root.classList.add(theme);
-        }
-      })();
-    </script>
+    <script src="/js/theme.js"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
