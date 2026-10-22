@@ -12,6 +12,8 @@ import {
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { trackContactFormEvent } from "../lib/analytics";
 import { submitForm } from "../lib/formSubmit";
+import { useSpamGuard } from "../lib/useSpamGuard";
+import HoneypotField from "./HoneypotField";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +26,7 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const formRef = useRef(null);
+  const spamGuard = useSpamGuard();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,11 +35,23 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError("");
+
+    const verdict = spamGuard.check();
+    if (verdict === "bot") {
+      setSubmitted(true);
+      return;
+    }
+    if (verdict === "too-fast") {
+      setError("That was quick. Please check your message, then send it again.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       await submitForm({
+        _honey: spamGuard.trapValue(),
         name: formData.name,
         email: formData.email,
         subject: formData.subject,
@@ -194,6 +209,7 @@ const Contact = () => {
                     className="space-y-6"
                     ref={formRef}
                   >
+                    <HoneypotField inputRef={spamGuard.trapRef} />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium text-neutral-900 dark:text-neutral-200">

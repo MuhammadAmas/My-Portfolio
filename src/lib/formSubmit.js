@@ -7,7 +7,7 @@ export const submitForm = async (data) => {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({ _captcha: "false", _template: "table", ...data }),
+    body: JSON.stringify({ _captcha: "false", _template: "table", _honey: "", ...data }),
   });
 
   const result = await response.json().catch(() => ({}));
