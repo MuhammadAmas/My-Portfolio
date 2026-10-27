@@ -22,7 +22,7 @@ This is a personal portfolio website built with React, Tailwind CSS, and ShadCN 
 
 ## Prerequisites
 
-- Node.js (v14 or higher recommended)
+- Node.js 24.x (as declared in `package.json`)
 - npm or yarn
 
 ## Getting Started
@@ -30,8 +30,8 @@ This is a personal portfolio website built with React, Tailwind CSS, and ShadCN 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/portfolio-website.git
-cd portfolio-website
+git clone https://github.com/MuhammadAmas/My-Portfolio.git
+cd My-Portfolio
 ```
 
 2. Install dependencies:
