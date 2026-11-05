@@ -96,4 +96,4 @@ a platform's cached preview until it is refreshed.
 
 ## Created By
 
-Muhammad Amas
+Muhammad Amas.
