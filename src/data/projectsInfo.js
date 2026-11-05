@@ -125,6 +125,32 @@ const projects = [
     yearCompleted: 2024,
   },
   {
+    id: "14",
+    title: "Readout",
+    description:
+      "A macOS menu bar app that reads any text you select aloud: press ⌃⌥R in Safari, Slack, a PDF or anywhere else. It cleans up Markdown, links and symbols first, and runs entirely on your Mac with system or Kokoro neural voices.",
+    image: "/projects-images/readout.jpg",
+    caseStudyLink: "/projects/readout",
+    technologies: [
+      "Swift",
+      "SwiftUI",
+      "AppKit",
+      "AVFoundation",
+      "Accessibility API",
+      "NaturalLanguage",
+      "Kokoro TTS",
+      "sherpa-onnx",
+    ],
+    category: ["Desktop", "AI"],
+    demoLink: "",
+    githubLink: "https://github.com/MuhammadAmas/Readout",
+    highlights: [
+      "Reads the selection in any app through Accessibility, with a copy fallback that restores the clipboard exactly",
+      "On-device neural voices with a word-by-word mini player, instant speed changes and signed self-updates",
+    ],
+    yearCompleted: 2026,
+  },
+  {
     id: "13",
     title: "QuickNotes",
     description:

@@ -37,6 +37,7 @@
     { "source": "/projects/langx", "destination": "/projects/langx/index.html" },
     { "source": "/projects/cloudnosys", "destination": "/projects/cloudnosys/index.html" },
     { "source": "/projects/quicknotes", "destination": "/projects/quicknotes/index.html" },
+    { "source": "/projects/readout", "destination": "/projects/readout/index.html" },
     { "source": "/projects/mailspend", "destination": "/projects/mailspend/index.html" },
     { "source": "/projects", "destination": "/projects/index.html" },
     { "source": "/publications/scaling-real-time-broadcasting-in-node-js-with-redis-pub-sub", "destination": "/publications/scaling-real-time-broadcasting-in-node-js-with-redis-pub-sub/index.html" },

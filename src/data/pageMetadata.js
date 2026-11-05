@@ -31,6 +31,13 @@ export const pageMetadata = {
     imageAlt: "QuickNotes case study — capture notes across macOS, web, Chrome, and MCP",
     type: "article",
   },
+  "/projects/readout": {
+    title: "Readout Case Study — Muhammad Amas",
+    description: "A macOS menu bar app that reads any selected text aloud with system or on-device neural voices. Explore its Accessibility, speech and self-update engineering.",
+    image: "/social/readout.jpg",
+    imageAlt: "Readout case study — select text in any app and your Mac reads it aloud",
+    type: "article",
+  },
   "/projects/mailspend": {
     title: "MailSpend Case Study — Muhammad Amas",
     description: "Understand spending through AI-powered categorization, charts, and conversation. Explore MailSpend, built with a React frontend and Node.js backend.",
