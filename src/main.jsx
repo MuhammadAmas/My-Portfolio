@@ -10,6 +10,7 @@ import ArticlePage from "./pages/ArticlePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import CloudnosysCaseStudyPage from "./pages/CloudnosysCaseStudyPage";
 import QuickNotesCaseStudyPage from "./pages/QuickNotesCaseStudyPage";
+import ReadoutCaseStudyPage from "./pages/ReadoutCaseStudyPage";
 import MailSpendCaseStudyPage from "./pages/MailSpendCaseStudyPage";
 import LangXCaseStudyPage from "./pages/LangXCaseStudyPage";
 import ChatbotCaseStudyPage from "./pages/ChatbotCaseStudyPage";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
           {
             path: "projects/quicknotes",
             element: <QuickNotesCaseStudyPage />,
+          },
+          {
+            path: "projects/readout",
+            element: <ReadoutCaseStudyPage />,
           },
           {
             path: "projects/mailspend",
